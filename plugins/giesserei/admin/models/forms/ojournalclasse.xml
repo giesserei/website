@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form>
+	<fieldset name="Objektjournal-Klasse">
+		<field name="id" type="hidden" default="0" />
+		<field name="code" type="text" class="inputbox" label="Code: " description="Kurzcode zur einfachen Wiedererkennung" size="20" required="true"/>
+		<field name="text" type="text" class="inputbox" label="Beschreibungstext: " description="Beschreibung bis 100 Zeichen" size="50" required="true"/>
+		<field name="farbe" type="color" class="inputbox" label="Farbe: " description="Farbe zur leichten Erkennung" size="5" />
+	</fieldset>
+
+</form>

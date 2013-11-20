@@ -1,0 +1,68 @@
+@CHARSET "UTF-8";
+
+/*
+ * @author ( Jürg Altwegg )
+ *
+ * CSS für Spezialitäten in der Komponente com_giesserei
+*/
+
+
+/* ##########################  general  ########################### */
+
+
+/* Mitgliedertabelle */
+table.mitgliederliste, table.whgliste
+{
+	border: none;
+}
+
+td.mitglied
+{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	vertical-align: top;
+	border-left: none;
+	border-right: none;
+	border-top: solid 1px #ddd;
+	border-bottom: solid 1px #ddd;
+}
+
+td.mdetail
+{
+	border-style: none;
+	vertical-align: top;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+strong.mitglied
+{
+	font-weight: bold;
+}
+
+tr.mitglied
+{
+	border-style: none;
+}
+	
+/* Reservierte Wohnungen in der Liste*/
+span.res
+{
+    color: #AAAAAA;
+    font-weight: normal;
+    text-decoration: line-through;
+}
+
+/* Hinweis auf vermietete Wohnung in der Detailansicht */
+span.resmark {
+    border-color: red;
+    border-style: solid;
+    color: red;
+    font-size: large;
+    font-weight: bold;
+    padding: 10px;
+}

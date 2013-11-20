@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="2.5" method="upgrade">
+	<name>Giesserei</name>
+	<author>Jürg Altwegg, Hausverein Giesserei</author>
+	<creationDate>2013</creationDate>
+	<version>2.0.0</version>
+	<license>GNU GPL version 2 or later</license>
+	
+	<description>Die Komponente Giesserei Administration ist fertig installiert. Sie dient dem Verwalten der Mitglieder und Wohnungen.</description>
+	
+	<files folder="site">
+		<filename>giesserei.php</filename>
+		<filename>controller.php</filename>
+		<filename>index.php</filename>
+		<folder>models</folder>
+		<folder>template</folder>
+		<folder>views</folder>
+	</files>
+	
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.sql</file>
+		</sql>
+	</install>
+	
+	<uninstall>
+	</uninstall>
+	
+	<administration>
+		<menu img="components/com_giesserei/assets/giesserei.png" controller="giesserei" view="members">COM_GIESSEREI_ADMIN</menu>
+	   <files folder="admin">
+		<filename>giesserei.php</filename>
+		<filename>controller.php</filename>
+		<filename>index.php</filename>
+		<folder>assets</folder>
+		<folder>controllers</folder>
+		<folder>helpers</folder>
+		<folder>languages</folder>
+		<folder>models</folder>
+		<folder>sql</folder>
+		<folder>tables</folder>
+		<folder>views</folder>
+	   </files>
+	   
+	   <languages folder="admin">
+	     <language tag="de-DE">languages/de-DE/de-DE.com_giesserei.ini</language>
+	     <language tag="de-DE">languages/de-DE/de-DE.com_giesserei.sys.ini</language>
+	   </languages> 
+	</administration>
+	
+</extension>

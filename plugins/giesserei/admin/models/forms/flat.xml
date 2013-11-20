@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form>
+	<fieldset name="Wohnung">
+		<field name="id" type="hidden" default="0" />
+		<field name="typid" type="text" label="Typ: " description="Typ" size="6" filter="integer" />		
+		<field name="miete" type="text" label="Monatsmiete: " description="Monatsmiete in Schweizerfranken" size="6"/>		
+		<field name="subventioniert" type="text" label="Subventionierte Miete: " description="0 = unsubventioniert" size="6"/>		
+		<field name="nk" type="text" label="Nebenkosten: " description="Nebenkosten in Schweizerfranken (Akonto Gesewo)" size="6"/>		
+		<field name="nk_stadtwerk" type="text" label="NK Stadtwerk: " description="Prognostizierte Nebenkosten verrechnet durch Stadtwerk" size="6"/>
+		<field name="pflichtdarlehen" type="text" label="Pflichtdarlehen: " description="Pflichtdarlehen in Schweizerfranken" size="6"/>
+		<field name="flaeche" type="text" label="Fläche: " description="Nettowohnfläche in Quadratmetern" size="4"/>
+		<field name="maisonette" type="checkbox" label="Maisonette: " description="Maisonettewohnung Ja/Nein" value="1" />
+		<field name="grundriss" type="text" label="Grundrissdatei: " description="Nummer der Grundrissdatei" size="4"/>
+		<field name="anmerkung" type="text" label="Anmerkung: " description="Freies Textfeld, wird in Detailansicht angezeigt" size="40"/>
+		<field name="freiab" type="calendar" label="Frei ab: " description="Termin für Auszug bei gekündigter Wohnung" format="%Y-%m-%d" size="8" />
+		<field name="nasszellen" type="text" label="Nasszellen: " description="Anzahl Nasszellen" size="2"/>
+		<field name="reduit" type="text" label="Reduits: " description="Anzahl Reduits" size="2"/>
+		<field name="mietvertrags_beginn" type="text" label="Mietvertragsbeginn: " description="Datum des Beginns des Mietverhältnisses" format="%Y-%m-%d" />
+		<field name="gewerbe_flaeche" type="text" label="Gewerbefläche: " description="Fläche in Quadratmetern, 0 = Wohnung" size="4"/>
+		<field name="oto" type="text" label="OTO-ID: " description="ID-Nummer des Glasfaseranschlusses" size="15"/>
+		
+				
+	</fieldset>
+
+</form>

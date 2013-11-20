@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form>
+	<fieldset name="Journaleintrag">
+		<field name="id" type="hidden" default="0" />
+		<field name="userid" type="hidden" default="0" />
+		<field name="datum" type="calendar" label="Datum: " description="Datum des Eintrags" format="%Y-%m-%d" size="8" required="true" />
+		<field name="beschreibung" type="text" class="editor" label="Text: " description="Journal-Text mit maximaler Länger von 200 Zeichen" size="20" maxlengt="200" required="true"/>
+		<field name="klasseid" type="hidden" default="0"/>
+	</fieldset>
+</form>

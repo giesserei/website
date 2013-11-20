@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form>
+	<fieldset name="Personalien">
+		<field name="id" type="hidden" default="0" />
+		<field name="vorname" type="text" class="inputbox" label="Vorname: " description="Vorname" size="20" required="true"/>
+		<field name="nachname" type="text" class="inputbox" label="Nachname: " description="Nachname" size="30" required="true"/>
+		<field name="jahrgang" type="text" class="inputbox" label="Jahrgang: " description="Jahrgang (nicht Geburtsdatum)" size="5" />
+		<field name="jahrgang_frei" type="checkbox" class="inputbox" label=" Jahrgang sichtbar" description="Sichtbarkeit EIN/AUS" value="1" />	
+		<field name="handy" type="text" class="inputbox" label="Handy: " description="Mobile-Telefonnummer" size="30" />
+		<field name="handy_frei" type="checkbox" class="inputbox" label=" Handynummer sichtbar" description="Sichtbarkeit EIN/AUS" value="1" />	
+		<field name="objektid" type="text" class="inputbox" label="Wohnung: " description="nur eine Wohnung möglich" size="5" />	
+	</fieldset>
+
+</form>
