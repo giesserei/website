@@ -53,9 +53,14 @@ foreach ($objekte as $obj):
 	if($obj != end($objekte)) echo ", ";
 endforeach;
 
-echo ")<br />".$person->plz." ".$person->ort."<br /><br /></td></tr>
-<tr class=\"mitglied\"><td class=\"mdetail\"><strong class=\"mitglied\">E-Mail:</strong> <a href=\"mailto:"
-.$person->email."\">".$person->email."</a></td></tr>";
+echo ")<br />".$person->plz." ".$person->ort."<br /><br /></td></tr>";
+
+echo "<tr class=\"mitglied\"><td class=\"mdetail\"><strong class=\"mitglied\">E-Mail:</strong> ";
+if (substr($person->email, 0, 11) != "kein.email.") {
+   echo "<a href=\"mailto:".$person->email."\">".$person->email."</a>"; }
+ else {
+   echo "(keine E-Mail-Adresse)"; }
+echo "</td></tr>";
 
 echo "<tr class=\"mitglied\"><td class=\"mdetail\"><strong class=\"mitglied\">Telefon: </strong> ";
 if($person->telefon_frei):
