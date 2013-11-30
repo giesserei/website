@@ -73,7 +73,7 @@ endif;
 ?></td>
 <td valign="top">
 <?php 
-if($whg->userid > 0) echo "<span class=\"resmark\">Wohnung ist bereits VERMIETET!</span><br /><br />";
+if($whg->userid > 0 && $whg->freiab == '0000-00-00') echo "<span class=\"resmark\">Wohnung ist bereits VERMIETET!</span><br /><br />";
 ?>
 <ul>
 <li><strong><?php echo $whg->bezeichnung ?></strong></li>
