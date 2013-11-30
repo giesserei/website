@@ -15,7 +15,7 @@ define ('DETAIL_PFAD', "/index.php?option=com_giesserei&view=whgdetail&Itemid=19
 function whg_nummer($whg){
     global $detail_pfad;
     echo "<a href=\"".DETAIL_PFAD.$whg->nummer."\"";
-	$res = $whg->anzahl_mitglieder > 0 && $whg->freiab == '0000-00-00';
+    $res = $whg->anzahl_mitglieder > 0 && $whg->freiab == '0000-00-00';
     if($res) echo " class=\"res\"";
     echo ">".$whg->nummer."</a> ";
     if($whg->subventioniert > 0) echo "<img src=\"images/blue_triangle.png\" alt=\"subventioniert\" title=\"subventioniert\" /> ";
