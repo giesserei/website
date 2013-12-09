@@ -52,7 +52,7 @@ switch ((int) substr((string)$whg->nummer,2,1)):
 endswitch;
 
 // Stockwerk
-$st = (int) substr((string)$whg->id,1,1);
+$st = (int) substr((string)$whg->nummer,1,1);
 
 if($whg->maisonette):
 	$st=0;
