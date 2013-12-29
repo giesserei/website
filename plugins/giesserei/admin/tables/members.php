@@ -6,6 +6,7 @@ defined('_JEXEC') or die('Restricted access');
  * 
  * Changes:
  * - Refactoring + Format + Comments (SF, 2013-12-29)
+ * - Art der Mitgliedschaft in Liste anzeigen (SF, 2013-12-29)
  *
  * @author JAL, created on Oktober 2013
  */
@@ -29,6 +30,7 @@ class GiessereiTableMembers extends JTable {
   public $austritt;
   
   // Zusätzliche Properties, die für die Bearbeitung eines Datensatzes benötigt werden
+  // oder die einfach nur in der Liste angezeigt werden
   protected $email;
   protected $wohnung;
   protected $kinder;
@@ -38,6 +40,7 @@ class GiessereiTableMembers extends JTable {
   protected $websiteurl;
   protected $gender;
   protected $status;
+  protected $art;
   
   public function __construct(&$db) {
     parent::__construct('#__mgh_mitglied', 'id', $db);
