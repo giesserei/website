@@ -24,7 +24,9 @@ class GiessereiModelMembers extends JModelList {
 			$query->select('kun.avatar as avatar');
 			$query->join('LEFT','#__kunena_users AS kun ON mgl.userid = kun.userid');
 			
-			$query->where('austritt >= NOW() OR austritt = "0000-00-00"');
+			// $query->where('austritt >= NOW() OR austritt = "0000-00-00"');
+			// 2013-12-29 chdh: Auskommentiert. Wir müssen die ausgetretenen Mitglieder im Backend bearbeiten können.
+			// Ein Mitglied hatte z.B. noch eine Wohnung zugeordnet.
 			
 			$query->order('nachname ASC');
 
