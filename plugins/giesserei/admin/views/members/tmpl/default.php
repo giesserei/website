@@ -5,6 +5,7 @@
  * Changes:
  * - Refactoring + Format + Comments (SF, 2013-12-29)
  * - Filter eingebaut (SF, 2013-12-29)
+ * - Wohnung und Art der Mitgliedschaft in Liste anzeigen (SF, 2013-12-29)
  * 
  * @author JAL, created on 27.12.2010
  */
@@ -58,10 +59,11 @@ $listDirn = $this->state->get('list.direction');
         <th>PLZ/Ort</th>
         <th>E-Mail</th>
         <th>Telefon</th>
-        <th>Status</th>
+        <th>Wohnung</th>
+        <th>Mitgliedschaft</th>
        </tr>
     </thead>
-    <tfoot><tr><td colspan="9"><?php echo $this->pagination->getListFooter(); ?></td></tr></tfoot>
+    <tfoot><tr><td colspan="10"><?php echo $this->pagination->getListFooter(); ?></td></tr></tfoot>
     <?php
     foreach ($this->items as $i => $item) {
       $row =& $item;
@@ -81,7 +83,8 @@ $listDirn = $this->state->get('list.direction');
       <td><?php echo $row->plz." ".$row->ort; ?></td>
       <td><?php echo $row->email; ?></td>
       <td><?php echo $row->telefon; ?></td>
-      <td><?php echo $row->avatar; ?></td>
+      <td><?php echo $row->wohnung; ?></td>
+      <td><?php echo $row->art; ?></td>
     </tr>
     <?php
     }
