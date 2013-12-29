@@ -5,7 +5,7 @@ jimport('joomla.application.component.modellist');
 
 /**
  * Modell stellt eine Liste von Mitglieder-Datensätzen zur Verfügung.
- * 
+ *
  * Changes:
  * - Refactoring + Format + Comments (SF, 2013-12-29)
  * - Filter eingebaut (SF, 2013-12-29)
@@ -13,9 +13,10 @@ jimport('joomla.application.component.modellist');
  * @author JAL, created on 27.12.2010
  */
 class GiessereiModelMembers extends JModelList {
-  
+
   /**
-   * Liefert die SQL-Query zum Laden der Mitglieder. Es werden die Filter berücksichtigt.
+   * Liefert die SQL-Query zum Laden der Mitglieder.
+   * Es werden die Filter berücksichtigt.
    *
    * Neben den Attributen der Mitglieder-Tabelle werden auch die E-Mail Adresse und der Avatar geliefert.
    */
@@ -49,19 +50,19 @@ class GiessereiModelMembers extends JModelList {
     $status = $this->getState('filter.status');
     if (! empty($status)) {
       switch (strval($status)) {
-      	case 2: // ausgetreten
-      	  $query->where('(mgl.austritt < NOW() AND mgl.austritt != "0000-00-00")');
-      	  break;
-      	case 3: // alle
-      	  break;
-      	default: // nur aktive Mitglieder
-      	  $query->where('(mgl.austritt >= NOW() OR mgl.austritt = "0000-00-00")');
+        case 2 : // ausgetreten
+          $query->where('(mgl.austritt < NOW() AND mgl.austritt != "0000-00-00")');
+          break;
+        case 3 : // alle
+          break;
+        default : // nur aktive Mitglieder
+          $query->where('(mgl.austritt >= NOW() OR mgl.austritt = "0000-00-00")');
       }
     }
     
     return $query;
   }
-  
+
   /**
    * Request-Parameter in den Model-State schreiben.
    */
