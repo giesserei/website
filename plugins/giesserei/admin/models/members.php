@@ -59,6 +59,10 @@ class GiessereiModelMembers extends JModelList {
           $query->where('(mgl.austritt >= NOW() OR mgl.austritt = "0000-00-00")');
       }
     }
+    else {
+      // Default beim ersten Laden der Seite: Nur aktive Mitglieder
+      $query->where('(mgl.austritt >= NOW() OR mgl.austritt = "0000-00-00")');
+    }
     
     return $query;
   }
