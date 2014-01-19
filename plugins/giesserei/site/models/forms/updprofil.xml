@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form>
+	<fieldset name="updprofil">
+	  <!--  
+		<field name="vorname" type="text" label="Vorname" class="inputbox" size="40" maxlength="50" required="true"/>
+		<field name="nachname" type="text" label="Nachname" class="inputbox" size="40" maxlength="40" required="true"/>
+		-->
+		<field name="email" type="email" label="E-Mail" class="inputbox" size="40" maxlength="100" required="true" validate="email"/>
+		<!--
+		<field name="adresse" type="text" label="Adresse" class="inputbox" size="40" maxlength="50" required="true"/>
+		<field name="plz" type="text" label="Postleitzahl" class="inputbox" size="40" maxlength="10" required="true"/>
+		<field name="ort" type="text" label="Ort" class="inputbox" size="40" maxlength="40" required="true"/>
+		-->
+		<field name="telefon" type="text" label="Telefon 1" class="inputbox" size="40" maxlength="18" />
+		<field name="telefon_frei" type="checkbox" class="inputbox" value="1" />
+		<field name="handy" type="text" label="Telefon 2" class="inputbox" size="40" maxlength="18" />
+		<field name="handy_frei" type="checkbox" class="inputbox" value="1" />
+		<field name="birthdate" type="text" label="Geburtstag" class="inputbox" />	
+	</fieldset>
+</form>

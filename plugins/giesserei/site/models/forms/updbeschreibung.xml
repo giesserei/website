@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form>
+	<fieldset name="updbeschreibung">
+		<field name="zur_person" type="editor" label="Dein Porträt" height="400" hide="article,pagebreak,readmore" />
+	</fieldset>
+</form>

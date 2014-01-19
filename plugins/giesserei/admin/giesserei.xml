@@ -12,6 +12,8 @@
 		<filename>giesserei.php</filename>
 		<filename>controller.php</filename>
 		<filename>index.php</filename>
+		<folder>controllers</folder>
+		<folder>helpers</folder>
 		<folder>models</folder>
 		<folder>template</folder>
 		<folder>views</folder>

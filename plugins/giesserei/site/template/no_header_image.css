@@ -1,0 +1,6 @@
+/**
+ * Blendet das Header-Bild aus.
+ */
+#header-image img { 
+  display: none; 
+} 

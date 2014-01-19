@@ -66,3 +66,32 @@ span.resmark {
     font-weight: bold;
     padding: 10px;
 }
+
+/**
+ * Profilbearbeitung
+ */
+table.user_profil
+{
+  border: none;
+}
+
+td.user_profil_lb
+{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  vertical-middle: top;
+  border: none;
+  font-weight:bold;
+}
+
+td.user_profil_edit, td.user_profil_view
+{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  vertical-middle: top;
+  border: none;
+}
