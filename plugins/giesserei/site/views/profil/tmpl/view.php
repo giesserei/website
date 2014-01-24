@@ -17,6 +17,7 @@ echo GiessereiFrontendHelper::getScriptToHideHeaderImage();
     <?php echo (empty($this->profilData->basisDaten->wohnung) ? 'Passivmitglied' : 'Wohnung: ' . $this->profilData->basisDaten->wohnung); ?>
   </h1>
   
+  <div>
   <div style="float:left;margin-right:100px">
     <h3>Deine gespeicherten Daten</h3>
     <table class="user_profil">
@@ -121,21 +122,30 @@ echo GiessereiFrontendHelper::getScriptToHideHeaderImage();
       <?php } ?>
     </div>
   <?php } ?>
+  </div>
   
   <div style="clear:both"></div>
-  
-  <div style="margin-top:20px;">
-    <h3>Zu deiner Person</h3>
-    <?php 
-      if (empty($this->profilData->basisDaten->zur_person)) {
-        echo "Du hast dich noch nicht beschrieben.";
-      }
-      else {
-        echo $this->profilData->basisDaten->zur_person;
-      }
-    ?>
+ 
+  <div>
+    <div style="float:right;margin-left:60px;margin-bottom:20px;margin-top:17px">
+      <?php echo "<img src='/media/kunena/avatars/resized/size200/users/avatar" . $this->profilData->basisDaten->userid . ".JPG'></img>"; ?>
+    </div>
+    <div >
+      <h3>Zu deiner Person</h3>
+      <?php 
+        if (empty($this->profilData->basisDaten->zur_person)) {
+          echo "Du hast dich noch nicht beschrieben.";
+        }
+        else {
+          echo $this->profilData->basisDaten->zur_person;
+        }
+      ?>
+      <div style="margin-top:15px;">
+        <input type="button" value="Bearbeiten" onclick="window.location.href='index.php?option=com_giesserei&task=updbeschreibung.edit'" />
+        <?php echo "<input type=\"button\" value=\"Neues Foto\" onclick=\"window.location.href='index.php?option=com_kunena&view=user&layout=edit&userid=" . $this->profilData->basisDaten->userid . "'\" />" ?>
+        
+      </div>
+    </div>
   </div>
-  <div style="margin-top:15px;">
-    <input type="button" value="Bearbeiten" onclick="window.location.href='index.php?option=com_giesserei&task=updbeschreibung.edit'" />
-  </div>
+ 
 </div>

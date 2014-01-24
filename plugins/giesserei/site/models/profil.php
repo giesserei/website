@@ -43,6 +43,7 @@ class GiessereiModelProfil extends JModel {
     $this->hasObjekt = $this->hasObjekt();
     $this->addWohnung($profilData);
     $this->addKinder($profilData);
+    $this->addAvatarLink($profilData);
     
     return $profilData;
   }
@@ -108,6 +109,14 @@ class GiessereiModelProfil extends JModel {
         $profilData->kindListe = $rows;
       }
     }
+  }
+  
+  /**
+   * Fügt den Link auf den Avatar hinzu, welcher über das Kunena-Plugin verwaltet wird.
+   */
+  private function addAvatarLink(&$profilData) {
+    $profileKunena = KunenaFactory::getUser($this->user->id);
+    $profilData->avatarLink = $profileKunena->getAvatarImage(' ', 'profile', 200, 200);
   }
   
 }
