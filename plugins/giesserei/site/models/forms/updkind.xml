@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form>
+	<fieldset name="updkind">
+    <field name="name_frei" type="checkbox" class="inputbox" value="1" />
+		<field name="jahrgang_frei" type="checkbox" class="inputbox" value="1" />
+		<field name="handy" type="text" label="Handy" class="inputbox" size="40" maxlength="18" />
+		<field name="handy_frei" type="checkbox" class="inputbox" value="1" />
+	</fieldset>
+</form>

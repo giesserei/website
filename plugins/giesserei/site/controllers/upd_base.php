@@ -34,6 +34,10 @@ abstract class GiessereiControllerUpdBase extends JControllerForm {
   public function save() {
     GiessereiFrontendHelper::methodBegin('GiessereiControllerUpdBase', 'save');
     
+    if (!GiessereiFrontendHelper::checkAuth()) {
+      return false;
+    }
+    
     $app = JFactory::getApplication();
     
     // Form-Token prüfen -> Token wird in Template gesetzt

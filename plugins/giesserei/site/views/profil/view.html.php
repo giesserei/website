@@ -28,6 +28,7 @@ class GiessereiViewProfil extends JView {
     
     // Form-Daten aus Session löschen -> User hat die letzte Eingabe vielleicht nicht abgeschlossen
     $app->setUserState(GiessereiConst::SESSION_KEY_PROFIL_DATA, null);
+    $app->setUserState(GiessereiConst::SESSION_KEY_PROFIL_SUB_ID, null);
     
     // Profil aus Model laden
     $model = $this->getModel();

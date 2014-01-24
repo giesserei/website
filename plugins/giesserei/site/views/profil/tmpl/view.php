@@ -114,7 +114,9 @@ echo GiessereiFrontendHelper::getScriptToHideHeaderImage();
           </tr>
         </table>
         <div style="margin-top:5px;margin-bottom:20px;">
-          <input type="button" value="Bearbeiten" onclick="window.location.href='index.php?option=com_giesserei&task=updprofil.edit'" />
+          <?php 
+          echo "<input type=\"button\" value=\"Bearbeiten\" onclick=\"window.location.href='index.php?option=com_giesserei&task=updkind.edit&kind_id=". $kind->id ."'\" />";
+          ?>
         </div>
       <?php } ?>
     </div>

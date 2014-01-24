@@ -7,6 +7,11 @@ class GiessereiConst {
   const SESSION_KEY_PROFIL_DATA = 'com_giesserei.profil.data';
   
   /**
+   * Unter diesem Key wird die ID zu einem dem Profil untergeordneten Datensatz in der Session gespeichert.
+   */
+  const SESSION_KEY_PROFIL_SUB_ID = 'com_giesserei.profil.sub.id';
+  
+  /**
    * Unter diesem Key wird die Menü-Id der Profilseite gespeichert.
    */
   const SESSION_KEY_PROFIL_MENU_ID = 'com_giesserei.profil.menuid';
