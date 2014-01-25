@@ -16,13 +16,6 @@ class ProfilData extends JObject {
   public $basisDaten = null;
   
   /**
-   * img-Tag zum Avatar, welcher über Kunena gesetzt wird.
-   *
-   * @var string
-   */
-  public $avatarLink = null;
-  
-  /**
    * Array mit den Kindern, die in der gleichen Wohnung wohnen, wie das Mitglied.
    * 
    * @var array
