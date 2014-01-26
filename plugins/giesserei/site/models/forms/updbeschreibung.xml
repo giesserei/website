@@ -2,6 +2,6 @@
 
 <form>
 	<fieldset name="updbeschreibung">
-		<field name="zur_person" type="editor" label="Dein Porträt" height="400" hide="article,pagebreak,readmore" />
+		<field name="zur_person" type="editor" label="Dein Porträt" height="400" hide="article,pagebreak,readmore,image" />
 	</fieldset>
 </form>
