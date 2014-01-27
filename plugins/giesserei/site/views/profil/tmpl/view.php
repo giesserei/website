@@ -128,7 +128,7 @@ echo GiessereiFrontendHelper::getScriptToHideHeaderImage();
  
   <div>
     <div style="float:right;margin-left:60px;margin-bottom:20px;margin-top:17px">
-      <?php echo "<img src='/media/kunena/avatars/resized/size200/users/avatar" . $this->profilData->basisDaten->userid . ".JPG'></img>"; ?>
+      <?php echo "<img src='/media/kunena/avatars/resized/size200/" . $this->profilData->basisDaten->avatar. "'></img>"; ?>
     </div>
     <div >
       <h3>Zu deiner Person</h3>

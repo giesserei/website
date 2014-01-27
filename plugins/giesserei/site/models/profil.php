@@ -57,14 +57,21 @@ class GiessereiModelProfil extends JModel {
   private function addKunenaProperties(&$profilData) {
     // Default setzen, falls kein Kunena-Eintrag für den User vorhanden ist
     $profilData->basisDaten->birthdate = '0001-01-01';
+    $profilData->basisDaten->avatar = 'nophoto.jpg';
     
-    $query = 'SELECT * FROM #__kunena_users AS k WHERE k.userid=' . $this->user->id;
+    $query = 'SELECT k.birthdate, k.avatar FROM #__kunena_users AS k WHERE k.userid=' . $this->user->id;
     $this->db->setQuery($query);
     $row = $this->db->loadObject();
     
     if (!empty($row)) {
-      $profilData->basisDaten->birthdate = $row->birthdate;
+      if (!empty($row->birthdate)) {
+        $profilData->basisDaten->birthdate = $row->birthdate;
+      }
+      if (!empty($row->avatar)) {
+        $profilData->basisDaten->avatar = $row->avatar;
+      }
     }
+    
   }
   
   /**
