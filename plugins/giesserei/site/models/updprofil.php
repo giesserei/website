@@ -66,23 +66,28 @@ class GiessereiModelUpdprofil extends JModelAdmin {
   }
   
   /**
-   * Nachdem die Regeln der Form-Validierung geprüft wurden, werden weitere Validierungen durchgeführt.
-   * Liefert true, wenn alle Validierungen erfolgreich waren; sonst false. Die Fehlermeldungen sind im 
-   * Model abgelegt.
+   * Prüft, ob die Eingaben korrekt sind.
+   * 
+   * Validierungsmeldungen werden im Model gespeichert.
+   * 
+   * @return mixed  Array mit gefilterten Daten, wenn alle Daten korrekt sind; sonst false
    * 
    * @see JModelForm::validate()
    */
   public function validate($form, $data) {
-    $result = parent::validate($form, $data);
-    if ($result === false) {
+    $validateResult = parent::validate($form, $data);
+    if ($validateResult === false) {
       return false;
     }
     
     $valid = 1;
-    $valid &= $this->validateBirthdate($data['birthdate']);
-    $valid &= $this->validateEmail($data['email']);
+    $valid &= $this->validateBirthdate($validateResult['birthdate']);
+    $valid &= $this->validateEmail($validateResult['email']);
     
-    return (bool) $valid;
+    if (!(bool) $valid) {
+      return false;
+    }
+    return $validateResult;
   }
   
   /**
@@ -120,6 +125,10 @@ class GiessereiModelUpdprofil extends JModelAdmin {
         $this->setError($table->getError());
         return false;
       }
+      
+      // Nun müssen wir noch den User in der Joomla-User in der Session aktualisieren
+      // Sonst sieht man nach der E-Mail Änderung die alte E-Mail noch im Forum-Profil
+      $this->reloadUserInSession($user->id);
     }
     catch (Exception $e) {
       JLog::add($e->getMessage(), JLog::ERROR);
@@ -152,6 +161,12 @@ class GiessereiModelUpdprofil extends JModelAdmin {
   // -------------------------------------------------------------------------
   // private section
   // -------------------------------------------------------------------------
+  
+  private function reloadUserInSession($userid) {
+    $user = new JUser($userid);
+    $session = JFactory::getSession();
+    $session->set('user', $user);
+  }
   
   /**
    * Liefert true, wenn das Geburtsdatum das korrekte Format hat; sonst false.

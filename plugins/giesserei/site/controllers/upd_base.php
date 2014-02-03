@@ -46,12 +46,13 @@ abstract class GiessereiControllerUpdBase extends JControllerForm {
     $formData = $this->getFormData();
 
     // Validierung -> Validierungsmeldungen werden direkt ausgegeben
-    if (!$this->validateData($formData)) {
+    $validateResult = $this->validateData($formData);
+    if ($validateResult === false) {
       return false;
     }
     
     // Daten Speichern
-    if ($this->processSave($formData)) {
+    if ($this->processSave($validateResult)) {
       // Daten in der Session löschen
       $app->setUserState(GiessereiConst::SESSION_KEY_PROFIL_DATA, null);
       $this->redirectProfilView();
@@ -134,17 +135,17 @@ abstract class GiessereiControllerUpdBase extends JControllerForm {
    * 
    * Validierungsmeldungen werden direkt ausgegeben.
    * 
-   * @return boolean True, wenn alle Eingaben korrekt sind.
+   * @return mixed  Array mit gefilterten Daten, wenn alle Daten korrekt sind; sonst false
    */
   private function validateData($data) {
     $app = JFactory::getApplication();
     $model = $this->getModel();
     $form = $model->getForm($data, false);
     
-    $result = $model->validate($form, $data);
+    $validateResult = $model->validate($form, $data);
     
     // Nur die ersten drei Fehler dem Benutzer anzeigen
-    if ($result === false) {
+    if ($validateResult === false) {
       $errors = $model->getErrors();
     
       for ($i = 0, $n = count($errors); $i < $n && $i < 3; $i++) {
@@ -167,7 +168,7 @@ abstract class GiessereiControllerUpdBase extends JControllerForm {
       return false;
     }
     
-    return true;
+    return $validateResult;
   }
   
   /**

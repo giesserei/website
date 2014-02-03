@@ -14,6 +14,26 @@ jimport('joomla.application.component.controllerform');
  */
 class GiessereiControllerUpdbeschreibung extends GiessereiControllerUpdBase {
   
+  /**
+   * Führt nach ein paar Vorarbeiten einen Redirect auf die View durch, von welcher der Absprung auf 
+   * die Profil-Seite des Forums erfolgt.
+   */
+  public function jumpToPhoto() {
+    GiessereiFrontendHelper::methodBegin('GiessereiControllerUpdbeschreibung', 'jumpToPhoto');
+  
+    if (!GiessereiFrontendHelper::checkAuth()) {
+      return false;
+    }
+  
+    $app = JFactory::getApplication();
+    $menuId = $app->getUserState(GiessereiConst::SESSION_KEY_PROFIL_MENU_ID);
+    $this->setRedirect(
+        JRoute::_('index.php?option=com_giesserei&view=updbeschreibung&layout=jump_to_photo&Itemid=' . $menuId, false)
+    );
+  
+    return true;
+  }
+  
   // -------------------------------------------------------------------------
   // protected section
   // -------------------------------------------------------------------------

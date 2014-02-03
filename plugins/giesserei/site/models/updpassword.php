@@ -49,21 +49,27 @@ class GiessereiModelUpdpassword extends JModelAdmin {
     return $form;
   }
   
-  /**
-   * Nachdem die Regeln der Form-Validierung geprüft wurden, werden weitere Validierungen durchgeführt.
-   * Liefert true, wenn alle Validierungen erfolgreich waren; sonst false. Die Fehlermeldungen sind im 
-   * Model abgelegt.
+ /**
+   * Prüft, ob die Eingaben korrekt sind.
+   * 
+   * Validierungsmeldungen werden im Model gespeichert.
+   * 
+   * @return mixed  Array mit gefilterten Daten, wenn alle Daten korrekt sind; sonst false
    * 
    * @see JModelForm::validate()
    */
   public function validate($form, $data) {
-    $result = parent::validate($form, $data);
-    if ($result === false) {
+    $validateResult = parent::validate($form, $data);
+    if ($validateResult === false) {
       return false;
     }
     
-    $result = $this->validatePassword($data['password'], $data['password2']);
-    return $result;
+    $valid = $this->validatePassword($validateResult['password'], $validateResult['password2']);
+    if (!$valid) {
+      return false;
+    }
+    
+    return $validateResult;
   }
   
   /**

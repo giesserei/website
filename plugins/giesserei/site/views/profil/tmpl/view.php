@@ -142,7 +142,7 @@ echo GiessereiFrontendHelper::getScriptToHideHeaderImage();
       ?>
       <div style="margin-top:15px;">
         <input type="button" value="Bearbeiten" onclick="window.location.href='index.php?option=com_giesserei&task=updbeschreibung.edit'" />
-        <?php echo "<input type=\"button\" value=\"Foto hochladen\" onclick=\"window.location.href='index.php?option=com_kunena&view=user&layout=edit&userid=" . $this->profilData->basisDaten->userid . "'\" />" ?>
+        <?php echo "<input type=\"button\" value=\"Foto hochladen\" onclick=\"window.location.href='index.php?option=com_giesserei&task=updbeschreibung.jumpToPhoto'\" />" ?>
         
       </div>
     </div>
