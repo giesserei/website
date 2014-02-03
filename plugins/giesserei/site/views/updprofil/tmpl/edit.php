@@ -66,7 +66,12 @@ echo GiessereiFrontendHelper::getScriptToHideHeaderImage();
       </tr>
       <tr>
         <td class="user_profil_lb"><?php echo $this->form->getLabel('birthdate'); ?></td>
-        <td class="user_profil_edit"><?php echo $this->form->getInput('birthdate'); ?>&nbsp;&nbsp;(z.B. 06.01.1968)</td>
+        <td class="user_profil_edit">
+          <?php echo $this->form->getInput('birthdate'); ?>&nbsp;&nbsp;(z.B. 06.01.1968)
+          <span style="padding-left:25px;">
+            <b>Achtung:</b> Wenn du dein Geburtstag eingibst, ist dieses für jedes Mitglied sichtbar!
+          </span>
+        </td>
       </tr>
     </table>	
 			
