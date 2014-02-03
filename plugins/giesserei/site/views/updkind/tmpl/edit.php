@@ -14,7 +14,7 @@ echo GiessereiFrontendHelper::getScriptToHideHeaderImage();
   Profil bearbeiten von <?php echo $this->item->vorname . " " . $this->item->nachname?>
 </h1>
 <div style="margin-bottom:20px">
-  Für Namens- und Jahrgangsänderungen schreibt bitte ein Mail an 
+  Für Namens- und Jahrgangsänderungen schreibe bitte ein Mail an 
   <a href="mailto:kasse@giesserei-gesewo.ch">kasse@giesserei-gesewo.ch</a>
 </div>
 
