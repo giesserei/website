@@ -16,6 +16,6 @@
 		<field name="telefon_frei" type="checkbox" class="inputbox" value="1" />
 		<field name="handy" type="text" label="Telefon 2" class="inputbox" size="40" maxlength="18" />
 		<field name="handy_frei" type="checkbox" class="inputbox" value="1" />
-		<field name="birthdate" type="text" label="Geburtstag" class="inputbox" />	
+		<field name="birthdate" type="text" label="Geburtsdatum" class="inputbox" />	
 	</fieldset>
 </form>

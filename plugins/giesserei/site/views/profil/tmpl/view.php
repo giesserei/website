@@ -72,7 +72,7 @@ echo GiessereiFrontendHelper::getScriptToHideHeaderImage();
         </td>
       </tr>
       <tr>
-        <td class="user_profil_lb">Geburtstag</td>
+        <td class="user_profil_lb">Geburtsdatum</td>
         <td class="user_profil_view">
           <?php 
             $birthdate = GiessereiFrontendHelper::mysqlDateToViewDate($this->profilData->basisDaten->birthdate);

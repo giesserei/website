@@ -69,7 +69,7 @@ echo GiessereiFrontendHelper::getScriptToHideHeaderImage();
         <td class="user_profil_edit">
           <?php echo $this->form->getInput('birthdate'); ?>&nbsp;&nbsp;(z.B. 06.01.1968)
           <span style="padding-left:25px;">
-            <b>Achtung:</b> Wenn du dein Geburtstag eingibst, ist dieses für jedes Mitglied sichtbar!
+            <b>Achtung:</b> Wenn du dein Geburtsdatum eingibst, ist dieses für jedes Mitglied sichtbar!
           </span>
         </td>
       </tr>
