@@ -46,7 +46,7 @@ foreach($this->mitglieder as $person):
     .$person->nachname."</strong> ".$person->vorname."</a></td><td class=\"mitglied\">";
 
     if (substr($person->email, 0, 11) != "kein.email.") {
-       echo JHTML::_('email.cloak',$person->email,true,"E-Mail an ".$person->vorname,false); }
+       echo JHTML::_('email.cloak',$person->email.'?body=Liebe/Lieber '.$person->vorname,true,"E-Mail an ".$person->vorname,false); }
 
     echo "</td><td class=\"mitglied\">";
 	

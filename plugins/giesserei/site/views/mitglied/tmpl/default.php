@@ -57,7 +57,7 @@ echo ")<br />".$person->plz." ".$person->ort."<br /><br /></td></tr>";
 
 echo "<tr class=\"mitglied\"><td class=\"mdetail\"><strong class=\"mitglied\">E-Mail:</strong> ";
 if (substr($person->email, 0, 11) != "kein.email.") {
-   echo "<a href=\"mailto:".$person->email."\">".$person->email."</a>"; }
+   echo "<a href=\"mailto:".$person->email.'?body=Liebe/Lieber '.$person->vorname."\">".$person->email."</a>"; }
  else {
    echo "(keine E-Mail-Adresse)"; }
 echo "</td></tr>";
