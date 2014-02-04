@@ -56,26 +56,35 @@ foreach($this->mitglieder as $person):
 		echo "&nbsp;";
 	endif;
 	
-	echo "</td><td class=\"mitglied\">";
+	
+	echo "</td>";
 	
 	$objekte = $model->getObjekte($person->userid);
-	// Hausnummer(n) ausgeben
-	$obj_counter = 0;
-	if(count($objekte)>0) foreach ($objekte as $obj):
-		echo "Haus ".substr($obj->objektid,2,1);
-		if($obj != end($objekte)) echo "<br />";
-	endforeach;
-	
-	echo "</td><td class=\"mitglied\">";
-	
-	// Gemietete Wohnung(en) ausgeben
-	$obj_counter = 0;
-	if(count($objekte)>0) foreach ($objekte as $obj):
-		echo $obj->objektid;
-		if($obj != end($objekte)) echo "<br />";
-	endforeach;
-	
-	echo "</td></tr>";
+	if (empty($objekte)) {
+    echo "<td class=\"mitglied\" colspan=\"2\">Passivmitglied</td>";
+  }
+	else {
+  	echo "<td class=\"mitglied\">";
+  	
+  	// Hausnummer(n) ausgeben
+  	$obj_counter = 0;
+  	if(count($objekte)>0) foreach ($objekte as $obj):
+  		echo "Haus ".substr($obj->objektid,2,1);
+  		if($obj != end($objekte)) echo "<br />";
+  	endforeach;
+  	
+  	echo "</td><td class=\"mitglied\">";
+  	
+  	// Gemietete Wohnung(en) ausgeben
+  	$obj_counter = 0;
+  	if(count($objekte)>0) foreach ($objekte as $obj):
+  		echo $obj->objektid;
+  		if($obj != end($objekte)) echo "<br />";
+  	endforeach;
+  	
+  	echo "</td>";
+	}
+  echo "</tr>";
     
 
 endforeach;
