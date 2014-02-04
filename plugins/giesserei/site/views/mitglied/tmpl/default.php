@@ -34,26 +34,30 @@ echo "<table width=\"100%\" style=\"border-style:none;\">";
 echo "<tr class=\"mitglied\"><td width=\"30%\" rowspan=\"6\" class=\"mdetail\">";
 
 if(strlen($person->avatar) > 5):
-	echo "<img src=\"/media/kunena/avatars/".$person->avatar."\" alt=\"Portaitfoto\" border=\"0\" />";
+	echo "<img src=\"/media/kunena/avatars/".$person->avatar."\" alt=\"Portraitfoto\" border=\"0\" />";
 else:
-	echo "<img src=\"/media/kunena/avatars/resized/size200/nophoto.jpg\" alt=\"leider kein Portaitfoto\" border=\"0\" />";
+	echo "<img src=\"/media/kunena/avatars/resized/size200/nophoto.jpg\" alt=\"leider kein Portraitfoto\" border=\"0\" />";
 endif;
 
 echo "</td>";
 
 echo "<td width=\"70%\" class=\"mdetail\"><strong class=\"mitglied\">".$person->vorname." ".$person->nachname."</strong></td></tr>";
-echo "<tr  class=\"mitglied\"><td class=\"mdetail\">".$person->adresse." &nbsp; (";
+echo "<tr  class=\"mitglied\"><td class=\"mdetail\">".$person->adresse." &nbsp; ";
 
 // Gemietete Wohnung(en) ausgeben
 $objekte = $listen_model->getObjekte($person->userid);
 $obj_counter = 0;
+
+echo (empty($objekte) ? '' : '(');
 
 foreach ($objekte as $obj):
 	echo $obj->objektid;
 	if($obj != end($objekte)) echo ", ";
 endforeach;
 
-echo ")<br />".$person->plz." ".$person->ort."<br /><br /></td></tr>";
+echo (empty($objekte) ? '' : ')');
+
+echo "<br />".$person->plz." ".$person->ort."<br /><br /></td></tr>";
 
 echo "<tr class=\"mitglied\"><td class=\"mdetail\"><strong class=\"mitglied\">E-Mail:</strong> ";
 if (substr($person->email, 0, 11) != "kein.email.") {
@@ -62,19 +66,31 @@ if (substr($person->email, 0, 11) != "kein.email.") {
    echo "(keine E-Mail-Adresse)"; }
 echo "</td></tr>";
 
-echo "<tr class=\"mitglied\"><td class=\"mdetail\"><strong class=\"mitglied\">Telefon: </strong> ";
-if($person->telefon_frei):
-	echo $person->telefon;
-else:
-	echo "<em>(von Benutzer gesperrt)</em>";
-endif;
+echo "<tr class=\"mitglied\"><td class=\"mdetail\"><strong class=\"mitglied\">Telefon 1: </strong> ";
+if (empty($person->telefon)) {
+  echo "<em>(nicht erfasst)</em>";
+}
+else {
+  if ($person->telefon_frei) {
+	  echo $person->telefon;
+  } 
+  else {
+	  echo "<em>(von Benutzer gesperrt)</em>";
+  }
+}
 
-echo "</td></tr><tr class=\"mitglied\"><td class=\"mdetail\"><strong>Handy: </strong>";
-if($person->handy_frei):
-	echo $person->handy;
-else:
-	echo "<em>(von Benutzer gesperrt)</em>";
-endif;
+echo "</td></tr><tr class=\"mitglied\"><td class=\"mdetail\"><strong>Telefon 2: </strong>";
+if (empty($person->handy)) {
+  echo "<em>(nicht erfasst)</em>";
+}
+else {
+  if ($person->handy_frei) {
+	  echo $person->handy;
+  } 
+  else {
+	  echo "<em>(von Benutzer gesperrt)</em>";
+  }
+}
 
 echo "</td></tr>";
 
