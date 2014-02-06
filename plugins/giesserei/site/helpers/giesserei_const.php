@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * Vom Frontend verwendete Konstanten.
+ *
+ * @author Steffen Förster
+ */
 class GiessereiConst {
   
   /**

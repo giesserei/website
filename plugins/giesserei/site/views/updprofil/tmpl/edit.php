@@ -26,54 +26,59 @@ echo GiessereiFrontendHelper::getScriptToHideHeaderImage();
 		<table class="user_profil">
 			<tr>
 			  <td class="user_profil_lb">Vorname</td>
-			  <td class="user_profil_view"><?php echo $this->item->vorname; ?></td>
+			  <td class="user_profil_view" colspan="2"><?php echo $this->item->vorname; ?></td>
 			</tr>	
       <tr>
         <td class="user_profil_lb">Nachname</td>
-        <td class="user_profil_view"><?php echo $this->item->nachname; ?></td>
+        <td class="user_profil_view" colspan="2"><?php echo $this->item->nachname; ?></td>
       </tr>
       <tr>
         <td class="user_profil_lb"><?php echo $this->form->getLabel('email'); ?></td>
-        <td class="user_profil_edit"><?php echo $this->form->getInput('email'); ?></td>
+        <td class="user_profil_edit" colspan="2"><?php echo $this->form->getInput('email'); ?></td>
       </tr>
       <tr>
         <td class="user_profil_lb">Adresse</td>
-        <td class="user_profil_view"><?php echo $this->item->adresse; ?></td>
+        <td class="user_profil_view" colspan="2"><?php echo $this->item->adresse; ?></td>
       </tr>
       <tr>
         <td class="user_profil_lb">PLZ</td>
-        <td class="user_profil_view"><?php echo $this->item->plz; ?></td>
+        <td class="user_profil_view" colspan="2"><?php echo $this->item->plz; ?></td>
       </tr>
       <tr>
         <td class="user_profil_lb">Ort</td>
-        <td class="user_profil_view"><?php echo $this->item->ort; ?></td>
+        <td class="user_profil_view" colspan="2"><?php echo $this->item->ort; ?></td>
       </tr>
       <tr>
         <td class="user_profil_lb"><?php echo $this->form->getLabel('telefon'); ?></td>
+        <td class="user_profil_edit"><?php echo $this->form->getInput('telefon'); ?></td>
         <td class="user_profil_edit">
-          <?php echo $this->form->getInput('telefon'); ?>
-          <span style="padding-left:20px;padding-right:10px">Sichtbar in Mitgliederliste:</span>
+          <span style="padding-right:10px">Sichtbar in Mitgliederliste:</span>
           <?php echo $this->form->getInput('telefon_frei'); ?>
         </td>
       </tr>
       <tr>
         <td class="user_profil_lb"><?php echo $this->form->getLabel('handy'); ?></td>
+        <td class="user_profil_edit"><?php echo $this->form->getInput('handy'); ?></td>
         <td class="user_profil_edit">
-          <?php echo $this->form->getInput('handy'); ?>
-          <span style="padding-left:20px;padding-right:10px">Sichtbar in Mitgliederliste:</span>
+          <span style="padding-right:10px">Sichtbar in Mitgliederliste:</span>
           <?php echo $this->form->getInput('handy_frei'); ?>
         </td>
       </tr>
       <tr>
         <td class="user_profil_lb"><?php echo $this->form->getLabel('birthdate'); ?></td>
+        <td class="user_profil_edit"><?php echo $this->form->getInput('birthdate'); ?>&nbsp;&nbsp;(z.B. 06.01.1968)</td>
         <td class="user_profil_edit">
-          <?php echo $this->form->getInput('birthdate'); ?>&nbsp;&nbsp;(z.B. 06.01.1968)
-          <span style="padding-left:25px;">
-            <b>Achtung:</b> Wenn du dein Geburtsdatum eingibst, ist dieses für jedes Mitglied sichtbar!
-          </span>
+          <strong>Achtung:</strong> Wenn du dein Geburtsdatum eingibst, ist dieses für jedes Mitglied sichtbar!
         </td>
       </tr>
+      <tr>
+        <td class="user_profil_edit" colspan="3"><span class="star">* </span> Eingabe ist obligatorisch</td>
+      </tr>
     </table>	
+    
+    <div>
+      
+    </div>
 			
 		<fieldset>
 			<input type="submit" value="Speichern"></button>

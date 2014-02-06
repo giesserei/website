@@ -28,6 +28,9 @@ echo GiessereiFrontendHelper::getScriptToHideHeaderImage();
         <td class="user_profil_lb"><?php echo $this->form->getLabel('password2'); ?></td>
 			  <td class="user_profil_edit"><?php echo $this->form->getInput('password2'); ?></td>
       </tr>
+      <tr>
+        <td class="user_profil_edit" colspan="2"><span class="star">* </span> Eingabe ist obligatorisch</td>
+      </tr>
     </table>
 			
 		<fieldset>

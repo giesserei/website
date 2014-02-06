@@ -81,7 +81,7 @@ td.user_profil_lb
   padding-bottom: 5px;
   padding-left: 10px;
   padding-right: 10px;
-  vertical-middle: top;
+  vertical-align: top;
   border: none;
   font-weight:bold;
 }
@@ -92,6 +92,6 @@ td.user_profil_edit, td.user_profil_view
   padding-bottom: 5px;
   padding-left: 10px;
   padding-right: 10px;
-  vertical-middle: top;
+  vertical-align: top;
   border: none;
 }
