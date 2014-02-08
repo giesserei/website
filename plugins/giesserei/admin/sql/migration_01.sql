@@ -6,6 +6,9 @@ ALTER TABLE joomghjos_mgh_mitglied ADD COLUMN typ SMALLINT NOT NULL DEFAULT 1;
 ALTER TABLE joomghjos_mgh_mitglied ADD COLUMN update_userid bigint(20) NULL;
 ALTER TABLE joomghjos_mgh_mitglied ADD COLUMN update_timestamp DATETIME NULL;
 
+--
+-- Neue Tabelle für Historie
+--
 CREATE TABLE IF NOT EXISTS `joomghjos_mgh_mitglied_history` (
   `id_hist` bigint(20) NOT NULL AUTO_INCREMENT,
   `id` bigint(20) NOT NULL,
