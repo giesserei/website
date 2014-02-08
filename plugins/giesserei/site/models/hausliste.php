@@ -25,7 +25,7 @@ class GiessereiModelHausliste extends JModel {
     $db = & JFactory::getDBO();
     $query = "SELECT * FROM #__mgh_mitglied as mgl
 	    		    JOIN #__mgh_x_mitglied_mietobjekt AS xmo ON mgl.userid = xmo.userid 
-              WHERE (mgl.austritt >= NOW() OR mgl.austritt IS NULL)
+              WHERE (mgl.austritt >= NOW() OR mgl.austritt = '0000-00-00')
 				      ORDER BY objektid";
     $db->setQuery($query);
     $rows = $db->loadObjectList();
