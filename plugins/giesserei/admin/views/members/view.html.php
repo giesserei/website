@@ -11,6 +11,8 @@
  	protected $items;
  	protected $pagination;
  	protected $state;
+ 	protected $sortDirection;
+ 	protected $sortColumn;
  	
  	public function display($tpl = null) {
  		JToolBarHelper::title('Mitgliederlisten-Verwaltung','user.png');
@@ -23,6 +25,9 @@
  		
  		$this->state = $this->get('State');
  		$this->pagination = $this->get('Pagination');
+ 		
+ 		$this->sortDirection = $this->state->get('list.direction');
+ 		$this->sortColumn = $this->state->get('list.ordering');
  		
  		parent::display($tpl);
  	}

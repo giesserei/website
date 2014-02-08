@@ -76,6 +76,24 @@ JHtml::_('behavior.keepalive');
 </div>
 
 <div class="width-40 fltrt">
+<?php echo JHtml::_('sliders.start', 'verarbeitung'); ?>
+<?php echo JHtml::_('sliders.panel', 'Automatische Verarbeitung', 'verarbeitung'); ?>
+	<fieldset class="panelform">
+   	<ul class="adminformlist">
+      <li>
+			  <?php echo $this->form->getLabel('is_update_user_name'); 
+				  	  echo $this->form->getInput('is_update_user_name'); ?>
+      </li>
+      <li>
+			  <?php echo $this->form->getLabel('is_update_permission'); 
+				  	  echo $this->form->getInput('is_update_permission'); ?>
+      </li>
+     </ul>
+	</fieldset>
+</div>
+<?php echo JHtml::_('sliders.end'); ?>
+
+<div class="width-40 fltrt">
 <?php echo JHtml::_('sliders.start', 'Telefonie'); ?>
 <?php echo JHtml::_('sliders.panel',JText::_('Telefonie-Daten'), 'telefonie'); ?>
 	<fieldset class="panelform">
@@ -105,33 +123,35 @@ JHtml::_('behavior.keepalive');
 <?php echo JHtml::_('sliders.start', 'vereinsdaten' ); ?>
 <?php echo JHtml::_('sliders.panel',JText::_('Vereinsdaten'), 'verein'); ?>
 	<fieldset class="panelform">
-	<!-- Joomla Bug Ovverride -->
-    	<ul class="adminformlist">
-            <li>
-			<?php 	echo $this->form->getLabel('wohnung'); 
-					echo $this->form->getInput('wohnung');
-			?>
-            </li>
-            <li>
-			<?php 	echo $this->form->getLabel('funktion'); 
-					echo $this->form->getInput('funktion');
-			?>
-            </li>
-            <li>
-			<?php 	echo $this->form->getLabel('eintritt'); 
-					echo $this->form->getInput('eintritt');
-			?>
-            </li>
-            <li>
-			<?php 	echo $this->form->getLabel('austritt'); 
-					echo $this->form->getInput('austritt'); 
-			?>
-            </li>
-    	</ul>
+    <ul class="adminformlist">
+      <li>
+			  <?php echo $this->form->getLabel('wohnung'); 
+					    echo $this->form->getInput('wohnung'); ?>
+      </li>
+      <li>
+			  <?php echo $this->form->getLabel('funktion'); 
+					    echo $this->form->getInput('funktion'); ?>
+      </li>
+      <li>
+			  <?php echo $this->form->getLabel('eintritt'); 
+					    echo $this->form->getInput('eintritt'); ?>
+      </li>
+      <li>
+			  <?php echo $this->form->getLabel('austritt'); 
+					    echo $this->form->getInput('austritt'); ?>
+      </li>
+      <li>
+			  <?php echo $this->form->getLabel('einzug'); 
+					    echo $this->form->getInput('einzug'); ?>
+      </li>
+      <li>
+			  <?php echo $this->form->getLabel('typ'); 
+					    echo $this->form->getInput('typ'); ?>
+      </li>
+    </ul>
 	</fieldset>
 </div>
 <?php echo JHtml::_('sliders.end'); ?>
-
 
 <div class="width-40 fltrt">
 <?php echo JHtml::_('sliders.start', 'extern', $params=array('display'=>-1,'show'=>-1,'seCookie'=>false,'startOffset'=>-1,'startTransition'=>true)); ?>

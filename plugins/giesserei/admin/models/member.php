@@ -38,8 +38,7 @@ class GiessereiModelMember extends JModelAdmin {
   
   /**
    * Liefert einen einzelnen Datensatz eines Mitglieds.
-   * Der Datensatz wird um Attribute aus
-   * anderen Tabellen ergänzt.
+   * Der Datensatz wird um Attribute aus anderen Tabellen ergänzt.
    */
   public function getItem($pk = null) {
     $app = JFactory::getApplication();
@@ -116,6 +115,9 @@ class GiessereiModelMember extends JModelAdmin {
       $item->gender = $rows [0]->gender;
     }
     
+    $item->is_update_user_name = 0;
+    $item->is_update_permission = 0;
+    
     return $item;
   }
   
@@ -128,6 +130,25 @@ class GiessereiModelMember extends JModelAdmin {
     }
     
     return $data;
+  }
+  
+  /**
+   * Ungesetzte Checkboxen verarbeiten.
+   *  
+   * @see JModelAdmin::prepareTable()
+   */
+  protected function prepareTable(&$table)
+  {
+    $app = JFactory::getApplication();
+    $input = $app->input;
+    $data = $input->get('jform', '', 'array');
+    
+    if (!isset($data['is_update_user_name'])) {
+      $table->setUpdateUserName(0); 
+    }
+    if (!isset($data['is_update_permission'])) {
+      $table->setUpdatePermission(0); 
+    }
   }
   
   public function getJournal() {

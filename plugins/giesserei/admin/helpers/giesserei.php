@@ -1,11 +1,11 @@
 <?php
+
+defined('_JEXEC') or die;
+
 /**
  * Helperklasse für Mitglieder-Verwaltung
  * Oktober 2013, JAL
- * 
  */
-defined('_JEXEC') or die;
-
 class GiessereiHelper {
 
     /**
@@ -47,6 +47,5 @@ class GiessereiHelper {
         );
  
     }
-
 
 }

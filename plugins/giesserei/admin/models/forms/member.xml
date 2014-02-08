@@ -10,7 +10,14 @@
 		<field name="ort" type="text" class="inputbox" label="Ort: " description="Ort" size="40" required="true"/>
 		<field name="jahrgang" type="text" class="inputbox" label="Jahrgang: " description="Jahrgang (nicht Geburtsdatum)" size="5" />
 		<field name="userid" type="user" label="Joomla User: " required="true" />
-		<field name="zur_person" type="textarea" label="Text zur Person" description="Porträttext aus alter Page" class="inputbox" rows="15" cols="120" />
+		<field name="zur_person" type="textarea" label="Text zur Person" description="Porträttext" class="inputbox" rows="15" cols="120" />
+	</fieldset>
+	  
+	<fieldset name="verarbeitung">
+	  <field name="is_update_user_name" type="checkbox" class="inputbox" label="Name in Benutzertabelle übernehmen" 
+	         description="Vorname und Nachname in Benutzertabelle übernehmen" value="1"/>
+    <field name="is_update_permission" type="checkbox" class="inputbox" label="Rechte Passivmitglied automatisch setzen" 
+           description="Rechte für Passivmitglied automatisch setzen; alle sonstigen Rechte werden gelöscht" value="1" />
 	</fieldset>
 		
 	<fieldset name="telefonie">
@@ -24,7 +31,15 @@
 		<field name="wohnung" type="text" class="inputbox" label="Wohnung(en): " description="Wohnungen durch Komma trennen!" size="15" />
 		<field name="funktion" type="text" class="inputbox" label="Funktion: " description="Funktionsbezeichnung mit freiem Text" size="30" />
 		<field name="eintritt" type="calendar" label="Beitritt: " description ="Datum des Vereinsbeitritts"  format="%Y-%m-%d" />
-		<field name="austritt" type="calendar" label="Austritt: " description ="Datum des Vereinsaustritts; 0 = ist noch Mitglied"  format="%Y-%m-%d" />
+		<field name="austritt" type="calendar" label="Austritt/Auszug: " description ="Datum des Vereinsaustritts = Auszugsdatum bei Aktivmitgliedern" format="%Y-%m-%d" />
+		<field name="einzug" type="calendar" label="Einzug: " description ="Datum des Einzugs"  format="%Y-%m-%d" />
+		<field name="typ" type="list" default="1" label="Typ: " description="Bitte auswählen">
+      <option value="1">Bewohner</option>
+      <option value="2">Gewerbe</option>
+      <option value="3">Passivmitglied</option>
+      <option value="4">Passivmiglied deaktiviert</option>
+      <option value="5">Siedlungsassistenz</option>
+    </field>
 	</fieldset>
 
 </form>
