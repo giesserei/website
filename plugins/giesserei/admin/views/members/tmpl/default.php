@@ -28,10 +28,9 @@ JHtml::_('behavior.multiselect');
     
     <!-- Filter für Datenqualität -->
     <div class="filter-select fltrt">
-      <label class="filter-search-lbl" for="filter_quality">Datenqualität:&nbsp;&nbsp;</label>
       <?php
       $quality = array(
-          1 => '-', 
+          1 => '- Datenqualität wählen -', 
           2 => 'Bewohner/Gewerbe ohne Einzugsdatum', 
           3 => 'Keine eMail-Adresse', 
           4 => 'Bewohner/Gewerbe mit fehlerhafter Adresse', 
@@ -52,9 +51,8 @@ JHtml::_('behavior.multiselect');
     
     <!-- Filter für Status -->
     <div class="filter-select fltrt">
-      <label class="filter-search-lbl" for="filter_status">Status der Mitgliedschaft:&nbsp;&nbsp;</label>
       <?php
-      $status = array(1 => '-', 2 => 'Mitglied', 3 => 'Ausgetreten/Ausgezogen');
+      $status = array(1 => '- Status wählen -', 2 => 'Mitglied', 3 => 'Ausgetreten/Ausgezogen');
       $options = array();
 
       foreach($status as $key=>$value) {
@@ -70,9 +68,8 @@ JHtml::_('behavior.multiselect');
     
     <!-- Filter für Typ -->
     <div class="filter-select fltrt">
-      <label class="filter-search-lbl" for="filter_typ">Typ:&nbsp;&nbsp;</label>
       <?php
-      $typ = array(1 => '-', 2 => 'Bewohner', 3 => 'Gewerbe', 4 => 'Passivmitglied', 5 => 'Passivmitglied deaktiviert');
+      $typ = array(1 => '- Typ wählen -', 2 => 'Bewohner', 3 => 'Gewerbe', 4 => 'Passivmitglied', 5 => 'Passivmitglied deaktiviert');
       $options = array();
 
       foreach($typ as $key=>$value) {

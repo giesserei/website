@@ -29,4 +29,4 @@ CREATE TABLE IF NOT EXISTS `joomghjos_mgh_mitglied_history` (
    update_userid bigint(20) NULL,
    update_timestamp DATETIME NULL,
    PRIMARY KEY (`id_hist`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=220 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;

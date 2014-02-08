@@ -26,6 +26,9 @@ class GiessereiTableProfil extends JTable {
   public $handy_frei;
   public $zur_person = null;
   
+  public $update_userid;
+  public $update_timestamp;
+  
   // Zusätzliche Properties aus anderen Tabellen
   protected $email;
   protected $birthdate;
@@ -41,6 +44,14 @@ class GiessereiTableProfil extends JTable {
   public function store($updateNulls = false, $otherTables = true) {
     $app = JFactory::getApplication();
     $db = & JFactory::getDBO();
+    
+    // Benutzer ändert sich selbst
+    $this->update_userid = $this->userid;
+    $this->update_timestamp = date('Y-m-d H:i:s');
+    
+    if (!$this->writeInHistory()) {
+      return false;
+    }
     
     if ($otherTables) {
       // E-Mail speichern
@@ -66,6 +77,23 @@ class GiessereiTableProfil extends JTable {
     
     // restliche Daten speichern
     return parent::store(true);
+  }
+  
+  // -------------------------------------------------------------------------
+  // private section
+  // -------------------------------------------------------------------------
+  
+  private function writeInHistory() {
+    if (!empty($this->id)) {
+      $history = JTable::getInstance('MembersHistory', 'GiessereiTable', array());
+      $history->setIdToSave($this->id);
+      if (!$history->store()) {
+        JLog::add($db->getErrorMsg(), JLog::ERROR);
+        $this->setError(GiessereiTableProfil::MSG_ERROR_STORE);
+        return false;
+      }
+    }
+    return true;
   }
 }  
 ?>
