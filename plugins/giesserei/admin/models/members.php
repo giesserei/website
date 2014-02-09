@@ -86,6 +86,7 @@ class GiessereiModelMembers extends JModelList {
         WHEN (mgl.typ = 3) THEN \'Passivmitglied\'  
         WHEN (mgl.typ = 4) THEN \'Passivmitglied deaktiviert\'  
         WHEN (mgl.typ = 5) THEN \'Siedlungsassistenz\'  
+        WHEN (mgl.typ = 6) THEN \'Hausverein\'  
         ELSE \'unbekannt\'
         END AS typ_name');
     

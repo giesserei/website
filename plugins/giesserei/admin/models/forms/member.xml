@@ -21,10 +21,10 @@
 	</fieldset>
 		
 	<fieldset name="telefonie">
-		<field name="telefon" type="text" class="inputbox" label="Telefon: " description="Festnetz-Telefonnummer" size="30" />
-		<field name="telefon_frei" type="checkbox" class="inputbox" label=" Telefonnummer sichtbar" description="Sichtbarkeit EIN/AUS" value="1" />
-		<field name="handy" type="text" class="inputbox" label="Handy: " description="Mobile-Telefonnummer" size="30" />
-		<field name="handy_frei" type="checkbox" class="inputbox" label=" Handynummer sichtbar" description="Sichtbarkeit EIN/AUS" value="1" />	
+		<field name="telefon" type="text" class="inputbox" label="Telefon 1: " description="Erste Telefonnummer (meistens Festnetz)" size="30" />
+		<field name="telefon_frei" type="checkbox" class="inputbox" label=" Telefonnummer 1 sichtbar" description="Sichtbarkeit EIN/AUS" value="1" default="1" />
+		<field name="handy" type="text" class="inputbox" label="Telefon 2: " description="Zweite Telefonnummer (meistens Mobiltelefon" size="30" />
+		<field name="handy_frei" type="checkbox" class="inputbox" label=" Telefonnummer 2 sichtbar" description="Sichtbarkeit EIN/AUS" value="1" />	
 	</fieldset>
 
 	<fieldset name="verein">
@@ -39,6 +39,7 @@
       <option value="3">Passivmitglied</option>
       <option value="4">Passivmiglied deaktiviert</option>
       <option value="5">Siedlungsassistenz</option>
+      <option value="6">Hausverein</option>
     </field>
 	</fieldset>
 

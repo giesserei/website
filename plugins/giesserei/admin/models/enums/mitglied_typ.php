@@ -34,4 +34,9 @@ class MitgliedTypEnum {
    */
   const SIEDLUNGSASSISTENZ = 5;
   
+  /**
+   * Der Hausverein als Mieter von Objekten.
+   */
+  const HAUSVEREIN = 6;
+  
 }
