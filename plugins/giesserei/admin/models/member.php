@@ -46,6 +46,12 @@ class GiessereiModelMember extends JModelAdmin {
     $db = & JFactory::getDBO();
     $item = parent::getItem();
     
+    // Beim Anlegen eines neuen Datensatzes sind wir hier fertig
+    // Im Produktiv-System funktioniert es auch ohne diesen Stopp-Code -> Warum??
+    if (empty($item->userid)) {
+      return $item;
+    }
+    
     // E-Mailadresse zuweisen
     $query = "SELECT * FROM #__users WHERE id=" . $item->userid;
     $db->setQuery($query);
@@ -153,8 +159,14 @@ class GiessereiModelMember extends JModelAdmin {
   
   public function getJournal() {
     $data = $this->loadFormData();
-    $db = & JFactory::getDBO();
     
+    // Beim Anlegen eines neuen Datensatzes sind wir hier fertig
+    // Im Produktiv-System funktioniert es auch ohne diesen Stopp-Code -> Warum??
+    if (empty($item->userid)) {
+      return $item;
+    }
+    
+    $db = & JFactory::getDBO();
     $query = "SELECT *,mj.id as id 
 				FROM #__mgh_mitgliederjournal AS mj, #__mgh_mjournalklasse AS jk 
 		    WHERE mj.klasseid=jk.id 
