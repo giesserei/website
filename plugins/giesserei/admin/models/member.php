@@ -155,6 +155,8 @@ class GiessereiModelMember extends JModelAdmin {
     if (!isset($data['is_update_permission'])) {
       $table->setUpdatePermission(0); 
     }
+    // Kommentar kürzen
+    $table->kommentar = $this->cropText($table->kommentar, 500);
   }
   
   public function getJournal() {
@@ -175,6 +177,21 @@ class GiessereiModelMember extends JModelAdmin {
     $db->setQuery($query);
     $rows = $db->loadObjectList();
     return ($rows);
+  }
+  
+  // -------------------------------------------------------------------------
+  // private section
+  // -------------------------------------------------------------------------
+  
+  /**
+   * Kürzt den übergebenen Text, wenn erforderlich.
+   */
+  private function cropText($text, $maxLength) {
+    $result = $text;
+    if(!empty($text) && strlen($text) > $maxLength) {
+      $result = substr($text, 0, $maxLength);
+    }
+    return $result;
   }
 }
 ?>

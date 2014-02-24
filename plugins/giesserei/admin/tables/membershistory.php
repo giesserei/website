@@ -30,6 +30,8 @@ class GiessereiTableMembersHistory extends JTable {
   public $typ;
   public $update_userid;
   public $update_timestamp;
+  public $dispension_grad;
+  public $kommentar;
   
   private $id_to_save;
   

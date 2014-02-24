@@ -10,7 +10,7 @@
 		<field name="ort" type="text" class="inputbox" label="Ort: " description="Ort" size="40" required="true"/>
 		<field name="jahrgang" type="text" class="inputbox" label="Jahrgang: " description="Jahrgang (nicht Geburtsdatum)" size="5" />
 		<field name="userid" type="user" label="Joomla User: " required="true" />
-		<field name="zur_person" type="textarea" label="Text zur Person" description="Porträttext" class="inputbox" rows="15" cols="120" />
+		<field name="zur_person" type="textarea" label="Text zur Person" description="Porträttext" class="inputbox" rows="25" cols="120" />
 	</fieldset>
 	  
 	<fieldset name="verarbeitung">
@@ -41,6 +41,8 @@
       <option value="5">Siedlungsassistenz</option>
       <option value="6">Hausverein</option>
     </field>
+    <field name="kommentar" type="textarea" label="Kommentar" description="Kommentar" class="inputbox" rows="4" cols="40" />
+    <field name="dispension_grad" type="text" label="Dispensionsgrad" description="Grad der Dispensierung (Punkt als Dezimalzeichen)" class="inputbox" />
 	</fieldset>
 
 </form>

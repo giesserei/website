@@ -148,6 +148,14 @@ JHtml::_('behavior.keepalive');
 			  <?php echo $this->form->getLabel('typ'); 
 					    echo $this->form->getInput('typ'); ?>
       </li>
+      <li>
+			  <?php echo $this->form->getLabel('dispension_grad'); 
+					    echo $this->form->getInput('dispension_grad'); ?>
+      </li>
+      <li>
+			  <?php echo $this->form->getLabel('kommentar'); 
+					    echo $this->form->getInput('kommentar'); ?>
+      </li>
     </ul>
 	</fieldset>
 </div>
