@@ -43,6 +43,7 @@
     </field>
     <field name="kommentar" type="textarea" label="Kommentar" description="Kommentar" class="inputbox" rows="4" cols="40" />
     <field name="dispension_grad" type="text" label="Dispensionsgrad" description="Grad der Dispensierung (Punkt als Dezimalzeichen)" class="inputbox" />
+    <field name="zb_freistellung" type="text" label="Freistellung (Monate)" description="Anzahl der Freistellungsmonate in der Zeitbank (Einzug oder Geburt)" class="inputbox" />
 	</fieldset>
 
 </form>

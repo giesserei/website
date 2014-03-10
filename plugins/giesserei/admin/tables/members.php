@@ -36,6 +36,7 @@ class GiessereiTableMembers extends JTable {
   public $update_timestamp;
   public $dispension_grad;
   public $kommentar;
+  public $zb_freistellung;
   
   // Zusätzliche Properties, die für die Bearbeitung eines Datensatzes benötigt werden
   // oder die einfach nur in der Liste angezeigt werden

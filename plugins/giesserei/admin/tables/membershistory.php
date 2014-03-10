@@ -32,6 +32,7 @@ class GiessereiTableMembersHistory extends JTable {
   public $update_timestamp;
   public $dispension_grad;
   public $kommentar;
+  public $zb_freistellung;
   
   private $id_to_save;
   

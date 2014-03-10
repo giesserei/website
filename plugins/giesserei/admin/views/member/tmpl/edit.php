@@ -153,6 +153,10 @@ JHtml::_('behavior.keepalive');
 					    echo $this->form->getInput('dispension_grad'); ?>
       </li>
       <li>
+			  <?php echo $this->form->getLabel('zb_freistellung'); 
+					    echo $this->form->getInput('zb_freistellung'); ?>
+      </li>
+      <li>
 			  <?php echo $this->form->getLabel('kommentar'); 
 					    echo $this->form->getInput('kommentar'); ?>
       </li>
