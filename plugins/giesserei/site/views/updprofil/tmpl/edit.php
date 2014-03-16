@@ -81,7 +81,7 @@ echo GiessereiFrontendHelper::getScriptToHideHeaderImage();
     </div>
 			
 		<fieldset>
-			<input type="submit" value="Speichern"></button>
+			<input type="submit" value="Speichern" />
 			<input type="button" value="Abbrechen" 
 			       onclick="window.location.href='<?php echo JRoute::_('index.php?option=com_giesserei&view=profil&layout=view')?>'" />
 			<?php echo JHtml::_('form.token'); ?>
