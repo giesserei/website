@@ -31,8 +31,38 @@ class GiessereiModelMember extends JModelAdmin {
     $form = $this->loadForm('members', 'member', $options);
     
     if (empty($form)) {
-      return (false);
+      return false;
     }
+    
+    $user = JFactory::getUser();
+    $canEditFull = $user->authorise('edit.member', 'com_giesserei');
+    
+    // Nur für VKom-Daten berechtigt -> Felder ausblenden oder nur zur Ansicht freischalten
+    if (!$canEditFull) {
+      $this->disableField($form, 'vorname');
+      $this->disableField($form, 'nachname');
+      $this->disableField($form, 'adresse');
+      $this->disableField($form, 'plz');
+      $this->disableField($form, 'ort');
+      $this->disableField($form, 'jahrgang');
+      $this->disableField($form, 'userid');
+      $this->disableField($form, 'zur_person');
+      $this->disableField($form, 'is_update_user_name');
+      $this->disableField($form, 'is_update_permission');
+      $this->disableField($form, 'telefon');
+      $this->disableField($form, 'telefon_frei');
+      $this->disableField($form, 'handy');
+      $this->disableField($form, 'handy_frei');
+      $this->disableField($form, 'funktion');
+      $this->disableField($form, 'eintritt');
+      $this->disableField($form, 'austritt');
+      $this->disableField($form, 'einzug');
+      $this->disableField($form, 'typ');
+      $this->disableField($form, 'kommentar');
+      $this->disableField($form, 'dispension_grad');
+      $this->disableField($form, 'zb_freistellung');
+    }
+    
     return $form;
   }
   
@@ -193,5 +223,16 @@ class GiessereiModelMember extends JModelAdmin {
     }
     return $result;
   }
+  
+  /**
+   * Zeigt das übergebene Feld schreibgeschützt an und verhindert das Speichern von Werten für dieses Feld.
+   * Das Attribut "required" wird auf false gesetzt, sonst kann nicht gespeichert werden.
+   */
+  private function disableField($form, $fieldName) {
+    $form->setFieldAttribute($fieldName, 'disabled', 'true');
+    $form->setFieldAttribute($fieldName, 'required', 'false');
+    $form->setFieldAttribute($fieldName, 'filter', 'unset');
+  }
+
 }
 ?>
