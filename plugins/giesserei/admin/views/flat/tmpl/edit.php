@@ -127,11 +127,9 @@ JHtml::_('behavior.keepalive');
 			?>
 			</td></tr>
 
-
-						
 		</table>
 	</fieldset>
-	
+		
 </div>
 
 <div class="width-40 fltrt">
@@ -163,32 +161,6 @@ JHtml::_('behavior.keepalive');
     	</ul>
 	</fieldset>
 </div>
-<?php echo JHtml::_('sliders.end'); ?>
-
-<div class="width-40 fltrt">
-<?php echo JHtml::_('sliders.start', 'extern', $params=array('display'=>-1,'show'=>-1,'seCookie'=>false,'startOffset'=>-1,'startTransition'=>true)); ?>
-<?php echo JHtml::_('sliders.panel',JText::_('Journal'), 'extern'); ?>
-	<fieldset class="panelform">
-    	<ul>
-        <?php
-			$journal = $this->get('Journal');
-			if(count($journal) > 0):
-				echo "<li><table>";
-				foreach($journal as $jeintrag):
-					echo "<tr><td>".$jeintrag->datum."</td><td width=\"10\" style=\"background-color: #".$jeintrag->farbe."\"></td>"
-						."<td><a href=\"/administrator/index.php?option=com_giesserei&task=ojournal.edit&id=".$jeintrag->id."\">".$jeintrag->titel."</a></td></tr>";
-				endforeach;   
-				echo "</table></li>";
-			else:
-				echo "<li>(keine Journaleinträge)</li>";
-			endif;        
-        ?>            
-        <li><a href="/administrator/index.php?option=com_giesserei&view=ojournal&layout=edit&objektid=<?php echo $this->item->id; ?>">Neuen Journaleintrag vornehmen</a></li>
-    	</ul>
-
-	</fieldset>
-</div>
-
 <?php echo JHtml::_('sliders.end'); ?>
 
 	<input type="hidden" name="task" value="" />
