@@ -14,9 +14,11 @@
  	
  	public function display($tpl = null) {
  		JToolBarHelper::title('Wohnungslisten-Verwaltung','user.png');
- 		JToolBarHelper::addNew('flat.add','JTOOLBAR_NEW');
+ 		// Wohnungen müssen nicht über das Admin-Panel angelegt werden -> funktioniert wegen einem SQL-Fehler auch nicht
+ 		//JToolBarHelper::addNew('flat.add','JTOOLBAR_NEW');
  		JToolBarHelper::editList('flat.edit','JTOOLBAR_EDIT');
- 		JToolBarHelper::deleteList('','flats.delete','JTOOLBAR_DELETE');
+ 		// Löschen von Wohnungen soll auch nicht möglich sein
+ 		//JToolBarHelper::deleteList('','flats.delete','JTOOLBAR_DELETE');
  		
  		$this->items = $this->get('Items');
  		
