@@ -45,7 +45,7 @@ foreach($this->mitglieder as $person):
     rel=\"{handler: 'iframe', size: {x: 640, y: 480}}\"><strong>"
     .$person->nachname."</strong> ".$person->vorname."</a></td><td class=\"mitglied\">";
 
-    if (substr($person->email, 0, 11) != "kein.email.") {
+    if (substr($person->email, 0, 11) != "kein.email." && substr($person->email, 0, 12) != "keine.email.") {
        echo JHTML::_('email.cloak',$person->email.'?body=Liebe/Lieber '.$person->vorname,true,"E-Mail an ".$person->vorname,false); }
 
     echo "</td><td class=\"mitglied\">";
