@@ -1,9 +1,5 @@
 <?php
-/*
- * Oktober 2013, JAL
- *
-*/
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
 
@@ -11,6 +7,7 @@ class GiessereiViewMember extends JView {
 	
 	protected $item;
 	protected $form;
+	protected $canEditFull;
 	
 	public function display($tpl = null) {
 		JFactory::getApplication()->input->set('hidemainmenu',true);
@@ -18,23 +15,29 @@ class GiessereiViewMember extends JView {
 		$this->item = $this->get('Item');
 		
 		$this->addToolbar();
+		
+		$user = JFactory::getUser();
+		$this->canEditFull = $user->authorise('edit.member', 'com_giesserei');
+		
 		parent::display($tpl);
-	
 	}
 	
+	// -------------------------------------------------------------------------
+	// private section
+	// -------------------------------------------------------------------------
 	
-	protected function addToolbar() {
+	private function addToolbar() {
 		$isNew = ($this->item->userid < 1); 
 		$text = $isNew ? JText::_( 'Neu' ) : JText::_( 'Bearbeiten' );
 		JToolBarHelper::title( 'Mitglied: <small>['.$text.']</small>');
 		JToolBarHelper::save('member.save','JTOOLBAR_SAVE');
 
-		if($isNew):
+		if($isNew) {
 			JToolBarHelper::cancel('member.cancel', 'Abbrechen');
-		else:
+		} 
+		else {
 			JToolBarHelper::cancel( 'member.cancel', 'Schliessen' );
-		endif;	
-		
+		}	
 	}
 }
 ?>
