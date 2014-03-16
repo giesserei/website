@@ -15,5 +15,6 @@
 		<action name="edit.flat" title="Tabelle Wohnungen bearbeiten" description="Daten in der Wohnungstabelle bearbeiten" />
 		<action name="view.kid" title="Tabelle Kinder ansehen" description="Daten in der Kindertabelle ansehen" />
 		<action name="edit.kid" title="Tabelle Kinder bearbeiten" description="Daten in der Kindertabelle bearbeiten" />
+		<action name="edit.kid.vkom" title="Tabelle Kinder bearbeiten (VKom)" description="Daten in der Kindertabelle bearbeiten, jedoch nur Daten, die für die VKom relevant sind" />
 	</section>
 </access>

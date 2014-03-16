@@ -57,7 +57,7 @@ class GiessereiController extends JController {
 	    return $user->authorise('view.kid', $assetname);
 	  }
 	  if (GiessereiHelper::startsWith($task, 'kid')) {
-	    return $user->authorise('edit.kid', $assetname);
+	    return $user->authorise('edit.kid', $assetname) || $user->authorise('edit.kid.vkom', $assetname);
 	  }
 	  if ($view === 'flats') {
 	    return $user->authorise('view.flat', $assetname);

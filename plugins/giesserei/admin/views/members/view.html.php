@@ -12,22 +12,21 @@ class GiessereiViewMembers extends JView {
  	
  	public function display($tpl = null) {
  	  $user = JFactory::getUser();
- 	  $canEdit = $user->authorise('edit.member', 'com_giesserei');
+ 	  $canEditFull = $user->authorise('edit.member', 'com_giesserei');
  	  
  		JToolBarHelper::title('Mitgliederlisten-Verwaltung','user.png');
  		
- 		if ($canEdit) {
+ 		if ($canEditFull) {
  		  JToolBarHelper::addNew('member.add','JTOOLBAR_NEW');
  		}
  		
  		JToolBarHelper::editList('member.edit','JTOOLBAR_EDIT');
  		
- 		if ($canEdit) {
+ 		if ($canEditFull) {
  		  JToolBarHelper::deleteList('','members.delete','JTOOLBAR_DELETE');
  		}
  		
  		$this->items = $this->get('Items');
- 		
  		$this->state = $this->get('State');
  		$this->pagination = $this->get('Pagination');
  		

@@ -28,7 +28,7 @@
 	</fieldset>
 
 	<fieldset name="verein">
-		<field name="wohnung" type="text" class="inputbox" label="Wohnung(en): " description="Wohnungen durch Komma trennen!" size="15" />
+		<field name="wohnung" type="text" class="inputbox" label="Wohnung(en): " description="Wohnungen durch Komma trennen!" size="30" />
 		<field name="funktion" type="text" class="inputbox" label="Funktion: " description="Funktionsbezeichnung mit freiem Text" size="30" />
 		<field name="eintritt" type="calendar" label="Beitritt: " description ="Datum des Vereinsbeitritts"  format="%Y-%m-%d" />
 		<field name="austritt" type="calendar" label="Austritt/Auszug: " description ="Datum des Vereinsaustritts = Auszugsdatum bei Aktivmitgliedern" format="%Y-%m-%d" />

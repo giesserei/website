@@ -37,7 +37,7 @@ class GiessereiModelMember extends JModelAdmin {
     $user = JFactory::getUser();
     $canEditFull = $user->authorise('edit.member', 'com_giesserei');
     
-    // Nur für VKom-Daten berechtigt -> Felder ausblenden oder nur zur Ansicht freischalten
+    // Nur für VKom-Daten berechtigt -> Felder nur zur Ansicht freischalten
     if (!$canEditFull) {
       $this->disableField($form, 'vorname');
       $this->disableField($form, 'nachname');
