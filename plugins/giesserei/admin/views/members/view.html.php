@@ -1,13 +1,9 @@
 <?php
-/*
- * Oktober 2013, JAL
- *
- */
- defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die;
 
- jimport('joomla.application.component.view');
+jimport('joomla.application.component.view');
 
- class GiessereiViewMembers extends JView {
+class GiessereiViewMembers extends JView {
  	protected $items;
  	protected $pagination;
  	protected $state;
@@ -15,11 +11,20 @@
  	protected $sortColumn;
  	
  	public function display($tpl = null) {
+ 	  $user = JFactory::getUser();
+ 	  $canEdit = $user->authorise('edit.member', 'com_giesserei');
+ 	  
  		JToolBarHelper::title('Mitgliederlisten-Verwaltung','user.png');
- 		JToolBarHelper::addNew('member.add','JTOOLBAR_NEW');
+ 		
+ 		if ($canEdit) {
+ 		  JToolBarHelper::addNew('member.add','JTOOLBAR_NEW');
+ 		}
+ 		
  		JToolBarHelper::editList('member.edit','JTOOLBAR_EDIT');
- 		JToolBarHelper::deleteList('','members.delete','JTOOLBAR_DELETE');
- 		JToolBarHelper::preferences('com_giesserei');
+ 		
+ 		if ($canEdit) {
+ 		  JToolBarHelper::deleteList('','members.delete','JTOOLBAR_DELETE');
+ 		}
  		
  		$this->items = $this->get('Items');
  		
@@ -31,6 +36,6 @@
  		
  		parent::display($tpl);
  	}
- }
+}
   
 ?>
