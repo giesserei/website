@@ -51,23 +51,31 @@ JHtml::_('behavior.keepalive');
 			<tr><td width="80" align="right" class="key">
 			<?php 	echo $this->form->getLabel('jahrgang')."</td><td>"; 
 					echo $this->form->getInput('jahrgang'); 
+					/*
 					// Vergleich des Jahrgang mit dem angegebenen Geburtstag in Kunena-Forum
 					if($this->item->jahrgang != JHTML::date($this->item->birthdate,'Y') && strlen($this->item->birthdate)>4 ):
 						echo "<span style=\"color: red; font-weight:bold; font-size:15pt;\">!!</span>";
 					endif;
+					*/
 			?>
 
 			</td></tr>
 						
 			<tr><td width="80" align="right" class="key">
-			<?php 	echo $this->form->getLabel('userid')."</td><td>"; 
-					echo $this->form->getInput('userid');
+			<?php 	
+			  if ($this->canEditFull) {
+			    echo $this->form->getLabel('userid')."</td><td>"; 
+				  echo $this->form->getInput('userid');
+				}
 			?>
 			</td></tr>
 
 			<tr><td width="80" align="right" class="key">
-			<?php 	echo $this->form->getLabel('zur_person')."</td><td>"; 
+			<?php 	
+			  if ($this->canEditFull) {
+			    echo $this->form->getLabel('zur_person')."</td><td>"; 
 					echo $this->form->getInput('zur_person');
+			  }
 			?>
 			</td></tr>
 
@@ -75,6 +83,7 @@ JHtml::_('behavior.keepalive');
 	</fieldset>
 </div>
 
+<?php if ($this->canEditFull) { ?>
 <div class="width-40 fltrt">
 <?php echo JHtml::_('sliders.start', 'verarbeitung'); ?>
 <?php echo JHtml::_('sliders.panel', 'Automatische Verarbeitung', 'verarbeitung'); ?>
@@ -92,6 +101,7 @@ JHtml::_('behavior.keepalive');
 	</fieldset>
 </div>
 <?php echo JHtml::_('sliders.end'); ?>
+<?php } ?>
 
 <div class="width-40 fltrt">
 <?php echo JHtml::_('sliders.start', 'Telefonie'); ?>
@@ -102,13 +112,15 @@ JHtml::_('behavior.keepalive');
 	<input type="hidden" name="jform[handy_frei]" value="0">
     	<ul class="adminformlist">
             <li>
-			<?php 	echo $this->form->getLabel('telefon'); 
+			<?php 	
+			    echo $this->form->getLabel('telefon'); 
 					echo $this->form->getInput('telefon');
 					echo $this->form->getLabel('telefon_frei').$this->form->getInput('telefon_frei');
 			?>
             </li>
             <li>
-			<?php 	echo $this->form->getLabel('handy'); 
+			<?php 	
+			    echo $this->form->getLabel('handy'); 
 					echo $this->form->getInput('handy');
 					echo $this->form->getLabel('handy_frei').$this->form->getInput('handy_frei');
 			?>
@@ -117,7 +129,6 @@ JHtml::_('behavior.keepalive');
 	</fieldset>
 </div>
 <?php echo JHtml::_('sliders.end'); ?>
-
 
 <div class="width-40 fltrt">
 <?php echo JHtml::_('sliders.start', 'vereinsdaten' ); ?>
@@ -148,6 +159,7 @@ JHtml::_('behavior.keepalive');
 			  <?php echo $this->form->getLabel('typ'); 
 					    echo $this->form->getInput('typ'); ?>
       </li>
+      <?php if ($this->canEditFull) { ?>
       <li>
 			  <?php echo $this->form->getLabel('dispension_grad'); 
 					    echo $this->form->getInput('dispension_grad'); ?>
@@ -160,11 +172,13 @@ JHtml::_('behavior.keepalive');
 			  <?php echo $this->form->getLabel('kommentar'); 
 					    echo $this->form->getInput('kommentar'); ?>
       </li>
+      <?php } ?>
     </ul>
 	</fieldset>
 </div>
 <?php echo JHtml::_('sliders.end'); ?>
 
+<?php if ($this->canEditFull) { ?>
 <div class="width-40 fltrt">
 <?php echo JHtml::_('sliders.start', 'extern', $params=array('display'=>-1,'show'=>-1,'seCookie'=>false,'startOffset'=>-1,'startTransition'=>true)); ?>
 <?php echo JHtml::_('sliders.panel',JText::_('Daten aus anderen Tabellen'), 'extern'); ?>
@@ -200,35 +214,9 @@ JHtml::_('behavior.keepalive');
 	</table>
 	</fieldset>
 </div>
-
 <?php echo JHtml::_('sliders.end'); ?>
+<?php } ?>
 
-
-<div class="width-40 fltrt">
-<?php echo JHtml::_('sliders.start', 'extern', $params=array('display'=>-1,'show'=>-1,'seCookie'=>false,'startOffset'=>-1,'startTransition'=>true)); ?>
-<?php echo JHtml::_('sliders.panel',JText::_('Journal'), 'extern'); ?>
-	<fieldset class="panelform">
-    	<ul>
-        <?php
-			$journal = $this->get('Journal');
-			if(count($journal) > 0):
-				echo "<li><table>";
-				foreach($journal as $jeintrag):
-					echo "<tr><td>".$jeintrag->datum."</td><td width=\"10\" style=\"background-color: #".$jeintrag->farbe."\"></td>"
-						."<td><a href=\"/administrator/index.php?option=com_giesserei&task=mjournal.edit&id=".$jeintrag->id."\">".$jeintrag->beschreibung."</a></td></tr>";
-				endforeach;   
-				echo "</table></li>";
-			else:
-				echo "<li>(keine Journaleinträge)</li>";
-			endif;        
-        ?>            
-        <li><a href="/administrator/index.php?option=com_giesserei&view=mjournal&layout=edit&userid=<?php echo $this->item->userid; ?>">Neuen Journaleintrag vornehmen</a></li>
-    	</ul>
-
-	</fieldset>
-</div>
-
-<?php echo JHtml::_('sliders.end'); ?>
 	
 	<input type="hidden" name="task" value="" />
 	<?php echo JHtml::_('form.token'); ?>
