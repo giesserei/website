@@ -39,4 +39,9 @@ class MitgliedTypEnum {
    */
   const HAUSVEREIN = 6;
   
+  /**
+   * Giessereistundenfonds.
+   */
+  const STUNDENFONDS = 7;
+  
 }

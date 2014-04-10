@@ -40,6 +40,7 @@
       <option value="4">Passivmiglied deaktiviert</option>
       <option value="5">Siedlungsassistenz</option>
       <option value="6">Hausverein</option>
+      <option value="7">Stundenfonds</option>
     </field>
     <field name="kommentar" type="textarea" label="Kommentar" description="Kommentar" class="inputbox" rows="4" cols="40" />
     <field name="dispension_grad" type="text" label="Dispensionsgrad" description="Grad der Dispensierung (Punkt als Dezimalzeichen)" class="inputbox" />
