@@ -62,9 +62,9 @@ echo JRoute::_('index.php?option=com_giesserei&view=flats');
             <td><a href="<?php echo $link; ?>">
 			    <?php echo $row->bezeichnung.": ".$row->zimmerbezeichnung; ?></a></td>
             <td><?php echo $row->flaeche ?> m<sup>2</sup></td>
-            <td align="right">Fr. <?php echo number_format($row->miete,0,',','`'); ?>.-</td>
-            <td align="right">Fr. <?php echo number_format($row->subventioniert,0,',','`'); ?>.-</td>
-            <td align="right">Fr. <?php echo number_format($row->pflichtdarlehen,0,',','`'); ?>.-</td>
+            <td align="right">Fr. <?php echo number_format($row->miete,0,',','\''); ?>.-</td>
+            <td align="right">Fr. <?php echo number_format($row->subventioniert,0,',','\''); ?>.-</td>
+            <td align="right">Fr. <?php echo number_format($row->pflichtdarlehen,0,',','\''); ?>.-</td>
             <td align="right">Fr. <?php echo $row->nk; ?>.-</td>
             <td align="right">Fr. <?php echo $row->nk_stadtwerk; ?>.-</td>
         </tr>

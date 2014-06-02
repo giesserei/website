@@ -83,23 +83,23 @@ if($whg->userid > 0 && $whg->freiab == '0000-00-00') echo "<span class=\"resmark
 <?php 
 if($whg->subventioniert > 0):
 ?>
-<li><span style="color: red;">Subventionierte Nettomiete:</span> <strong>Fr. <?php echo number_format($whg->subventioniert,0,',','`') ?>.-/Monat</strong>
-<?php /* (statt Fr.  echo number_format($whg->preis,0,',','`') .-) */?><br /> 
+<li><span style="color: red;">Subventionierte Nettomiete:</span> <strong>Fr. <?php echo number_format($whg->subventioniert,0,',','\'') ?>.-/Monat</strong>
+<?php /* (statt Fr.  echo number_format($whg->preis,0,',','\'') .-) */?><br /> 
 Miete durch Kanton und Stadt Winterthur unterstützt; Rahmenbedingungen beachten! Siehe dazu Website 
 <a href="http://www.wbf.zh.ch" target="_blank">WBF Kanton</a> (Miete inkl. Anteil an Gemeinschaftsräumen)</li>
 <?php 
 else:
 ?>
-<li>Nettomiete: <strong>Fr. <?php echo number_format($whg->miete,0,',','`') ?>.-/Monat</strong></li>
+<li>Nettomiete: <strong>Fr. <?php echo number_format($whg->miete,0,',','\'') ?>.-/Monat</strong></li>
 <?php 
 endif;
 ?>
-<li>Voraussichtliches Pflichtdarlehen: <strong>Fr. <?php echo number_format($whg->pflichtdarlehen,0,',','`') ?>.-</strong></li>
+<li>Voraussichtliches Pflichtdarlehen: <strong>Fr. <?php echo number_format($whg->pflichtdarlehen,0,',','\'') ?>.-</strong></li>
 <li>Nebenkosten: <br />
-<ul><li>Anteil Hausgemeinschaft: <strong>Fr. <?php echo number_format($whg->nk,0,',','`') ?>.-/Monat</strong> (Akonto an Gesewo)<br />
+<ul><li>Anteil Hausgemeinschaft: <strong>Fr. <?php echo number_format($whg->nk,0,',','\'') ?>.-/Monat</strong> (Akonto an Gesewo)<br />
 für Allgemeinstrom, Lüftung (Ventilatorstrom und Unterhalt), Serviceabos für Lifte, Beleuchtung und Waschmaschinen, Verwaltung sowie alle Gemeinschaftsräume <br />
 <li>Solidaritätsfonds Gesewo: <strong>Fr. 10.-/Monat</strong><br />
-<li>Schätzung Stadtwerk (SmartMetering): <strong><?php echo number_format($whg->nk_stadtwerk,0,',','`') ?>.-/Monat</strong><br />
+<li>Schätzung Stadtwerk (SmartMetering): <strong><?php echo number_format($whg->nk_stadtwerk,0,',','\'') ?>.-/Monat</strong><br />
 nur für Fernwärme und Wasser (extrem verbrauchsabhängig, Annahme eines Durchschnittshaushalts, Strom und Abfall sind <em>nicht</em> enthalten!)</li></ul><br />
 <li>Stockwerk: <strong><?php
 	if($st == 0) echo "EG";
