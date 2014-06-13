@@ -95,12 +95,14 @@ else:
 endif;
 ?>
 <li>Voraussichtliches Pflichtdarlehen: <strong>Fr. <?php echo number_format($whg->pflichtdarlehen,0,',','\'') ?>.-</strong></li>
-<li>Nebenkosten: <br />
-<ul><li>Anteil Hausgemeinschaft: <strong>Fr. <?php echo number_format($whg->nk,0,',','\'') ?>.-/Monat</strong> (Akonto an Gesewo)<br />
-für Allgemeinstrom, Lüftung (Ventilatorstrom und Unterhalt), Serviceabos für Lifte, Beleuchtung und Waschmaschinen, Verwaltung sowie alle Gemeinschaftsräume <br />
-<li>Solidaritätsfonds Gesewo: <strong>Fr. 10.-/Monat</strong><br />
-<li>Schätzung Stadtwerk (SmartMetering): <strong><?php echo number_format($whg->nk_stadtwerk,0,',','\'') ?>.-/Monat</strong><br />
-nur für Fernwärme und Wasser (extrem verbrauchsabhängig, Annahme eines Durchschnittshaushalts, Strom und Abfall sind <em>nicht</em> enthalten!)</li></ul><br />
+<li>Nebenkosten:
+<ul>
+<li>Allgemeine Nebenkosten (akonto): <strong>Fr. <?php echo number_format($whg->nk,0,',','\'') ?>.-/Monat</strong><br />
+für Fernwärme, Wasser, Lüftung (Ventilatorstrom, Unterhalt), Serviceabos (Lifte, Waschmaschinen), Allgemeinstrom, 
+Gemeinschaftsräume, etc.<br>
+(<b>nicht</b> enthalten sind Strom und Abfall, welche direkt vom Stadtwerk in Rechnung gestellt werden)
+<li>Solidaritätsfonds Gesewo: <strong>Fr. 10.-/Monat</strong>
+</ul>
 <li>Stockwerk: <strong><?php
 	if($st == 0) echo "EG";
 	elseif($st == 5) echo "DG";
