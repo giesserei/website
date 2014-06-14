@@ -94,7 +94,7 @@ else:
 <?php 
 endif;
 ?>
-<li>Voraussichtliches Pflichtdarlehen: <strong>Fr. <?php echo number_format($whg->pflichtdarlehen,0,',','\'') ?>.-</strong></li>
+<li>Pflichtdarlehen: <strong>Fr. <?php echo number_format($whg->pflichtdarlehen,0,',','\'') ?>.-</strong></li>
 <li>Nebenkosten:
 <ul>
 <li>Allgemeine Nebenkosten (akonto): <strong>Fr. <?php echo number_format($whg->nk,0,',','\'') ?>.-/Monat</strong><br />
