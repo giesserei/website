@@ -9,6 +9,8 @@
 
 defined('_JEXEC') or die('Restricted access');
 
+JLoader::register('GiessereiAuth', JPATH_COMPONENT . '/helpers/giesserei_auth.php');
+
 // Lokales CSS laden
 $doc = JFactory::getDocument();
 $base = JURI::base(true);
@@ -21,11 +23,24 @@ if(!$user->id > 0):
 	exit();
 endif;
 
+
 // AJAX-Tools laden
 JHTML::_('behavior.mootools');
 JHTML::_('behavior.modal');
 
 $model =& $this->getModel();	// Referenz auf Modell für andere Methoden des Objekts
+
+// Downloads
+echo '<div style="margin-top:10px">';
+echo '<ul>';
+if (GiessereiAuth::hasAccess(GiessereiAuth::ACTION_DOWNLOAD_ADDRESS_LIST)) {
+	echo '<li><a href="index.php?option=com_giesserei&task=mitgliederliste.adressliste&format=raw">Download: Adressliste</a></li>';
+}
+if (GiessereiAuth::hasAccess(GiessereiAuth::ACTION_DOWNLOAD_PASSIVE_LIST)) {
+	echo '<li><a href="index.php?option=com_giesserei&task=mitgliederliste.listePassivmitglieder&format=raw">Download: Liste Passivmitglieder</a></li>';
+}
+echo '</ul>';
+echo '</div>';
 ?>
 
 <p style="border-style:solid; border-color:red; border-width:1px; padding:5px;">Diese Mitgliederliste darf nur für <strong>persönliche</strong> Zwecke verwendet werden. Die Nutzung für <strong>Sammelversände, Umfragen, Newsletter und ähnliches ist explizit dem Vorstand des Vereins Mehrgenerationenhaus vorbehalten</strong>. Jeglicher Missbrauch wird zivilrechtlich geahndet.</p>

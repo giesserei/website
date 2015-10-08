@@ -8,13 +8,25 @@
 		<action name="core.edit" title="JACTION_EDIT" description="JACTION_EDIT_COMPONENT_DESC" />
 		<action name="core.edit.state" title="JACTION_EDITSTATE" description="JACTION_EDITSTATE_COMPONENT_DESC" />
 		<action name="core.edit.own" title="JACTION_EDITOWN" description="JACTION_EDITOWN_COMPONENT_DESC" />
-		<action name="view.member" title="Tabelle Mitglieder ansehen" description="Daten in der Mitgliedertabelle ansehen" />
-		<action name="edit.member" title="Tabelle Mitglieder bearbeiten" description="Daten in der Mitgliedertabelle bearbeiten" />
-		<action name="edit.member.vkom" title="Tabelle Mitglieder bearbeiten (VKom)" description="Daten in der Mitgliedertabelle bearbeiten, jedoch nur Daten, die für die VKom relevant sind" />
-		<action name="view.flat" title="Tabelle Wohnungen ansehen" description="Daten in der Wohnungstabelle ansehen" />
-		<action name="edit.flat" title="Tabelle Wohnungen bearbeiten" description="Daten in der Wohnungstabelle bearbeiten" />
-		<action name="view.kid" title="Tabelle Kinder ansehen" description="Daten in der Kindertabelle ansehen" />
-		<action name="edit.kid" title="Tabelle Kinder bearbeiten" description="Daten in der Kindertabelle bearbeiten" />
-		<action name="edit.kid.vkom" title="Tabelle Kinder bearbeiten (VKom)" description="Daten in der Kindertabelle bearbeiten, jedoch nur Daten, die für die VKom relevant sind" />
+		<action name="view.member" title="Tabelle Mitglieder ansehen"
+				description="Daten in der Mitgliedertabelle ansehen" />
+		<action name="edit.member" title="Tabelle Mitglieder bearbeiten"
+				description="Daten in der Mitgliedertabelle bearbeiten" />
+		<action name="edit.member.vkom" title="Tabelle Mitglieder bearbeiten (VKom)"
+				description="Daten in der Mitgliedertabelle bearbeiten, jedoch nur Daten, die für die VKom relevant sind" />
+		<action name="view.flat" title="Tabelle Wohnungen ansehen"
+				description="Daten in der Wohnungstabelle ansehen" />
+		<action name="edit.flat" title="Tabelle Wohnungen bearbeiten"
+				description="Daten in der Wohnungstabelle bearbeiten" />
+		<action name="view.kid" title="Tabelle Kinder ansehen"
+				description="Daten in der Kindertabelle ansehen" />
+		<action name="edit.kid" title="Tabelle Kinder bearbeiten"
+				description="Daten in der Kindertabelle bearbeiten" />
+		<action name="edit.kid.vkom" title="Tabelle Kinder bearbeiten (VKom)"
+				description="Daten in der Kindertabelle bearbeiten, jedoch nur Daten, die für die VKom relevant sind" />
+		<action name="member.download.address.list" title="Download Adressliste"
+				description="Liste mit Name, Adresse und E-Mail aller aktiven Mitglieder downloaden" />
+        <action name="member.download.passive.list" title="Download Passivmitglieder"
+                description="Liste mit Name, Adresse und E-Mail aller aktiven Passivmitglieder downloaden" />
 	</section>
 </access>
