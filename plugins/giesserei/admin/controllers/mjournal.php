@@ -13,5 +13,3 @@ class GiessereiControllerMJournal extends JControllerForm {
 	}
 
 }
-
-?>

@@ -232,4 +232,3 @@ class GiessereiTableMembers extends JTable {
     return $row->id;
   }
 }
-?>

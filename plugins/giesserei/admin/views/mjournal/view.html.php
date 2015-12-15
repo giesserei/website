@@ -7,7 +7,7 @@ defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.application.component.view');
 
-class GiessereiViewMJournal extends JView {
+class GiessereiViewMJournal extends JViewLegacy {
 	
 	protected $item;
 	protected $form;

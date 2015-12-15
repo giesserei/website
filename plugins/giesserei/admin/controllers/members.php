@@ -13,7 +13,4 @@ class GiessereiControllerMembers extends JControllerAdmin {
 
     return parent::getModel($name, $prefix, $config);
   }
-
 }
-
-?>

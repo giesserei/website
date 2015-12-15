@@ -3,7 +3,7 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
 
-class GiessereiViewMember extends JView {
+class GiessereiViewMember extends JViewLegacy {
 	
 	protected $item;
 	protected $form;

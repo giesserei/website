@@ -7,7 +7,7 @@
 
  jimport('joomla.application.component.view');
 
- class GiessereiViewMJournalClasses extends JView {
+ class GiessereiViewMJournalClasses extends JViewLegacy {
  	protected $items;
  	protected $pagination;
  	protected $state;

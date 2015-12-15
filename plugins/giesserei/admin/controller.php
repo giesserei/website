@@ -3,14 +3,12 @@ defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.application.component.controller');
 
-JLoader::register('GiessereiHelper', JPATH_COMPONENT . '/helpers/giesserei.php');
-
-class GiessereiController extends JController {
+class GiessereiController extends JControllerLegacy {
 
 	/**
 	 * Wenn keine View gewählt wurde, wird die View "welcome" gezeigt.
 	 *  
-	 * @see JController::display()
+	 * @inheritdoc
 	 */
 	public function display($cachable = false, $urlparams = false)
 	{
@@ -50,19 +48,19 @@ class GiessereiController extends JController {
 	  if ($view === 'members') {
 	    return $user->authorise('view.member', $assetname);
 	  }
-	  if (GiessereiHelper::startsWith($task, 'member')) {
+	  if ($this->startsWith($task, 'member')) {
 	    return $user->authorise('edit.member', $assetname) || $user->authorise('edit.member.vkom', $assetname);
 	  }
 	  if ($view === 'kids') {
 	    return $user->authorise('view.kid', $assetname);
 	  }
-	  if (GiessereiHelper::startsWith($task, 'kid')) {
+	  if ($this->startsWith($task, 'kid')) {
 	    return $user->authorise('edit.kid', $assetname) || $user->authorise('edit.kid.vkom', $assetname);
 	  }
 	  if ($view === 'flats') {
 	    return $user->authorise('view.flat', $assetname);
 	  }
-	  if (GiessereiHelper::startsWith($task, 'flat')) {
+	  if ($this->startsWith($task, 'flat')) {
 	    return $user->authorise('edit.flat', $assetname);
 	  }
 	  
@@ -97,28 +95,16 @@ class GiessereiController extends JController {
 	  }
 	
 	  if ($user->authorise('view.flat', $assetname)) {
-	    JSubMenuHelper::addEntry(
-	      JText::_('Wohnungen'),
-	      'index.php?option=com_giesserei&view=flats', $name == 'flats'
-	    );
-	  }
-	
-	  // nutzen wir zunächst nicht -> Einsatz ist nicht geklärt
-	  /*
-	  JSubMenuHelper::addEntry(
-	    JText::_('Mitglieder-Journal-Klassen'),
-	    'index.php?option=com_giesserei&view=mjournalclasses', $name == 'mjournalclasses'
-	  );
-	  */
-	
-	  // nutzen wir zunächst nicht -> Einsatz ist nicht geklärt
-	  /*
-	  JSubMenuHelper::addEntry(
-	    JText::_('Wohnungs-Journal-Klassen'),
-	    'index.php?option=com_giesserei&view=ojournalclasses', $name == 'ojournalclasses'
-	  );
-	  */
+			JSubMenuHelper::addEntry(
+					JText::_('Wohnungen'),
+					'index.php?option=com_giesserei&view=flats', $name == 'flats'
+			);
+		}
 	
 	}
+
+	private function startsWith($haystack, $needle) {
+		$length = strlen($needle);
+		return (substr($haystack, 0, $length) === $needle);
+	}
 }
-?>

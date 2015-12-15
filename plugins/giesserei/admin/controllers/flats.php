@@ -27,4 +27,3 @@ class GiessereiControllerFlats extends JControllerAdmin {
   }
 
 }
-?>

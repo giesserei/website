@@ -18,4 +18,3 @@ class GiessereiTableMJournals extends JTable {
 	}
 	
 }
-?>

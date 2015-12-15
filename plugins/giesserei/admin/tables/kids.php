@@ -23,4 +23,3 @@ class GiessereiTableKids extends JTable {
 		parent::__construct('#__mgh_kind', 'id', $db);
 	}
 }
-?>

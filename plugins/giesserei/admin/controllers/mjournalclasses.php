@@ -27,4 +27,3 @@ class GiessereiControllerMJournalClasses extends JControllerAdmin {
   }
 
 }
-?>

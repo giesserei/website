@@ -84,6 +84,7 @@ class GiessereiTableProfil extends JTable {
   // -------------------------------------------------------------------------
   
   private function writeInHistory() {
+    $db = & JFactory::getDBO();
     if (!empty($this->id)) {
       $history = JTable::getInstance('MembersHistory', 'GiessereiTable', array());
       $history->setIdToSave($this->id);
@@ -95,5 +96,4 @@ class GiessereiTableProfil extends JTable {
     }
     return true;
   }
-}  
-?>
+}

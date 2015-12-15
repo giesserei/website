@@ -8,7 +8,7 @@ jimport('joomla.application.component.view');
  * 
  * @author Steffen Förster
  */
-class GiessereiViewWelcome extends JView {
+class GiessereiViewWelcome extends JViewLegacy {
   
  	public function display($tpl = null) {
  		JToolBarHelper::title('Vereinsverwaltung Giesserei');

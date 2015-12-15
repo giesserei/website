@@ -30,4 +30,3 @@ class GiessereiTableFlats extends JTable {
 		parent::__construct('#__mgh_mietobjekt', 'id', $db);
 	}
 }
-?>

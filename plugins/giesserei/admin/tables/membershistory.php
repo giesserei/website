@@ -66,4 +66,3 @@ class GiessereiTableMembersHistory extends JTable {
   }
 
 }
-?>

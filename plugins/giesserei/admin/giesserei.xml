@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="2.5" method="upgrade">
 	<name>Giesserei</name>
-	<author>Jürg Altwegg, Hausverein Giesserei</author>
-	<creationDate>2013</creationDate>
-	<version>2.0.0</version>
+	<author>Hausverein Giesserei</author>
+	<creationDate>2016</creationDate>
+	<version>3.0.0</version>
 	<license>GNU GPL version 2 or later</license>
 	
 	<description>Die Komponente Giesserei Administration ist fertig installiert. Sie dient dem Verwalten der Mitglieder und Wohnungen.</description>
@@ -14,7 +14,7 @@
 		<filename>index.php</filename>
 		<folder>controllers</folder>
 		<folder>helpers</folder>
-		<folder>models</folder>
+		<folder>models</folder>y
 		<folder>template</folder>
 		<folder>views</folder>
 	</files>
@@ -36,7 +36,6 @@
 		<filename>index.php</filename>
 		<folder>assets</folder>
 		<folder>controllers</folder>
-		<folder>helpers</folder>
 		<folder>languages</folder>
 		<folder>models</folder>
 		<folder>sql</folder>

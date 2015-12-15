@@ -25,6 +25,4 @@ class GiessereiControllerKids extends JControllerAdmin {
     // restliche Arbeit der Elternklasse überlassen
     return parent::getModel($name, $prefix, $config);
   }
-
 }
-?>
