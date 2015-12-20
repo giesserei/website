@@ -4,14 +4,12 @@ defined('_JEXEC') or die('Restricted access');
 JLoader::register('GiessereiFrontendHelper', JPATH_COMPONENT . '/helpers/giesserei_frontend.php');
 JLoader::register('GiessereiConst', JPATH_COMPONENT . '/helpers/giesserei_const.php');
 
-jimport('joomla.application.component.view');
-
 /**
  * View-Klasse für das Edit-Formular.
  * 
  * @author Steffen Förster
  */
-class GiessereiViewUpdprofil extends JView
+class GiessereiViewUpdprofil extends JViewLegacy
 {
   protected $item;
 
@@ -19,9 +17,6 @@ class GiessereiViewUpdprofil extends JView
   
   protected $menuId;
 
-  /**
-   * @see JView::display()
-   */
   public function display($tpl = null) {
     GiessereiFrontendHelper::methodBegin('GiessereiViewUpdprofil', 'display');
     

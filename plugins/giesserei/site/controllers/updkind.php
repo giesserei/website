@@ -5,7 +5,6 @@ JLoader::register('GiessereiFrontendHelper', JPATH_COMPONENT . '/helpers/giesser
 JLoader::register('GiessereiConst', JPATH_COMPONENT . '/helpers/giesserei_const.php');
 JLoader::register('GiessereiControllerUpdBase', JPATH_COMPONENT . '/controllers/upd_base.php');
 
-jimport('joomla.application.component.controllerform');
 
 /**
  * Controller zum Editieren der Stammdaten eines Kindes.
@@ -17,8 +16,6 @@ class GiessereiControllerUpdkind extends GiessereiControllerUpdBase {
   /**
    * Bevor die Basisklasse ausgeführt wird, wird die ID des zu ändernden Kindes in der Session gespeichert.
    * Asserdem wird die Berechtigung zum Bearbeiten der Daten geprüft.
-   * 
-   * @see GiessereiControllerUpdBase::edit()
    */
   public function edit() {
     $app = JFactory::getApplication();
@@ -37,8 +34,6 @@ class GiessereiControllerUpdkind extends GiessereiControllerUpdBase {
   
   /**
    * Bevor die Daten vom Kind gespeichert werden, wird geprüft, ob der Benutzer die Berechtigung hierfür hat.
-   * 
-   * @see GiessereiControllerUpdBase::save()
    */
   public function save() {
     $app = JFactory::getApplication();
@@ -60,24 +55,15 @@ class GiessereiControllerUpdkind extends GiessereiControllerUpdBase {
   // -------------------------------------------------------------------------
   // protected section
   // -------------------------------------------------------------------------
-  
-  /**
-   * @see GiessereiControllerUpdBase::getViewName()
-   */
+
   protected function getViewName() {
     return "updkind";
   }
-  
-  /**
-   * @see GiessereiControllerUpdBase::saveDataInSession()
-   */
+
   protected function saveDataInSession() {
     return true;
   }
-  
-  /**
-   * @see GiessereiControllerUpdBase::filterFormFields()
-   */
+
   protected function filterFormFields($data) {
     $dataAllowed = array();
     $dataAllowed['name_frei'] = $data['name_frei'];

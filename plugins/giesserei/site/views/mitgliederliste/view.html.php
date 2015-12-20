@@ -1,14 +1,15 @@
-<?php 
+<?php
 defined('_JEXEC') or die('Restricted access');
 
-jimport('joomla.application.component.view');
+class GiessereiViewMitgliederliste extends JViewLegacy
+{
 
-class GiessereiViewMitgliederliste extends JView {
-  function display($tpl = null) {
-    $model =& $this->getModel();
-    $mitglieder = $model->getMitglieder();
-    $this->assignRef('mitglieder',$mitglieder);
-    parent::display($tpl);
-  }
+    protected $mitglieder;
+
+    public function display($tpl = null)
+    {
+        $model = $this->getModel();
+        $this->mitglieder = $model->getMitglieder();
+        parent::display($tpl);
+    }
 }
-?> 

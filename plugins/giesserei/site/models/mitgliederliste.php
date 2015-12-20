@@ -9,52 +9,57 @@ jimport('joomla.environment.response');
 /**
  * Modellklasse für die Mitgliederliste.
  */
-class GiessereiModelMitgliederliste extends JModel {
-	
-	/**
-	 * Liefert die Liste aller aktiven Mitglieder zurück (Bewohner, Gewerbe, Passivmitglieder).
-	 */
-	function getMitglieder() {
-	    $db =& JFactory::getDBO();
-	    $query = "SELECT *,usr.email as email, mgl.userid as userid FROM #__mgh_mitglied as mgl
+class GiessereiModelMitgliederliste extends JModelLegacy
+{
+
+    /**
+     * Liefert die Liste aller aktiven Mitglieder zurück (Bewohner, Gewerbe, Passivmitglieder).
+     */
+    public function getMitglieder()
+    {
+        $db = JFactory::getDBO();
+        $query = "SELECT *,usr.email as email, mgl.userid as userid FROM #__mgh_mitglied as mgl
 	    	LEFT JOIN #__users AS usr ON mgl.userid = usr.id
 	    	LEFT JOIN #__kunena_users AS kun ON mgl.userid = kun.userid
 	    	WHERE (austritt>=NOW() OR austritt='0000-00-00') AND mgl.typ IN (1,2,3) ORDER BY nachname";
-	    $db->setQuery($query);
-	    $rows = $db->loadObjectList();
-	    return($rows);
-	} 
+        $db->setQuery($query);
+        $rows = $db->loadObjectList();
+        return ($rows);
+    }
 
-	/**
-	 * Erzeugt Liste mit allen Mietobjekten eines bestimmten Mitglieds
-	 */
-	function getObjekte($userid) {
-	    $db =& JFactory::getDBO();
-	    $query = "SELECT * FROM #__mgh_x_mitglied_mietobjekt WHERE userid=".$userid;
-	    $db->setQuery($query);
-	    $rows = $db->loadObjectList();
-	    return($rows);		
-	} 
-	
-	/**
-	 * Erzeugt Liste mit allen Kindern eines bestimmten Mietobjekts
-	 */
-	function getKinder( $objektid ) {
-	    $db =& JFactory::getDBO();
-	    $query = "SELECT * FROM #__mgh_kind WHERE objektid=".$objektid." ORDER BY vorname";
-	    $db->setQuery($query);
-	    $rows = $db->loadObjectList();
-	    return($rows);
-	}
+    /**
+     * Erzeugt Liste mit allen Mietobjekten eines bestimmten Mitglieds
+     */
+    public function getObjekte($userid)
+    {
+        $db = JFactory::getDBO();
+        $query = "SELECT * FROM #__mgh_x_mitglied_mietobjekt WHERE userid=" . $userid;
+        $db->setQuery($query);
+        $rows = $db->loadObjectList();
+        return ($rows);
+    }
+
+    /**
+     * Erzeugt Liste mit allen Kindern eines bestimmten Mietobjekts
+     */
+    public function getKinder($objektid)
+    {
+        $db = JFactory::getDBO();
+        $query = "SELECT * FROM #__mgh_kind WHERE objektid=" . $objektid . " ORDER BY vorname";
+        $db->setQuery($query);
+        $rows = $db->loadObjectList();
+        return ($rows);
+    }
 
     /**
      * Erstellt eine CSV-Datei mit Name und Adresse der Bewohner und des Gewerbes
      * und schreibt diese in den Response.
      */
-    public function exportAdresslisteToCSV() {
+    public function exportAdresslisteToCSV()
+    {
         $filename = 'mitgliederliste.csv';
         $random = rand(1, 99999);
-        $filepath = JPATH_SITE.'/tmp/'.date('Y-m-d').'_'.strval($random).'_'.$filename;
+        $filepath = JPATH_SITE . '/tmp/' . date('Y-m-d') . '_' . strval($random) . '_' . $filename;
 
         if ($this->createAdresslisteCSVFile($filepath)) {
             // deliver file
@@ -63,8 +68,7 @@ class GiessereiModelMitgliederliste extends JModel {
             // clean up
             JFile::delete($filepath);
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -73,10 +77,11 @@ class GiessereiModelMitgliederliste extends JModel {
      * Erstellt eine CSV-Datei mit Name und Adresse der Passivmitglieder
      * und schreibt diese in den Response.
      */
-    public function exportListePassivmitgliederToCSV() {
+    public function exportListePassivmitgliederToCSV()
+    {
         $filename = 'passivmitglieder.csv';
         $random = rand(1, 99999);
-        $filepath = JPATH_SITE.'/tmp/'.date('Y-m-d').'_'.strval($random).'_'.$filename;
+        $filepath = JPATH_SITE . '/tmp/' . date('Y-m-d') . '_' . strval($random) . '_' . $filename;
 
         if ($this->createListePassivmitgliederCSVFile($filepath)) {
             // deliver file
@@ -85,8 +90,7 @@ class GiessereiModelMitgliederliste extends JModel {
             // clean up
             JFile::delete($filepath);
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -98,7 +102,8 @@ class GiessereiModelMitgliederliste extends JModel {
     /**
      * Erstellt die CSV-Datei mit der Adressliste.
      */
-    private function createAdresslisteCSVFile($filepath) {
+    private function createAdresslisteCSVFile($filepath)
+    {
         $db = $this->getDBO();
         $csv_output = 'Nachname;Vorname;Adresse;PLZ;Ort;E-Mail';
         $csv_output .= "\n";
@@ -113,9 +118,9 @@ class GiessereiModelMitgliederliste extends JModel {
         $db->setQuery($query);
         $rows = $db->loadObjectList();
 
-        foreach($rows as $row) {
-            foreach($row as $col_name => $value) {
-                $csv_output .= $value.';';
+        foreach ($rows as $row) {
+            foreach ($row as $col_name => $value) {
+                $csv_output .= $value . ';';
             }
             $csv_output .= "\n";
         }
@@ -130,7 +135,8 @@ class GiessereiModelMitgliederliste extends JModel {
     /**
      * Erstellt die CSV-Datei mit den Passivmitgliedern.
      */
-    private function createListePassivmitgliederCSVFile($filepath) {
+    private function createListePassivmitgliederCSVFile($filepath)
+    {
         $db = $this->getDBO();
         $csv_output = 'Nachname;Vorname;Adresse;PLZ;Ort;E-Mail;Eintritt;Austritt';
         $csv_output .= "\n";
@@ -146,9 +152,9 @@ class GiessereiModelMitgliederliste extends JModel {
         $db->setQuery($query);
         $rows = $db->loadObjectList();
 
-        foreach($rows as $row) {
-            foreach($row as $col_name => $value) {
-                $csv_output .= $value.';';
+        foreach ($rows as $row) {
+            foreach ($row as $col_name => $value) {
+                $csv_output .= $value . ';';
             }
             $csv_output .= "\n";
         }
@@ -165,13 +171,16 @@ class GiessereiModelMitgliederliste extends JModel {
      * @param $filepath Pfad zur temporären Datei
      * @param $filename Name der temporären Datei
      */
-    private function deliverFile($filepath, $filename) {
+    private function deliverFile($filepath, $filename)
+    {
         $filesize = filesize($filepath);
-        JResponse::setHeader('Content-Type', 'application/octet-stream');
-        JResponse::setHeader('Content-Transfer-Encoding', 'Binary');
-        JResponse::setHeader('Content-Disposition', 'attachment; filename='.$filename.'_'.date('Y-m-d').'.csv');
-        JResponse::setHeader('Content-Length', $filesize);
-        echo JFile::read($filepath);
+        $appWeb = JApplicationWeb::getInstance();
+        $appWeb->setHeader('Content-Type', 'application/octet-stream', true);
+        $appWeb->setHeader('Content-Transfer-Encoding', 'Binary', true);
+        $appWeb->setHeader('Content-Disposition', 'attachment; filename=' . $filename . '_' . date('Y-m-d') . '.csv', true);
+        $appWeb->setHeader('Content-Length', $filesize, true);
+        $appWeb->sendHeaders();
+        echo file_get_contents($filepath);
     }
 
 }

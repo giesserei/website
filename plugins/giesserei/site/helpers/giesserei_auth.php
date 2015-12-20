@@ -6,7 +6,8 @@ defined('_JEXEC') or die;
  *
  * @author Steffen Förster
  */
-class GiessereiAuth {
+class GiessereiAuth
+{
 
     const ACTION_DOWNLOAD_ADDRESS_LIST = "member.download.address.list";
 
@@ -15,7 +16,8 @@ class GiessereiAuth {
     /**
      * Prüft ob der Benutzer angemeldet ist und ob der Benutzer eine Berechtigung für die übergebene Action hat.
      */
-    public static function hasAccess($action) {
+    public static function hasAccess($action)
+    {
         $user = JFactory::getUser();
         if (!self::checkSignedIn($user)) {
             return false;
@@ -31,7 +33,8 @@ class GiessereiAuth {
      * Liefert true, wenn der Benutzer angemeldet ist; sonst false.
      * Wenn false, dann wird eine Systemmeldung hinzugefügt.
      */
-    private static function checkSignedIn($user) {
+    private static function checkSignedIn($user)
+    {
         if ($user->guest) {
             JFactory::getApplication()->enqueueMessage('Die Registrierung ist abgelaufen. Bitte neu anmelden.');
             return false;

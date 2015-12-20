@@ -11,16 +11,16 @@ jimport('joomla.application.component.controller');
  * @author JAL
  * @author Steffen Förster
  */
-class GiessereiController extends JController {
+class GiessereiController extends JControllerLegacy {
 
   public function execute($task) {
     GiessereiFrontendHelper::methodBegin('GiessereiController', 'execute');
     return parent::execute($task);
   }
   
-  function display() {
+  function display($cachable = false, $urlparams = array()) {
     GiessereiFrontendHelper::methodBegin('GiessereiController', 'display');
-    parent::display();
+    parent::display($cachable, $urlparams);
   }
 
   function detail() {
@@ -30,4 +30,3 @@ class GiessereiController extends JController {
     $mainframe->close();
   }
 }
-?>

@@ -3,17 +3,17 @@ defined('_JEXEC') or die();
 
 JLoader::register('GiessereiAuth', JPATH_COMPONENT . '/helpers/giesserei_auth.php');
 
-jimport('joomla.application.component.controller');
-
 /**
  * Controller für den Download von Listen.
  *
  * @author Steffen Förster
  */
-class GiessereiControllerMitgliederliste extends JController {
+class GiessereiControllerMitgliederliste extends JControllerLegacy {
 
     /**
      * Liefert die aktuelle Adressliste aller aktiven Mitglieder und des Gewerbes.
+     *
+     * @return boolean
      */
     public function adressliste()
     {
@@ -22,11 +22,13 @@ class GiessereiControllerMitgliederliste extends JController {
         }
 
         $model = $this->getModel('mitgliederliste');
-        $model->exportAdresslisteToCSV();
+        return $model->exportAdresslisteToCSV();
     }
 
     /**
      * Liefert die aktuelle Adressliste aller aktiven Mitglieder und des Gewerbes.
+     *
+     * @return boolean false
      */
     public function listePassivmitglieder()
     {
@@ -35,7 +37,7 @@ class GiessereiControllerMitgliederliste extends JController {
         }
 
         $model = $this->getModel('mitgliederliste');
-        $model->exportListePassivmitgliederToCSV();
+        return $model->exportListePassivmitgliederToCSV();
     }
 
 }
