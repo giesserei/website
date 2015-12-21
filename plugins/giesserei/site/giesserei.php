@@ -1,7 +1,7 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
 
-jimport ('joomla.application.component.controller');
+jimport('joomla.application.component.controller');
 
 $controller = JControllerLegacy::getInstance('giesserei');
 

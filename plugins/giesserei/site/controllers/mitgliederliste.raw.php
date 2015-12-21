@@ -8,7 +8,8 @@ JLoader::register('GiessereiAuth', JPATH_COMPONENT . '/helpers/giesserei_auth.ph
  *
  * @author Steffen Förster
  */
-class GiessereiControllerMitgliederliste extends JControllerLegacy {
+class GiessereiControllerMitgliederliste extends JControllerLegacy
+{
 
     /**
      * Liefert die aktuelle Adressliste aller aktiven Mitglieder und des Gewerbes.

@@ -6,27 +6,31 @@ JLoader::register('GiessereiFrontendHelper', JPATH_COMPONENT . '/helpers/giesser
 jimport('joomla.application.component.controller');
 
 /**
- * Globaler Controller für das Frontend der Giesserei-Komponente.  
- * 
+ * Globaler Controller für das Frontend der Giesserei-Komponente.
+ *
  * @author JAL
  * @author Steffen Förster
  */
-class GiessereiController extends JControllerLegacy {
+class GiessereiController extends JControllerLegacy
+{
 
-  public function execute($task) {
-    GiessereiFrontendHelper::methodBegin('GiessereiController', 'execute');
-    return parent::execute($task);
-  }
-  
-  function display($cachable = false, $urlparams = array()) {
-    GiessereiFrontendHelper::methodBegin('GiessereiController', 'display');
-    parent::display($cachable, $urlparams);
-  }
+    public function execute($task)
+    {
+        GiessereiFrontendHelper::methodBegin('GiessereiController', 'execute');
+        return parent::execute($task);
+    }
 
-  function detail() {
-    global $mainframe;
-    JRequest::setVar('view', 'detail');
-    parent::display();
-    $mainframe->close();
-  }
+    function display($cachable = false, $urlparams = array())
+    {
+        GiessereiFrontendHelper::methodBegin('GiessereiController', 'display');
+        parent::display($cachable, $urlparams);
+    }
+
+    function detail()
+    {
+        global $mainframe;
+        JRequest::setVar('view', 'detail');
+        parent::display();
+        $mainframe->close();
+    }
 }

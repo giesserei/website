@@ -1,7 +1,8 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
 
-jimport ('joomla.application.component.controllerform');
+jimport('joomla.application.component.controllerform');
 
-class GiessereiControllerKid extends JControllerForm {
+class GiessereiControllerKid extends JControllerForm
+{
 }

@@ -8,18 +8,21 @@ defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.application.component.modellist');
 
-class GiessereiModelKids extends JModelList {
-	
-		protected function getListQuery() {
-			$db = $this->getDBO();
-			$query = $db->getQuery(true);
-			
-			$query->select('*');
-			$query->from('#__mgh_kind');
-			$query->order('nachname ASC');
+class GiessereiModelKids extends JModelList
+{
 
-			return $query;
-		}	
+    protected function getListQuery()
+    {
+        $db = $this->getDBO();
+        $query = $db->getQuery(true);
+
+        $query->select('*');
+        $query->from('#__mgh_kind');
+        $query->order('nachname ASC');
+
+        return $query;
+    }
 
 }
+
 ?>
