@@ -14,10 +14,10 @@ $doc = JFactory::getDocument();
 $base = JURI::base(true);
 $doc->addStyleSheet($base.'/components/com_giesserei/template/giesserei_default.css');
 
-require_once(JPATH_SITE.DS."components".DS."com_giesserei".DS."models".DS."mitgliederliste.php");
+require_once(JPATH_SITE."/components/com_giesserei/models/mitgliederliste.php");
 $listen_model = new GiessereiModelMitgliederliste; // Referenz auf Modell für Methoden des Objekts
 
-$user =& JFactory::getUser();
+$user = JFactory::getUser();
 if(!$user->id > 0):
 	echo "Die Registrierung ist abglaufen. Bitte neu anmelden.";
 	exit();

@@ -24,7 +24,7 @@ require_once(JPATH_SITE . "/components/com_giesserei/models/mitgliederliste.php"
 $listen_model = new GiessereiModelMitgliederliste;
 
 // Benutzer angemeldet?
-$user =& JFactory::getUser();
+$user = JFactory::getUser();
 if (!$user->id > 0) {
     echo "Die Registrierung ist abglaufen. Bitte neu anmelden.";
     exit();

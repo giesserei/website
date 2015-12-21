@@ -9,10 +9,10 @@ $base = JURI::base(true);
 $doc->addStyleSheet($base . '/components/com_giesserei/template/giesserei_default.css');
 
 $whg = $this->wohnung[0];
-$model =& $this->getModel();
+$model = $this->getModel();
 
 JPluginHelper::importPlugin('content');
-$dispatcher =& JDispatcher::getInstance();
+$dispatcher = JDispatcher::getInstance();
 
 // Berechnen der Verortungsansicht
 // Gebäudeflügel und Treppenhaus
@@ -131,7 +131,7 @@ endif;
                 endif;
 
                 // Reservationsinfos nur für Mitglieder
-                $user =& JFactory::getUser();
+                $user = JFactory::getUser();
                 if ($user->id > 0):
                     if (strlen($whg->oto) > 1):
                         echo "<li>Glasfaser-OTO-ID: <strong>" . $whg->oto . "</strong>";

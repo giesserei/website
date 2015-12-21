@@ -6,7 +6,7 @@ class GiessereiViewHausliste extends JViewLegacy
 
     protected $objekte;
 
-    public function display($tpl)
+    public function display($tpl = null)
     {
         $model = $this->getModel();
         $this->objekte = $model->getBelegung();

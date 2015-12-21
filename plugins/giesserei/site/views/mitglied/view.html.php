@@ -8,7 +8,7 @@ class GiessereiViewMitglied extends JViewLegacy
 
     public function display($tpl = null)
     {
-        $model =& $this->getModel();
+        $model = $this->getModel();
         $this->mitglied = $model->getMitglied(JRequest::getVar('id'));
         parent::display($tpl);
     }
