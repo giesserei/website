@@ -1,13 +1,13 @@
 <?php
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.view');
-
 class GiessereiViewMember extends JViewLegacy
 {
 
     protected $item;
+
     protected $form;
+
     protected $canEditFull;
 
     public function display($tpl = null)
@@ -42,5 +42,3 @@ class GiessereiViewMember extends JViewLegacy
         }
     }
 }
-
-?>

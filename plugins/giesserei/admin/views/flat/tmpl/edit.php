@@ -1,8 +1,4 @@
 <?php
-/*
- * Created on 27.12.2010
- *
- */
 defined('_JEXEC') or die('Restricted access');
 
 JHtml::_('behavior.tooltip');

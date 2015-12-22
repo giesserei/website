@@ -1,11 +1,10 @@
 <?php
-/*
- * Created on 05.01.2011
- *
 
- */
 defined('_JEXEC') or die('Restricted access');
 
+/**
+ * Tabelle zum Speichern der Wohnungen.
+ */
 class GiessereiTableFlats extends JTable
 {
     public $id;

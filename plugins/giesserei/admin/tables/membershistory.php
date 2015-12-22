@@ -2,9 +2,7 @@
 defined('_JEXEC') or die;
 
 /**
- * In dieser Tabelle wird die Hisorie der Mitgliedertabelle gespeichert.
- *
- * @author Steffen Förster
+ * Tabelle zum Speichern der Historie der Mitglieder-Daten.
  */
 class GiessereiTableMembersHistory extends JTable
 {

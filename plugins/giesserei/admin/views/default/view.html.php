@@ -5,8 +5,6 @@ JLoader::register('GiessereiHelper', JPATH_COMPONENT . '/helpers/giesserei.php')
 
 /**
  * Default-Seite für die Vereinsverwaltung, wenn keine spezielle View gewählt wurde.
- *
- * @author Steffen Förster
  */
 class GiessereiViewDefault extends JViewLegacy
 {

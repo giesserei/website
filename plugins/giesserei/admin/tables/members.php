@@ -4,13 +4,7 @@ defined('_JEXEC') or die('Restricted access');
 JLoader::register('MitgliedTypEnum', JPATH_COMPONENT_ADMINISTRATOR . '/models/enums/mitglied_typ.php');
 
 /**
- * Konkrete Implementierung der JTable für die Tabelle #__mgh_mitglied.
- *
- * Changes:
- * - Refactoring + Format + Comments (SF, 2013-12-29)
- * - Art der Mitgliedschaft in Liste anzeigen (SF, 2013-12-29)
- *
- * @author JAL, created on Oktober 2013
+ * Tabelle zum Speichern der Vereinsmitglieder.
  */
 class GiessereiTableMembers extends JTable
 {

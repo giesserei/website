@@ -1,16 +1,6 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
 
-jimport('joomla.application.component.modeladmin');
-
-/**
- * Modell für die Bearbeitung eines Mitglieds im Backend.
- *
- * Changes:
- * - Refactoring + Format + Comments (SF, 2013-12-29)
- *
- * @author JAL, created on Oktober 2013
- */
 class GiessereiModelMember extends JModelAdmin
 {
 
@@ -75,9 +65,7 @@ class GiessereiModelMember extends JModelAdmin
      */
     public function getItem($pk = null)
     {
-        $app = JFactory::getApplication();
-
-        $db = &JFactory::getDBO();
+        $db = JFactory::getDBO();
         $item = parent::getItem();
 
         // Beim Anlegen eines neuen Datensatzes sind wir hier fertig
@@ -204,7 +192,7 @@ class GiessereiModelMember extends JModelAdmin
             return $item;
         }
 
-        $db = &JFactory::getDBO();
+        $db = JFactory::getDBO();
         $query = "SELECT *,mj.id as id
 				FROM #__mgh_mitgliederjournal AS mj, #__mgh_mjournalklasse AS jk 
 		    WHERE mj.klasseid=jk.id 
@@ -243,5 +231,3 @@ class GiessereiModelMember extends JModelAdmin
     }
 
 }
-
-?>

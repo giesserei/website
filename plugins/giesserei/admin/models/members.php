@@ -1,32 +1,20 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
 
-jimport('joomla.application.component.modellist');
-
-/**
- * Modell stellt eine Liste von Mitglieder-Datensätzen zur Verfügung.
- *
- * Changes:
- * - Refactoring + Format + Comments (SF, 2013-12-29)
- * - Filter eingebaut (SF, 2013-12-29)
- * - Wohnung und Art der Mitgliedschaft in Liste anzeigen (SF, 2013-12-29)
- *
- * @author JAL, created on 27.12.2010
- */
 class GiessereiModelMembers extends JModelList
 {
 
-    /**
-     * Konstruktor.
-     */
     public function __construct($config = array())
     {
         // Spalten definieren, nach denen sortiert werden kann
-        $config['filter_fields'] = array(
-            'mgl.vorname',
-            'mgl.nachname',
-            'mgl.typ'
-        );
+        if (empty($config['filter_fields'])) {
+            $config['filter_fields'] = array(
+                'mgl.vorname',
+                'mgl.nachname',
+                'typ_name',
+                'mgl.userid'
+            );
+        }
         parent::__construct($config);
     }
 
@@ -35,9 +23,6 @@ class GiessereiModelMembers extends JModelList
      */
     protected function populateState($ordering = null, $direction = null)
     {
-        // Initialise variables
-        $app = JFactory::getApplication('administrator');
-
         // Such-Filter setzen
         $search = $this->getUserStateFromRequest($this->context . '.filter.search', 'filter_search');
         $this->setState('filter.search', $search);
@@ -54,8 +39,7 @@ class GiessereiModelMembers extends JModelList
         $quality = $this->getUserStateFromRequest($this->context . '.filter.quality', 'filter_quality');
         $this->setState('filter.quality', $quality);
 
-        // Parameter laden
-        // TODO Aus Buch kopiert -> Zweck noch nicht klar
+        // Component parameters.
         $params = JComponentHelper::getParams('com_giesserei');
         $this->setState('params', $params);
 
@@ -64,8 +48,29 @@ class GiessereiModelMembers extends JModelList
     }
 
     /**
-     * Liefert die SQL-Query zum Laden der Mitglieder.
-     * Es werden die Filter berücksichtigt.
+     * Method to get a store id based on model configuration state.
+     *
+     * This is necessary because the model is used by the component and
+     * different modules that might need different sets of data or different
+     * ordering requirements.
+     *
+     * @param   string $id A prefix for the store id.
+     *
+     * @return  string  A store id.
+     */
+    protected function getStoreId($id = '')
+    {
+        // Compile the store id.
+        $id .= ':' . $this->getState('filter.search');
+        $id .= ':' . $this->getState('filter.typ');
+        $id .= ':' . $this->getState('filter.status');
+        $id .= ':' . $this->getState('filter.quality');
+
+        return parent::getStoreId($id);
+    }
+
+    /**
+     * Liefert die SQL-Query zum Laden der Mitglieder. Es werden die Filter berücksichtigt.
      */
     protected function getListQuery()
     {
@@ -104,11 +109,15 @@ class GiessereiModelMembers extends JModelList
         $query->select('kun.avatar as avatar');
         $query->join('LEFT', '#__kunena_users AS kun ON mgl.userid = kun.userid');
 
-        // Filtern nach dem Nachnamen oder Vornamen
-        $search = $this->getState('filter.search');
-        if (!empty($search)) {
-            $search = $db->Quote('%' . $db->getEscaped($search, true) . '%');
-            $query->where('(mgl.nachname LIKE ' . $search . ' OR mgl.vorname LIKE ' . $search . ')');
+
+        // Filter by search in vorname, nachname, or id
+        if ($search = trim($this->getState('filter.search'))) {
+            if (stripos($search, 'id:') === 0) {
+                $query->where('mgl.userid = ' . (int)substr($search, 3));
+            } else {
+                $search = $db->quote('%' . str_replace(' ', '%', $db->escape(trim($search), true) . '%'));
+                $query->where('(mgl.nachname LIKE ' . $search . ' OR mgl.vorname LIKE ' . $search . ')');
+            }
         }
 
         $this->addFilterTyp($query);
@@ -117,7 +126,7 @@ class GiessereiModelMembers extends JModelList
 
         // Sortierung
         $query->order($db->escape($this->getState('list.ordering', 'mgl.nachname')) . ' ' .
-            $db->escape($this->getState('list.direction', 'ASC')));
+            $db->escape($this->getState('list.direction', 'asc')));
 
         return $query;
     }
@@ -188,7 +197,7 @@ class GiessereiModelMembers extends JModelList
                     $query->where('(mgl.typ IN (1,2) AND mgl.einzug = "0000-00-00")');
                     break;
                 case 3 : // keine E-Mail Adresse
-                    $query->where('(usr.email LIKE \'%keine.email%\')');
+                    $query->where('(usr.email LIKE \'%keine.email%\' OR usr.email LIKE \'%kein.email%\')');
                     break;
                 case 4 : // nicht ausgezogener Bewohner/Gewerbe mit falscher Adresse
                     $query->where("(mgl.typ IN (1,2) AND (mgl.austritt >= NOW() OR mgl.austritt = '0000-00-00') AND (mgl.adresse NOT LIKE '%Ida-Sträuli%' OR mgl.plz != '8404' OR mgl.ort != 'Winterthur'))");
@@ -205,5 +214,3 @@ class GiessereiModelMembers extends JModelList
     }
 
 }
-
-?>

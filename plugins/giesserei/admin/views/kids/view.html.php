@@ -1,12 +1,12 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
 
-jimport('joomla.application.component.view');
-
 class GiessereiViewKids extends JViewLegacy
 {
     protected $items;
+
     protected $pagination;
+
     protected $state;
 
     public function display($tpl = null)
@@ -32,5 +32,3 @@ class GiessereiViewKids extends JViewLegacy
         parent::display($tpl);
     }
 }
-
-?>

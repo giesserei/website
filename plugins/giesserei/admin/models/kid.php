@@ -1,8 +1,6 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
 
-jimport('joomla.application.component.modeladmin');
-
 class GiessereiModelKid extends JModelAdmin
 {
 
@@ -64,5 +62,3 @@ class GiessereiModelKid extends JModelAdmin
     }
 
 }
-
-?>

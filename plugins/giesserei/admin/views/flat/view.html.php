@@ -1,16 +1,11 @@
 <?php
-/*
- * Oktober 2013, JAL
- *
-*/
 defined('_JEXEC') or die('Restricted access');
-
-jimport('joomla.application.component.view');
 
 class GiessereiViewFlat extends JViewLegacy
 {
 
     protected $item;
+
     protected $form;
 
     public function display($tpl = null)
@@ -23,7 +18,6 @@ class GiessereiViewFlat extends JViewLegacy
         parent::display($tpl);
 
     }
-
 
     protected function addToolbar()
     {
@@ -40,5 +34,3 @@ class GiessereiViewFlat extends JViewLegacy
 
     }
 }
-
-?>

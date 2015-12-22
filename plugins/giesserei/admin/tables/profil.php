@@ -4,9 +4,7 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.log.log');
 
 /**
- * JTable für die Profilbearbeitung.
- *
- * @author Steffen Förster
+ * Tabelle zur Pflege der Profildaten.
  */
 class GiessereiTableProfil extends JTable
 {
@@ -45,7 +43,6 @@ class GiessereiTableProfil extends JTable
      */
     public function store($updateNulls = false, $otherTables = true)
     {
-        $app = JFactory::getApplication();
         $db = &JFactory::getDBO();
 
         // Benutzer ändert sich selbst
@@ -88,7 +85,7 @@ class GiessereiTableProfil extends JTable
 
     private function writeInHistory()
     {
-        $db = &JFactory::getDBO();
+        $db = JFactory::getDBO();
         if (!empty($this->id)) {
             $history = JTable::getInstance('MembersHistory', 'GiessereiTable', array());
             $history->setIdToSave($this->id);

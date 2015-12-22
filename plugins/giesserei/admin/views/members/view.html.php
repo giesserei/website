@@ -1,22 +1,53 @@
 <?php
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.view');
+JLoader::register('GiessereiHelper', JPATH_COMPONENT . '/helpers/giesserei.php');
 
 class GiessereiViewMembers extends JViewLegacy
 {
     protected $items;
+
     protected $pagination;
+
     protected $state;
-    protected $sortDirection;
-    protected $sortColumn;
+
+    protected $sidebar;
+
+    public $filterForm;
+
+    public $activeFilters;
 
     public function display($tpl = null)
     {
-        $user = JFactory::getUser();
-        $canEditFull = $user->authorise('edit.member', 'com_giesserei');
+        $this->items = $this->get('Items');
+        $this->pagination = $this->get('Pagination');
+        $this->state = $this->get('State');
+        $this->filterForm = $this->get('FilterForm');
+        $this->activeFilters = $this->get('ActiveFilters');
 
-        JToolBarHelper::title('Mitgliederlisten-Verwaltung', 'user.png');
+        GiessereiHelper::addSubmenu('members');
+
+        $this->ordering = array();
+
+        $this->addToolbar();
+        $this->sidebar = JHtmlSidebar::render();
+
+        parent::display($tpl);
+    }
+
+    /**
+     * Add the page title and toolbar.
+     *
+     * @return  void
+     */
+    protected function addToolbar()
+    {
+        JToolbarHelper::title('Mitgliederverwaltung');
+
+        $user = JFactory::getUser();
+
+        // VKomm soll nur die Wohnungszuweisung bearbeiten dürfen => hat nicht das Recht 'edit.member'
+        $canEditFull = $user->authorise('edit.member', 'com_giesserei');
 
         if ($canEditFull) {
             JToolBarHelper::addNew('member.add', 'JTOOLBAR_NEW');
@@ -28,15 +59,23 @@ class GiessereiViewMembers extends JViewLegacy
             JToolBarHelper::deleteList('', 'members.delete', 'JTOOLBAR_DELETE');
         }
 
-        $this->items = $this->get('Items');
-        $this->state = $this->get('State');
-        $this->pagination = $this->get('Pagination');
+        if ($user->authorise('core.manage', 'com_giesserei')) {
+            JToolBarHelper::preferences('com_giesserei');
+        }
+    }
 
-        $this->sortDirection = $this->state->get('list.direction');
-        $this->sortColumn = $this->state->get('list.ordering');
-
-        parent::display($tpl);
+    /**
+     * Returns an array of fields the table can be sorted by
+     *
+     * @return  array  Array containing the field name to sort by as the key and display text as value
+     */
+    protected function getSortFields()
+    {
+        return array(
+            'mgl.userid' => 'ID',
+            'mgl.vorname' => 'Vorname',
+            'mgl.nachname' => 'Nachname',
+            'typ_name' => 'Typ'
+        );
     }
 }
-
-?>

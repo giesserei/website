@@ -2,10 +2,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 /**
- * Tabellenklasse für die Tabelle #__mgh_kind.
- *
- * @author JAL
- * @author Steffen Förster
+ * Tabelle zum Speichern der Kinder.
  */
 class GiessereiTableKids extends JTable
 {
