@@ -17,6 +17,8 @@ class GiessereiViewMembers extends JViewLegacy
 
     public $activeFilters;
 
+    public $ordering;
+
     public function display($tpl = null)
     {
         $this->items = $this->get('Items');
@@ -42,7 +44,7 @@ class GiessereiViewMembers extends JViewLegacy
      */
     protected function addToolbar()
     {
-        JToolbarHelper::title('Mitgliederverwaltung');
+        JToolbarHelper::title('Vereinsmitglieder');
 
         $user = JFactory::getUser();
 

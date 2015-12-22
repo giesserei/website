@@ -69,6 +69,7 @@ $listDirn = $this->escape($this->state->get('list.direction'));
                     </tr>
                     </tfoot>
 
+                    <tbody>
                     <?php foreach ($this->items as $i => $item) {
                         $canEdit = $user->authorise('core.edit', 'com_giesserei');
                         $styleStatus = $item->status == 0 ? 'style="background-color:rgb(255,154,61)"' : '';
