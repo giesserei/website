@@ -18,12 +18,30 @@ class GiessereiHelper
      *
      * @return  void
      */
-    public static function addSubmenu($vName = 'kategorien')
+    public static function addSubmenu($vName = 'members')
     {
-        JHtmlSidebar::addEntry(
-            'Kategorien',
-            'index.php?option=com_zeitbank&view=kategorien',
-            $vName == 'kategorien'
-        );
+        $user = JFactory::getUser();
+        $assetname = 'com_giesserei';
+
+        if ($user->authorise('view.member', $assetname)) {
+            JHtmlSidebar::addEntry(
+                JText::_('Mitgliederliste'),
+                'index.php?option=com_giesserei&view=members', $vName == 'members'
+            );
+        }
+
+        if ($user->authorise('view.kid', $assetname)) {
+            JHtmlSidebar::addEntry(
+                JText::_('Kinder'),
+                'index.php?option=com_giesserei&view=kids', $vName == 'kids'
+            );
+        }
+
+        if ($user->authorise('view.flat', $assetname)) {
+            JHtmlSidebar::addEntry(
+                JText::_('Wohnungen'),
+                'index.php?option=com_giesserei&view=flats', $vName == 'flats'
+            );
+        }
     }
 }
