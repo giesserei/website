@@ -48,4 +48,22 @@ class GiessereiModelKid extends JModelAdmin
         return $data;
     }
 
+    /**
+     * Werte für ungesetzte Checkboxen vor dem Speichern setzen.
+     *
+     * @inheritdoc
+     */
+    protected function prepareTable($table)
+    {
+        $app = JFactory::getApplication();
+        $input = $app->input;
+        $data = $input->get('jform', '', 'array');
+
+        if (!isset($data['jahrgang_frei'])) {
+            $table->jahrgang_frei = 0;
+        }
+        if (!isset($data['handy_frei'])) {
+            $table->handy_frei = 0;
+        }
+    }
 }

@@ -49,7 +49,7 @@ class GiessereiViewFlats extends JViewLegacy
         $user = JFactory::getUser();
 
         // Löschen und Neuanlegen ist nur per SQL möglich => sollte nur bei Umbauten notwendig werden
-        JToolBarHelper::editList('member.edit', 'JTOOLBAR_EDIT');
+        JToolBarHelper::editList('flat.edit', 'JTOOLBAR_EDIT');
 
         if ($user->authorise('core.manage', 'com_giesserei')) {
             JToolBarHelper::preferences('com_giesserei');

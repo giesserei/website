@@ -36,6 +36,22 @@ class GiessereiModelFlat extends JModelAdmin
     }
 
     /**
+     * Werte für ungesetzte Checkboxen vor dem Speichern setzen.
+     *
+     * @inheritdoc
+     */
+    protected function prepareTable($table)
+    {
+        $app = JFactory::getApplication();
+        $input = $app->input;
+        $data = $input->get('jform', '', 'array');
+
+        if (!isset($data['maisonette'])) {
+            $table->maisonette = 0;
+        }
+    }
+
+    /**
      * Wohnungen können nicht gelöscht werden.
      *
      * @param object $record
