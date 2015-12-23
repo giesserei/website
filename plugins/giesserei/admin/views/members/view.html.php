@@ -44,7 +44,7 @@ class GiessereiViewMembers extends JViewLegacy
      */
     protected function addToolbar()
     {
-        JToolbarHelper::title('Vereinsmitglieder');
+        JToolbarHelper::title('Mitglieder');
 
         $user = JFactory::getUser();
 

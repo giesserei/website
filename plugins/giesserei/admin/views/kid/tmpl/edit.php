@@ -1,86 +1,40 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
 
-JHtml::_('behavior.tooltip');
-JHtml::_('behavior.formvalidation');
-JHtml::_('behavior.keepalive');
+// Include the component HTML helpers.
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
+
+JHtml::_('behavior.core');
+JHtml::_('behavior.tabstate');
+JHtml::_('behavior.formvalidator');
+JHtml::_('formbehavior.chosen', 'select');
+
+// ohne dieses Script funktionieren die Buttons der Toolbar nicht
+JFactory::getDocument()->addScriptDeclaration('
+	Joomla.submitbutton = function(task)
+	{
+		Joomla.submitform(task, document.getElementById("item-form"));
+	};
+');
 
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_giesserei&id=' . (int)$this->item->id); ?>" method="post"
-      name="adminForm" id="adminForm">
 
-    <div class="width-60 fltlft">
-        <fieldset class="adminform">
-            <input type="hidden" name="jform[jahrgang_frei]" value="0">
-            <input type="hidden" name="jform[handy_frei]" value="0">
-            <legend><?php echo JText::_('Personalien'); ?></legend>
-            <table class="admintable">
+<form action="<?php echo JRoute::_('index.php?option=com_giesserei&layout=edit&id=' . (int)$this->item->id); ?>"
+      method="post" name="adminForm" id="item-form" class="form-validate">
 
-                <tr>
-                    <td width="100" align="right" class="key">
-                        <?php echo $this->form->getLabel('vorname') . "</td><td>";
-                        echo $this->form->getInput('vorname');
-                        ?>
-                    </td>
-                </tr>
+    <div class="form-horizontal">
 
-                <tr>
-                    <td width="100" align="right" class="key">
-                        <?php echo $this->form->getLabel('nachname') . "</td><td>";
-                        echo $this->form->getInput('nachname');
-                        ?>
-                    </td>
-                </tr>
+        <?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'personalien')); ?>
 
-                <tr>
-                    <td width="100" align="right" class="key">
-                        <?php echo $this->form->getLabel('jahrgang') . "</td><td>";
-                        echo $this->form->getInput('jahrgang');
+        <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'personalien', JText::_('Personalien', true)); ?>
+        <?php echo $this->form->renderFieldset('personalien'); ?>
+        <?php echo JHtml::_('bootstrap.endTab'); ?>
 
-                        ?>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td width="100" align="right" class="key">
-                        <?php
-                        echo $this->form->getLabel('jahrgang_frei') . "</td><td>";
-                        echo $this->form->getInput('jahrgang_frei');
-                        ?>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td width="100" align="right" class="key">
-                        <?php echo $this->form->getLabel('handy') . "</td><td>";
-                        echo $this->form->getInput('handy');
-                        ?>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td width="100" align="right" class="key">
-                        <?php
-                        echo $this->form->getLabel('handy_frei') . "</td><td>";
-                        echo $this->form->getInput('handy_frei');
-                        ?>
-                    </td>
-                </tr>
-
-
-                <tr>
-                    <td width="100" align="right" class="key">
-                        <?php echo $this->form->getLabel('objektid') . "</td><td>";
-                        echo $this->form->getInput('objektid');
-                        ?>
-                    </td>
-                </tr>
-
-            </table>
-        </fieldset>
+        <?php echo JHtml::_('bootstrap.endTabSet'); ?>
     </div>
 
-
     <input type="hidden" name="task" value=""/>
+    <?php echo $this->form->getInput('component_id'); ?>
     <?php echo JHtml::_('form.token'); ?>
+    <input type="hidden" id="fieldtype" name="fieldtype" value=""/>
 </form>

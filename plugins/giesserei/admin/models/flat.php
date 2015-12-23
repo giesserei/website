@@ -2,6 +2,8 @@
 
 defined('_JEXEC') or die('Restricted access');
 
+JLoader::register('GiessereiHelper', JPATH_COMPONENT . '/helpers/giesserei.php');
+
 class GiessereiModelFlat extends JModelAdmin
 {
 
@@ -34,33 +36,35 @@ class GiessereiModelFlat extends JModelAdmin
     }
 
     /**
-     * Liest die Wohnungstypen aus für Edit-Form
+     * Wohnungen können nicht gelöscht werden.
+     *
+     * @param object $record
+     * @return boolean
      */
-    public function getFlatTypes()
+    protected function canDelete($record)
+    {
+        return false;
+    }
+
+    /**
+     * Liest die Bewohnerschaft einer Wohnung aus zur Anzeige im Edit-Form
+     */
+    public function getBewohner()
     {
         $db = JFactory::getDBO();
-        $query = "SELECT * FROM #__mgh_objekttyp ORDER BY bezeichnung";
+        $data = $this->loadFormData();
+
+        $query = "SELECT * FROM #__mgh_mitglied as mgl LEFT JOIN #__mgh_x_mitglied_mietobjekt as xmo"
+                 ." ON mgl.userid = xmo.userid"
+                 ." WHERE objektid=" . $data->id . " ORDER BY nachname";
         $db->setQuery($query);
         $rows = $db->loadObjectList();
         return ($rows);
     }
 
     /**
-     * Liest die Bewohnerschaft aus für Edit-Form
+     * Liest die Kinder einer Wohnung aus zur Anzeige im Edit-Form
      */
-    public function getBewohner()
-    {
-        $db =& JFactory::getDBO();
-        $data = $this->loadFormData();
-
-        $query = "SELECT * FROM #__mgh_mitglied as mgl,#__mgh_x_mitglied_mietobjekt as xmo"
-                 ." WHERE mgl.userid=xmo.userid AND objektid=" . $data->id . " ORDER BY nachname";
-        $db->setQuery($query);
-        $rows = $db->loadObjectList();
-        return ($rows);
-    }
-
-    // Liest die Kinder einer Wohnung aus für Edit-Form
     public function getKids()
     {
         $db = JFactory::getDBO();
@@ -72,16 +76,4 @@ class GiessereiModelFlat extends JModelAdmin
         return ($rows);
     }
 
-    // Liest das Journal einer Wohnung
-    public function getJournal()
-    {
-        $data = $this->loadFormData();
-        $db = JFactory::getDBO();
-
-        $query = "SELECT *,oj.id as id FROM #__mgh_objektjournal as oj,#__mgh_ojournalklasse as jk"
-                 ." WHERE oj.klasseid=jk.id AND objektid=" . $data->id . " ORDER BY datum";
-        $db->setQuery($query);
-        $rows = $db->loadObjectList();
-        return ($rows);
-    }
 }

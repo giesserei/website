@@ -1,6 +1,8 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
 
+JLoader::register('GiessereiHelper', JPATH_COMPONENT . '/helpers/giesserei.php');
+
 class GiessereiModelKid extends JModelAdmin
 {
 
@@ -21,14 +23,14 @@ class GiessereiModelKid extends JModelAdmin
         $user = JFactory::getUser();
         $canEditFull = $user->authorise('edit.member', 'com_giesserei');
 
-        // Nur für VKom-Daten berechtigt -> Felder nur zur Ansicht freischalten
+        // VKom hat nicht alle Rechte => nur Anzeige ist möglich
         if (!$canEditFull) {
-            $this->disableField($form, 'vorname');
-            $this->disableField($form, 'nachname');
-            $this->disableField($form, 'jahrgang');
-            $this->disableField($form, 'jahrgang_frei');
-            $this->disableField($form, 'handy');
-            $this->disableField($form, 'handy_frei');
+            GiessereiHelper::disableField($form, 'vorname');
+            GiessereiHelper::disableField($form, 'nachname');
+            GiessereiHelper::disableField($form, 'jahrgang');
+            GiessereiHelper::disableField($form, 'jahrgang_frei');
+            GiessereiHelper::disableField($form, 'handy');
+            GiessereiHelper::disableField($form, 'handy_frei');
         }
 
         return $form;
@@ -44,21 +46,6 @@ class GiessereiModelKid extends JModelAdmin
         }
 
         return $data;
-    }
-
-    // -------------------------------------------------------------------------
-    // private section
-    // -------------------------------------------------------------------------
-
-    /**
-     * Zeigt das übergebene Feld schreibgeschützt an und verhindert das Speichern von Werten für dieses Feld.
-     * Das Attribut "required" wird auf false gesetzt, sonst kann nicht gespeichert werden.
-     */
-    private function disableField($form, $fieldName)
-    {
-        $form->setFieldAttribute($fieldName, 'disabled', 'true');
-        $form->setFieldAttribute($fieldName, 'required', 'false');
-        $form->setFieldAttribute($fieldName, 'filter', 'unset');
     }
 
 }

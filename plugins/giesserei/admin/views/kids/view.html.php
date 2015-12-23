@@ -44,7 +44,7 @@ class GiessereiViewKids extends JViewLegacy
      */
     protected function addToolbar()
     {
-        JToolbarHelper::title('Kinder von Bewohnern');
+        JToolbarHelper::title('Kinder');
 
         $user = JFactory::getUser();
 
