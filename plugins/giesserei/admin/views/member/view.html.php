@@ -1,27 +1,63 @@
 <?php
 defined('_JEXEC') or die;
 
+JLoader::register('GiessereiHelper', JPATH_COMPONENT . '/helpers/giesserei.php');
+
 class GiessereiViewMember extends JViewLegacy
 {
 
-    protected $item;
-
+    /**
+     * @var  JForm
+     */
     protected $form;
 
+    /**
+     * @var  object
+     */
+    protected $item;
+
+    /**
+     * @var  JObject
+     */
+    protected $state;
+
+    /**
+     * @var JObject
+     */
+    protected $canDo;
+
+    /**
+     * @var boolean
+     */
     protected $canEditFull;
 
     public function display($tpl = null)
     {
-        JFactory::getApplication()->input->set('hidemainmenu', true);
         $this->form = $this->get('Form');
         $this->item = $this->get('Item');
+        $this->state = $this->get('State');
+        $this->canDo = JHelperContent::getActions('com_giesserei');
+        $this->canEditFull = $this->canDo->get('edit.member');
 
-        $this->addToolbar();
+        // Check for errors.
+        if (count($errors = $this->get('Errors'))) {
+            JError::raiseError(500, implode("\n", $errors));
 
-        $user = JFactory::getUser();
-        $this->canEditFull = $user->authorise('edit.member', 'com_giesserei');
+            return false;
+        }
 
         parent::display($tpl);
+        $this->addToolbar();
+    }
+
+    protected function getMitbewohner()
+    {
+        return $this->getModel()->getMitbewohner();
+    }
+
+    protected function getKinder()
+    {
+        return $this->getModel()->getKinder();
     }
 
     // -------------------------------------------------------------------------
@@ -30,15 +66,34 @@ class GiessereiViewMember extends JViewLegacy
 
     private function addToolbar()
     {
-        $isNew = ($this->item->userid < 1);
-        $text = $isNew ? JText::_('Neu') : JText::_('Bearbeiten');
-        JToolBarHelper::title('Mitglied: <small>[' . $text . ']</small>');
-        JToolBarHelper::save('member.save', 'JTOOLBAR_SAVE');
+        $input = JFactory::getApplication()->input;
+        $input->set('hidemainmenu', true);
+
+        $isNew = ($this->item->id == 0);
+        $canDo = $this->canDo;
+
+        JToolbarHelper::title(JText::_($isNew
+            ? 'Mitglied anlegen'
+            : 'Mitglied bearbeiten'));
+
+        // If a new item, can save the item.  Allow users with edit permissions to apply changes to prevent returning to grid.
+        if ($isNew && $canDo->get('core.create')) {
+            if ($canDo->get('core.edit')) {
+                JToolbarHelper::apply('member.apply');
+            }
+
+            JToolbarHelper::save('member.save');
+        }
+
+        if (!$isNew && $canDo->get('core.edit')) {
+            JToolbarHelper::apply('member.apply');
+            JToolbarHelper::save('member.save');
+        }
 
         if ($isNew) {
-            JToolBarHelper::cancel('member.cancel', 'Abbrechen');
+            JToolbarHelper::cancel('member.cancel');
         } else {
-            JToolBarHelper::cancel('member.cancel', 'Schliessen');
+            JToolbarHelper::cancel('member.cancel', 'JTOOLBAR_CLOSE');
         }
     }
 }

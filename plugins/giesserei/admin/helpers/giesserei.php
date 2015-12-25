@@ -59,4 +59,20 @@ class GiessereiHelper
         $form->setFieldAttribute($fieldName, 'required', 'false');
         $form->setFieldAttribute($fieldName, 'filter', 'unset');
     }
+
+    /**
+     * Kürzt den übergebenen Text, wenn erforderlich.
+     *
+     * @param string $text
+     * @param int $maxLength
+     * @return string
+     */
+    public static function cropText($text, $maxLength)
+    {
+        $result = $text;
+        if (!empty($text) && strlen($text) > $maxLength) {
+            $result = substr($text, 0, $maxLength);
+        }
+        return $result;
+    }
 }
