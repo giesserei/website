@@ -13,18 +13,30 @@ class GiessereiModelMitgliederliste extends JModelLegacy
 {
 
     /**
-     * Liefert die Liste aller aktiven Mitglieder zurück (Bewohner, Gewerbe, Passivmitglieder).
+     * Liefert die Liste aller Mitglieder zurück (Bewohner, Gewerbe, Passivmitglieder).
+     *
+     * @param int $typ 1 = Bewohner, 2 = Gewerbe, 3 = Passivmitglied
+     * @return mixed
      */
-    public function getMitglieder()
+    public function getMitglieder($typ)
     {
         $db = JFactory::getDBO();
         $query = "SELECT *,usr.email as email, mgl.userid as userid FROM #__mgh_mitglied as mgl
 	    	LEFT JOIN #__users AS usr ON mgl.userid = usr.id
 	    	LEFT JOIN #__kunena_users AS kun ON mgl.userid = kun.userid
-	    	WHERE (austritt>=NOW() OR austritt='0000-00-00') AND mgl.typ IN (1,2,3) ORDER BY nachname";
+	    	WHERE (austritt>=NOW() OR austritt='0000-00-00') AND mgl.typ = " . $typ . " ORDER BY nachname";
         $db->setQuery($query);
         $rows = $db->loadObjectList();
         return ($rows);
+    }
+
+    public function getAnzahlMitglieder($typ)
+    {
+        $db = JFactory::getDBO();
+        $query = "SELECT count(*) FROM #__mgh_mitglied
+	    	      WHERE (austritt >= NOW() OR austritt='0000-00-00') AND typ = " . $typ;
+        $db->setQuery($query);
+        return $db->loadResult();
     }
 
     /**
