@@ -9,9 +9,6 @@ defined('_JEXEC') or die('Restricted access');
  * - Wohnungen ohne Bewohner werden in der Bewohnerliste nicht gezeigt (SF, 2013-12-31)
  * - Bewohner, die bereits ausgezogen (Austrittsdatum gesetzt und in Vergangenheit) sind,
  *   denen aber noch eine Wohnung zugewiesen ist, werden nicht angezeigt (SF, 2014-02-06)
- *
- * @author JAL
- * @author Steffen Förster
  */
 class GiessereiModelHausliste extends JModelLegacy
 {

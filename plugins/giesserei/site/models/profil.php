@@ -6,8 +6,6 @@ JLoader::register('ProfilData', JPATH_COMPONENT . '/models/data/profil_data.php'
 
 /**
  * Modellklasse für die Bearbeitung des Benutzerprofils.
- *
- * @author Steffen Förster
  */
 class GiessereiModelProfil extends JModelLegacy
 {

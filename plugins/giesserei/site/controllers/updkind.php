@@ -8,8 +8,6 @@ JLoader::register('GiessereiControllerUpdBase', JPATH_COMPONENT . '/controllers/
 
 /**
  * Controller zum Editieren der Stammdaten eines Kindes.
- *
- * @author Steffen Förster
  */
 class GiessereiControllerUpdkind extends GiessereiControllerUpdBase
 {

@@ -7,9 +7,6 @@ jimport('joomla.application.component.controller');
 
 /**
  * Globaler Controller für das Frontend der Giesserei-Komponente.
- *
- * @author JAL
- * @author Steffen Förster
  */
 class GiessereiController extends JControllerLegacy
 {

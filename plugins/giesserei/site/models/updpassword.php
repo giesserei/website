@@ -8,8 +8,6 @@ jimport('joomla.log.log');
 
 /**
  * Model zum Ändern des Passworts eines Mitglieds.
- *
- * @author Steffen Förster
  */
 class GiessereiModelUpdpassword extends JModelAdmin
 {
@@ -48,10 +46,12 @@ class GiessereiModelUpdpassword extends JModelAdmin
      * Validierungsmeldungen werden im Model gespeichert.
      *
      * @return mixed  Array mit gefilterten Daten, wenn alle Daten korrekt sind; sonst false
+     *
+     * @inheritdoc
      */
-    public function validate($form, $data)
+    public function validate($form, $data, $group = NULL)
     {
-        $validateResult = parent::validate($form, $data);
+        $validateResult = parent::validate($form, $data, $group);
         if ($validateResult === false) {
             return false;
         }

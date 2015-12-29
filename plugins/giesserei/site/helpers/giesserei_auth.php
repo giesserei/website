@@ -3,8 +3,6 @@ defined('_JEXEC') or die;
 
 /**
  * Helperklasse für die Berechtigungsprüfung.
- *
- * @author Steffen Förster
  */
 class GiessereiAuth
 {

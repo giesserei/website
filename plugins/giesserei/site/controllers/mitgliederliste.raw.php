@@ -5,8 +5,6 @@ JLoader::register('GiessereiAuth', JPATH_COMPONENT . '/helpers/giesserei_auth.ph
 
 /**
  * Controller für den Download von Listen.
- *
- * @author Steffen Förster
  */
 class GiessereiControllerMitgliederliste extends JControllerLegacy
 {

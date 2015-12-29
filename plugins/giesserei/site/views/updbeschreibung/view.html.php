@@ -6,8 +6,6 @@ JLoader::register('GiessereiConst', JPATH_COMPONENT . '/helpers/giesserei_const.
 
 /**
  * View-Klasse für das Edit-Formular.
- *
- * @author Steffen Förster
  */
 class GiessereiViewUpdbeschreibung extends JViewLegacy
 {

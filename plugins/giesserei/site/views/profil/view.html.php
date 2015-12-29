@@ -6,8 +6,6 @@ JLoader::register('GiessereiConst', JPATH_COMPONENT . '/helpers/giesserei_const.
 
 /**
  * View-Klasse für die Profil-Ansicht.
- *
- * @author Steffen Förster
  */
 class GiessereiViewProfil extends JViewLegacy
 {

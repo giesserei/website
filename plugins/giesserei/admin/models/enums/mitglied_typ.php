@@ -4,8 +4,6 @@
  * Definiert alle Typen eines Mitglieds.
  *
  * PHP unterstützt leider keine echten Enums, daher sind hier 'nur' Konstanten definiert.
- *
- * @author Steffen Förster
  */
 class MitgliedTypEnum
 {

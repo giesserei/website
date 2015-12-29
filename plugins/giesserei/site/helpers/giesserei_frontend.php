@@ -5,8 +5,6 @@ JLoader::register('GiessereiConst', JPATH_COMPONENT . '/helpers/giesserei_const.
 
 /**
  * Helperklasse.
- *
- * @author Steffen Förster
  */
 class GiessereiFrontendHelper
 {

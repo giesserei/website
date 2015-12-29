@@ -8,8 +8,6 @@ JLoader::register('GiessereiControllerUpdBase', JPATH_COMPONENT . '/controllers/
 
 /**
  * Controller zum Editieren des Profils eines Mitglieds.
- *
- * @author Steffen Förster
  */
 class GiessereiControllerUpdprofil extends GiessereiControllerUpdBase
 {

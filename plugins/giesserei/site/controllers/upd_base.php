@@ -6,8 +6,6 @@ JLoader::register('GiessereiConst', JPATH_COMPONENT . '/helpers/giesserei_const.
 
 /**
  * Basis-Klasse für die Controller zum Editieren des Profils eines Mitglieds.
- *
- * @author Steffen Förster
  */
 abstract class GiessereiControllerUpdBase extends JControllerForm
 {

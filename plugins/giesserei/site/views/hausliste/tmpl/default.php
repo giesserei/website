@@ -7,8 +7,6 @@
  * - Auch bei der letzten Wohnung vom Haus 8 werden die Kinder angezeigt (SF, 2013-12-31)
  * - Wohnungen ohne Bewohner werden in der Bewohnerliste nicht angezeigt (SF, 2013-12-31)
  * - Tabellen-Zelle zu jeder Wohnung mit End-Tags abschliessen (SF, 2013-12-31)
- *
- * @author Jürg Altwegg
  */
 
 defined('_JEXEC') or die('Restricted access');

@@ -8,8 +8,6 @@ JLoader::register('GiessereiControllerUpdBase', JPATH_COMPONENT . '/controllers/
 
 /**
  * Controller zum Ändern des Passworts eines Mitglieds.
- *
- * @author Steffen Förster
  */
 class GiessereiControllerUpdpassword extends GiessereiControllerUpdBase
 {

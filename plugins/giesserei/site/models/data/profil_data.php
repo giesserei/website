@@ -3,8 +3,6 @@ defined('_JEXEC') or die('Restricted access');
 
 /**
  * Enthält die Profildaten eines Mitglieds, die im Profil angezeigt und bearbeitet werden können.
- *
- * @author Steffen Förster
  */
 class ProfilData extends JObject
 {
