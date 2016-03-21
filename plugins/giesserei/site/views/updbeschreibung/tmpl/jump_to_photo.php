@@ -19,7 +19,7 @@ echo GiessereiFrontendHelper::getScriptToHideHeaderImage();
 	auf die Profil-Seite des Forums springen. Von da gelangst du über die Menüleiste wieder zurück zur Profil-Seite unserer Mitglieder-Datenbank.
 	
 	<div style="margin-top:25px;">
-	  <?php echo "<input type=\"button\" value=\"Profil-Seite des Forums\" onclick=\"window.location.href='index.php?option=com_kunena&view=user&layout=edit&userid=" . $this->item->userid . "'\" />" ?>
+	  <?php echo "<input type=\"button\" value=\"Profil-Seite des Forums\" onclick=\"window.location.href='intern/forum/profile?view=user&layout=edit&userid=" . $this->item->userid . "'\" />" ?>
 	  <input type="button" value="Zurück" 
 		  	   onclick="window.location.href='<?php echo JRoute::_('index.php?option=com_giesserei&view=profil&layout=view')?>'" />
 	</div>
