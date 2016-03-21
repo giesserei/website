@@ -21,7 +21,7 @@ echo GiessereiFrontendHelper::getScriptToHideHeaderImage();
     unserer Mitglieder-Datenbank.
 
     <div style="margin-top:25px;">
-        <?php echo "<input type=\"button\" value=\"Profil-Seite des Forums\" onclick=\"window.location.href='intern/forum/profile?view=user&layout=edit&userid=" . $this->item->userid . "'\" />" ?>
+        <?php echo "<input type=\"button\" value=\"Profil-Seite des Forums\" onclick=\"window.location.href='forum/profile?view=user&layout=edit&userid=" . $this->item->userid . "'\" />" ?>
         <input type="button" value="Zurück"
                onclick="window.location.href='<?php echo JRoute::_('index.php?option=com_giesserei&view=profil&layout=view') ?>'"/>
     </div>
