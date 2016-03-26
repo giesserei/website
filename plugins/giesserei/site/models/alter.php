@@ -168,8 +168,8 @@ class GiessereiModelAlter extends JModel
             FROM #__mgh_mitglied
             WHERE typ = 1
                 AND (austritt = '0000-00-00' OR austritt > NOW())
-                AND (YEAR(NOW()) - jahrgang - 1) >= " . $alterVon . "
-                AND (YEAR(NOW()) - jahrgang - 1) <= " . $alterBis . "
+                AND (YEAR(NOW()) - jahrgang) >= " . $alterVon . "
+                AND (YEAR(NOW()) - jahrgang) <= " . $alterBis . "
         ";
         $db->setQuery($query);
         return $db->loadResult();
@@ -186,8 +186,8 @@ class GiessereiModelAlter extends JModel
                 SELECT count(*) FROM #__mgh_kind
             )), 1) prozent
             FROM #__mgh_kind
-            WHERE (YEAR(NOW()) - jahrgang - 1) >= " . $alterVon . "
-                AND (YEAR(NOW()) - jahrgang - 1) <= " . $alterBis . "
+            WHERE (YEAR(NOW()) - jahrgang) >= " . $alterVon . "
+                AND (YEAR(NOW()) - jahrgang) <= " . $alterBis . "
         ";
         $db->setQuery($query);
         return $db->loadResult();
