@@ -43,6 +43,12 @@ JHTML::_('behavior.modal');
 
 <p><em>Um die Details eines Mitglieds anzuzeigen, auf den Namen klicken!</em></p>
 
+<div style="margin-top:10px">
+    <ul>
+        <li><a href="index.php?option=com_giesserei&task=alter.alterKlassen&format=raw" target="_blank">BewohnerInnenstruktur / Altersdurchmischung</a></li>
+    </ul>
+</div>
+
 <div class="links">
 
     <?php
