@@ -80,18 +80,18 @@ class GiessereiModelAlter extends JModel
                             datasets: [
                                 {
                                     label: "Giesserei",
-                                    fillColor: "rgba(220,220,220,0.5)",
-                                    strokeColor: "rgba(220,220,220,0.8)",
-                                    highlightFill: "rgba(220,220,220,0.75)",
-                                    highlightStroke: "rgba(220,220,220,1)",
+                                    fillColor: "rgba(123,164,40,0.8)",
+                                    strokeColor: "rgba(123,164,40,1)",
+                                    highlightFill: "rgba(123,164,40,0.5)",
+                                    highlightStroke: "rgba(123,164,40,1)",
                                     data: [' . $this->getAlterKlassenWerte() . ']
                                 },
                                 {
                                     label: "Schweiz",
-                                    fillColor: "rgba(151,187,205,0.5)",
-                                    strokeColor: "rgba(151,187,205,0.8)",
-                                    highlightFill: "rgba(151,187,205,0.75)",
-                                    highlightStroke: "rgba(151,187,205,1)",
+                                    fillColor: "rgba(255,0,0,0.8)",
+                                    strokeColor: "rgba(255,0,0,1)",
+                                    highlightFill: "rgba(255,0,0,0.5)",
+                                    highlightStroke: "rgba(255,0,0,1)",
                                     data: [5.1, 4.9, 4.9, 5.3, 6.0, 6.7, 7.1, 6.9, 7.3, 8.0, 7.8, 6.6, 5.6, 5.2, 4.3, 3.3, 2.5, 1.6, 0.7]
 
                                 }
@@ -107,15 +107,18 @@ class GiessereiModelAlter extends JModel
                     </script>
 
                 </head>
-                <body>
-                    <h2>BewohnerInnenstruktur / Altersdurchmischung (Quelle: Bundesverwaltung admin.ch, 2014)</h2>
+                <body style="margin:2em">
+                    <h2>BewohnerInnenstruktur / Altersdurchmischung</h2>
 
                     <ul>
-                        <li>Grau - Prozentwerte der Giesserei</li>
-                        <li>Blau - Prozentwerte der Schweiz</li>
+                        <li>Grün - Prozentwerte der Giesserei (Anzahl Kinder: <strong>' . $this->getAnzahlKinder() . '</strong>, Anzahl Erwachsene: <strong>' . $this->getAnzahlErwachsene() . '</strong>)</li>
+                        <li>Rot - Prozentwerte der Schweiz</li>
                     </ul>
 
                     <canvas id="alterHistogramm" width="700" height="400"></canvas>
+
+                    <br/>
+                    (Quelle: Bundesverwaltung admin.ch, 2014)
                 </body>
             </html>
         ';
@@ -189,6 +192,24 @@ class GiessereiModelAlter extends JModel
             WHERE (YEAR(NOW()) - jahrgang) >= " . $alterVon . "
                 AND (YEAR(NOW()) - jahrgang) <= " . $alterBis . "
         ";
+        $db->setQuery($query);
+        return $db->loadResult();
+    }
+
+    private function getAnzahlErwachsene()
+    {
+        $db = JFactory::getDBO();
+        $query = "
+            SELECT count(*) FROM #__mgh_mitglied
+            WHERE typ = 1 AND (austritt = '0000-00-00' OR austritt > NOW())";
+        $db->setQuery($query);
+        return $db->loadResult();
+    }
+
+    private function getAnzahlKinder()
+    {
+        $db = JFactory::getDBO();
+        $query = "SELECT count(*) FROM #__mgh_kind";
         $db->setQuery($query);
         return $db->loadResult();
     }
