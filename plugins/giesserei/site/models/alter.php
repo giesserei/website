@@ -24,15 +24,15 @@ class GiessereiModelAlter extends JModel
 
                     <script type="text/javascript">
 
-                        var options = {
+                        var options1 = {
                             // Boolean - If we want to override with a hard coded scale
                             scaleOverride: true,
 
                             // ** Required if scaleOverride is true **
                             // Number - The number of steps in a hard coded scale
-                            scaleSteps: 11,
+                            scaleSteps: 6,
                             // Number - The value jump in the hard coded scale
-                            scaleStepWidth: 1,
+                            scaleStepWidth: 2,
                             // Number - The scale starting value
                             scaleStartValue: 0,
 
@@ -68,10 +68,9 @@ class GiessereiModelAlter extends JModel
 
                             //String - A legend template
                             legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
-
                         }
 
-                        var data = {
+                        var data1 = {
                             labels: ["0-4 J.", "5-9 J.", "10-14 J.", "15-19 J.",
                                      "20-24 J.", "25-29 J.", "30-34 J.", "35-39 J.",
                                      "40-44 J.", "45-49 J.", "50-54 J.", "54-59 J.",
@@ -98,9 +97,76 @@ class GiessereiModelAlter extends JModel
                             ]
                         };
 
+                        var options2 = {
+                            // Boolean - If we want to override with a hard coded scale
+                            scaleOverride: true,
+
+                            // ** Required if scaleOverride is true **
+                            // Number - The number of steps in a hard coded scale
+                            scaleSteps: 7,
+                            // Number - The value jump in the hard coded scale
+                            scaleStepWidth: 5,
+                            // Number - The scale starting value
+                            scaleStartValue: 0,
+
+                            //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+                            scaleBeginAtZero : true,
+
+                            //Boolean - Whether grid lines are shown across the chart
+                            scaleShowGridLines : true,
+
+                            //String - Colour of the grid lines
+                            scaleGridLineColor : "rgba(0,0,0,.05)",
+
+                            //Number - Width of the grid lines
+                            scaleGridLineWidth : 1,
+
+                            //Boolean - Whether to show horizontal lines (except X axis)
+                            scaleShowHorizontalLines: true,
+
+                            //Boolean - Whether to show vertical lines (except Y axis)
+                            scaleShowVerticalLines: true,
+
+                            //Boolean - If there is a stroke on each bar
+                            barShowStroke : true,
+
+                            //Number - Pixel width of the bar stroke
+                            barStrokeWidth : 2,
+
+                            //Number - Spacing between each of the X value sets
+                            barValueSpacing : 5,
+
+                            //Number - Spacing between data sets within X values
+                            barDatasetSpacing : 1,
+
+                            //String - A legend template
+                            legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+                        }
+
+                        var data2 = {
+                            labels: ["0-4 J.", "5-9 J.", "10-14 J.", "15-19 J.",
+                                     "20-24 J.", "25-29 J.", "30-34 J.", "35-39 J.",
+                                     "40-44 J.", "45-49 J.", "50-54 J.", "54-59 J.",
+                                     "60-64 J.", "65-69 J.", "70-74 J.", "75-79 J.",
+                                     "80-84 J.", "85-89 J.", "90-94 J."],
+                            datasets: [
+                                {
+                                    label: "Giesserei",
+                                    fillColor: "rgba(123,164,40,0.8)",
+                                    strokeColor: "rgba(123,164,40,1)",
+                                    highlightFill: "rgba(123,164,40,0.5)",
+                                    highlightStroke: "rgba(123,164,40,1)",
+                                    data: [' . $this->getAlterKlassenWerteAbs() . ']
+                                }
+                            ]
+                        };
+
                         function load() {
-                            var ctx = document.getElementById("alterHistogramm").getContext("2d");
-                            var alterChart = new Chart(ctx).Bar(data, options);
+                            var ctx1 = document.getElementById("alterHistogramm").getContext("2d");
+                            var alterChart1 = new Chart(ctx1).Bar(data1, options1);
+
+                            var ctx2 = document.getElementById("alterHistogrammAbs").getContext("2d");
+                            var alterChart2 = new Chart(ctx2).Bar(data2, options2);
                         }
                         window.onload = load;
 
@@ -108,17 +174,18 @@ class GiessereiModelAlter extends JModel
 
                 </head>
                 <body style="margin:2em">
-                    <h2>BewohnerInnenstruktur / Altersdurchmischung</h2>
+                    <h2>BewohnerInnenstruktur / Altersdurchmischung prozentual</h2>
 
                     <ul>
-                        <li>Grün - Prozentwerte der Giesserei (Anzahl Kinder: <strong>' . $this->getAnzahlKinder() . '</strong>, Anzahl Erwachsene: <strong>' . $this->getAnzahlErwachsene() . '</strong>)</li>
-                        <li>Rot - Prozentwerte der Schweiz</li>
+                        <li>Grün - Prozentwerte der Giesserei <small>(Anzahl Kinder: <strong>' . $this->getAnzahlKinder() . '</strong>, Anzahl Erwachsene: <strong>' . $this->getAnzahlErwachsene() . '</strong>)</small></li>
+                        <li>Rot - Prozentwerte der Schweiz <small>(Quelle: Bundesverwaltung admin.ch, 2014)</small></li>
                     </ul>
 
-                    <canvas id="alterHistogramm" width="700" height="400"></canvas>
+                    <canvas id="alterHistogramm" width="700" height="250"></canvas>
 
-                    <br/>
-                    (Quelle: Bundesverwaltung admin.ch, 2014)
+                    <h2>BewohnerInnenstruktur / Altersdurchmischung absolut</h2>
+
+                    <canvas id="alterHistogrammAbs" width="700" height="250"></canvas>
                 </body>
             </html>
         ';
@@ -132,7 +199,7 @@ class GiessereiModelAlter extends JModel
      *
      * @return string
      */
-	public function getAlterKlassenWerte()
+	private function getAlterKlassenWerte()
     {
 	    $alterKlassen = $this->getProzentKinder(0, 4);
         $alterKlassen .= ", " . $this->getProzentKinder(5, 9);
@@ -158,6 +225,37 @@ class GiessereiModelAlter extends JModel
         return $alterKlassen;
     }
 
+    /**
+     * Liefert die Prozentwerte zu den Altersklassen.
+     *
+     * @return string
+     */
+    private function getAlterKlassenWerteAbs()
+    {
+        $alterKlassen = $this->getAnzahlKinder(0, 4);
+        $alterKlassen .= ", " . $this->getAnzahlKinder(5, 9);
+        $alterKlassen .= ", " . $this->getAnzahlKinder(10, 14);
+        // Überschneidung der Altersklassen
+        $alterKlassen .= ", " . ($this->getAnzahlKinder(15, 19) + $this->getAnzahlErwachsene(15, 19));
+        $alterKlassen .= ", " . $this->getAnzahlErwachsene(20, 24);
+        $alterKlassen .= ", " . $this->getAnzahlErwachsene(25, 29);
+        $alterKlassen .= ", " . $this->getAnzahlErwachsene(30, 34);
+        $alterKlassen .= ", " . $this->getAnzahlErwachsene(35, 39);
+        $alterKlassen .= ", " . $this->getAnzahlErwachsene(40, 44);
+        $alterKlassen .= ", " . $this->getAnzahlErwachsene(45, 49);
+        $alterKlassen .= ", " . $this->getAnzahlErwachsene(50, 54);
+        $alterKlassen .= ", " . $this->getAnzahlErwachsene(55, 59);
+        $alterKlassen .= ", " . $this->getAnzahlErwachsene(60, 64);
+        $alterKlassen .= ", " . $this->getAnzahlErwachsene(65, 69);
+        $alterKlassen .= ", " . $this->getAnzahlErwachsene(70, 74);
+        $alterKlassen .= ", " . $this->getAnzahlErwachsene(75, 79);
+        $alterKlassen .= ", " . $this->getAnzahlErwachsene(80, 84);
+        $alterKlassen .= ", " . $this->getAnzahlErwachsene(85, 89);
+        $alterKlassen .= ", " . $this->getAnzahlErwachsene(90, 94);
+
+        return $alterKlassen;
+    }
+
     private function getProzentErwachsene($alterVon, $alterBis)
     {
         $db = JFactory::getDBO();
@@ -172,8 +270,7 @@ class GiessereiModelAlter extends JModel
             WHERE typ = 1
                 AND (austritt = '0000-00-00' OR austritt > NOW())
                 AND (YEAR(NOW()) - jahrgang) >= " . $alterVon . "
-                AND (YEAR(NOW()) - jahrgang) <= " . $alterBis . "
-        ";
+                AND (YEAR(NOW()) - jahrgang) <= " . $alterBis;
         $db->setQuery($query);
         return $db->loadResult();
     }
@@ -190,26 +287,39 @@ class GiessereiModelAlter extends JModel
             )), 1) prozent
             FROM #__mgh_kind
             WHERE (YEAR(NOW()) - jahrgang) >= " . $alterVon . "
-                AND (YEAR(NOW()) - jahrgang) <= " . $alterBis . "
-        ";
+                AND (YEAR(NOW()) - jahrgang) <= " . $alterBis;
         $db->setQuery($query);
         return $db->loadResult();
     }
 
-    private function getAnzahlErwachsene()
+    private function getAnzahlErwachsene($alterVon = null, $alterBis = null)
     {
         $db = JFactory::getDBO();
         $query = "
             SELECT count(*) FROM #__mgh_mitglied
             WHERE typ = 1 AND (austritt = '0000-00-00' OR austritt > NOW())";
+
+        if (!is_null($alterVon))
+        {
+            $query .= " AND (YEAR(NOW()) - jahrgang) >= " . $alterVon . "
+                        AND (YEAR(NOW()) - jahrgang) <= " . $alterBis;
+        }
+
         $db->setQuery($query);
         return $db->loadResult();
     }
 
-    private function getAnzahlKinder()
+    private function getAnzahlKinder($alterVon = null, $alterBis = null)
     {
         $db = JFactory::getDBO();
         $query = "SELECT count(*) FROM #__mgh_kind";
+
+        if (!is_null($alterVon))
+        {
+            $query .= " WHERE (YEAR(NOW()) - jahrgang) >= " . $alterVon . "
+                        AND (YEAR(NOW()) - jahrgang) <= " . $alterBis;
+        }
+
         $db->setQuery($query);
         return $db->loadResult();
     }
