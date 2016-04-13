@@ -41,7 +41,7 @@ class GiessereiModelAlter extends JModelLegacy
                             scaleShowGridLines : true,
 
                             //String - Colour of the grid lines
-                            scaleGridLineColor : "rgba(0,0,0,.05)",
+                            scaleGridLineColor : "rgba(0,0,0,.4)",
 
                             //Number - Width of the grid lines
                             scaleGridLineWidth : 1,
@@ -114,7 +114,7 @@ class GiessereiModelAlter extends JModelLegacy
                             scaleShowGridLines : true,
 
                             //String - Colour of the grid lines
-                            scaleGridLineColor : "rgba(0,0,0,.05)",
+                            scaleGridLineColor : "rgba(0,0,0,.4)",
 
                             //Number - Width of the grid lines
                             scaleGridLineWidth : 1,
@@ -184,6 +184,33 @@ class GiessereiModelAlter extends JModelLegacy
                     <h2>BewohnerInnenstruktur / Altersdurchmischung absolut</h2>
 
                     <canvas id="alterHistogrammAbs" width="700" height="250"></canvas>
+
+                    <p />
+
+                    <h3>Zahlenwerk für interne Zwecke</h3>
+
+                    <table style="border:0; font-weight:normal; color:rgba(0,0,0,0.5);">
+                        <tr>
+                            <th>Gruppe</th>
+                            <th>Absolut</th>
+                            <th>Prozent</th>
+                        </tr>
+                        <tr>
+                            <th>0-19</th>
+                            <th>' . ($this->getAnzahlKinder(0, 19) + $this->getAnzahlErwachsene(0, 19)) . '</th>
+                            <th>' . ($this->getProzentKinder(0, 19) + $this->getProzentErwachsene(0, 19)) . '</th>
+                        </tr>
+                        <tr>
+                            <th>20-64</th>
+                            <th>' . ($this->getAnzahlKinder(20, 64) + $this->getAnzahlErwachsene(20, 64)) . '</th>
+                            <th>' . ($this->getProzentKinder(20, 64) + $this->getProzentErwachsene(20, 64)) . '</th>
+                        </tr>
+                        <tr>
+                            <th>65+</th>
+                            <th>' . $this->getAnzahlErwachsene(65, 100) . '</th>
+                            <th>' . $this->getProzentErwachsene(65, 100) . '</th>
+                        </tr>
+                    </table>
                 </body>
             </html>
         ';
@@ -261,6 +288,7 @@ class GiessereiModelAlter extends JModelLegacy
             SELECT ROUND(count(*) * 100 / ((
                 SELECT count(*) FROM #__mgh_mitglied
                 WHERE typ = 1 AND (austritt = '0000-00-00' OR austritt > NOW())
+                  AND jahrgang IS NOT NULL AND jahrgang > 0
             ) + (
                 SELECT count(*) FROM #__mgh_kind
             )), 1) prozent
@@ -280,6 +308,7 @@ class GiessereiModelAlter extends JModelLegacy
             SELECT ROUND(count(*) * 100 / ((
                 SELECT count(*) FROM #__mgh_mitglied
                 WHERE typ = 1 AND (austritt = '0000-00-00' OR austritt > NOW())
+                  AND jahrgang IS NOT NULL AND jahrgang > 0
             ) + (
                 SELECT count(*) FROM #__mgh_kind
             )), 1) prozent
@@ -295,7 +324,8 @@ class GiessereiModelAlter extends JModelLegacy
         $db = JFactory::getDBO();
         $query = "
             SELECT count(*) FROM #__mgh_mitglied
-            WHERE typ = 1 AND (austritt = '0000-00-00' OR austritt > NOW())";
+            WHERE typ = 1 AND (austritt = '0000-00-00' OR austritt > NOW())
+              AND jahrgang IS NOT NULL AND jahrgang > 0"; // Jahrgang ist nicht immer erfasst
 
         if (!is_null($alterVon))
         {
