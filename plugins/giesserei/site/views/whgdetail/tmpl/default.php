@@ -8,11 +8,11 @@ $doc = JFactory::getDocument();
 $base = JURI::base(true);
 $doc->addStyleSheet($base . '/components/com_giesserei/template/giesserei_default.css');
 
+// CSS laden für Magnific Popup (http://dimsemenov.com/plugins/magnific-popup/)
+$doc->addStyleSheet($base . '/components/com_giesserei/template/magnific_popup.css');
+
 $whg = $this->wohnung[0];
 $model = $this->getModel();
-
-JPluginHelper::importPlugin('content');
-$dispatcher = JDispatcher::getInstance();
 
 // Berechnen der Verortungsansicht
 // Gebäudeflügel und Treppenhaus
@@ -65,13 +65,16 @@ endif;
 <br/>
 <table class="whgliste">
     <tr>
-        <td width="400'"><?php
-            $text = "<img src=\"/media/grundrisse/" . $whg->grundriss . ".png\" alt=\"Grundriss\" width=\"350\" /><br /><br /><br /><strong>ACHTUNG</strong>:
-	Dies ist nur ein schematischer Grundrissplan ohne Anspruch auf Detailtreue! Vereinsmitglieder können genaue und vermasste 1:100-Pläne als PDF in der Dateiablage herunterladen.";
-            // Lupensymbol automatisch hinzufügen via Joomla-HTM-Präpozessor
-            echo JHtml::_('content.prepare', $text);
-            echo "";
-            ?></td>
+        <td width="400'">
+            <a id="wohnung-image" href="/media/grundrisse/<?php echo $whg->grundriss; ?>.png">
+                <img src="/media/grundrisse/<?php echo $whg->grundriss; ?>.png" alt="Grundriss"
+                     title="Wohnung <?php echo $whg->nummer; ?>" width="350" />
+            </a>
+            <br /><br /><br />
+            <strong>ACHTUNG</strong>:
+	         Dies ist nur ein schematischer Grundrissplan ohne Anspruch auf Detailtreue!
+            Vereinsmitglieder können genaue und vermasste 1:100-Pläne als PDF in der Dateiablage herunterladen.';
+        </td>
         <td valign="top">
             <?php
             if ($whg->userid > 0 && $whg->freiab == '0000-00-00') echo "<span class=\"resmark\">Wohnung ist bereits VERMIETET!</span><br /><br />";
@@ -164,3 +167,18 @@ endif;
     </tr>
 </table>
 
+<?php
+  // JS laden für Magnific Popup (http://dimsemenov.com/plugins/magnific-popup/)
+  // JQuery ist eine Dependency vom Magnific Popup
+?>
+<script src="/media/jui/js/jquery.min.js"></script>
+<script src="<?php echo $base . '/components/com_giesserei/template/magnific_popup.js'; ?>"></script>
+<script>
+    $('#wohnung-image').magnificPopup({
+        type:'image',
+        image: {
+            titleSrc: 'title', // Attribute of the target element that contains caption for the slide
+            verticalFit: false // Fits image in area vertically
+        }
+    });
+</script>
