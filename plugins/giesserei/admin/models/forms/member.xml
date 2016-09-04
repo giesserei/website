@@ -1,50 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <form>
-	<fieldset name="Personalien">
-		<field name="id" type="hidden" default="0" />
-		<field name="vorname" type="text" class="inputbox" label="Vorname: " description="Vorname" size="20" required="true"/>
-		<field name="nachname" type="text" class="inputbox" label="Nachname: " description="Nachname" size="30" required="true"/>
-		<field name="adresse" type="text" class="inputbox" label="Adresse: " description="Adresse" size="40" required="true"/>
-		<field name="plz" type="text" class="inputbox" label="PLZ: " description="Postleitzahl" size="5" required="true"/>
-		<field name="ort" type="text" class="inputbox" label="Ort: " description="Ort" size="40" required="true"/>
-		<field name="jahrgang" type="text" class="inputbox" label="Jahrgang: " description="Jahrgang (nicht Geburtsdatum)" size="5" />
-		<field name="userid" type="user" label="Joomla User: " required="true" />
-		<field name="zur_person" type="textarea" label="Text zur Person" description="Porträttext" class="inputbox" rows="25" cols="120" />
-	</fieldset>
-	  
-	<fieldset name="verarbeitung">
-	  <field name="is_update_user_name" type="checkbox" class="inputbox" label="Name in Benutzertabelle übernehmen" 
-	         description="Vorname und Nachname in Benutzertabelle übernehmen" value="1"/>
-    <field name="is_update_permission" type="checkbox" class="inputbox" label="Rechte Passivmitglied automatisch setzen" 
-           description="Rechte für Passivmitglied automatisch setzen; alle sonstigen Rechte werden gelöscht" value="1" />
-	</fieldset>
-		
-	<fieldset name="telefonie">
-		<field name="telefon" type="text" class="inputbox" label="Telefon 1: " description="Erste Telefonnummer (meistens Festnetz)" size="30" />
-		<field name="telefon_frei" type="checkbox" class="inputbox" label=" Telefonnummer 1 sichtbar" description="Sichtbarkeit EIN/AUS" value="1" default="1" />
-		<field name="handy" type="text" class="inputbox" label="Telefon 2: " description="Zweite Telefonnummer (meistens Mobiltelefon" size="30" />
-		<field name="handy_frei" type="checkbox" class="inputbox" label=" Telefonnummer 2 sichtbar" description="Sichtbarkeit EIN/AUS" value="1" />	
-	</fieldset>
+    <fieldset name="personalien">
+        <field name="id" type="hidden" default="0"/>
+        <field name="vorname" type="text" class="inputbox" label="Vorname" size="20"
+               required="true"/>
+        <field name="nachname" type="text" class="inputbox" label="Nachname" size="30"
+               required="true"/>
+        <field name="adresse" type="text" class="inputbox" label="Adresse" size="40"
+               required="true"/>
+        <field name="plz" type="text" class="inputbox" label="PLZ" description="Postleitzahl" size="5"
+               required="true"/>
+        <field name="ort" type="text" class="inputbox" label="Ort" size="40" required="true"/>
+        <field name="jahrgang" type="text" class="inputbox" label="Jahrgang"
+               description="Jahrgang JJJJ (nicht Geburtsdatum)" size="5"/>
+        <field name="userid" type="user" label="Joomla User" required="true"/>
+    </fieldset>
 
-	<fieldset name="verein">
-		<field name="wohnung" type="text" class="inputbox" label="Wohnung(en): " description="Wohnungen durch Komma trennen!" size="30" />
-		<field name="funktion" type="text" class="inputbox" label="Funktion: " description="Funktionsbezeichnung mit freiem Text" size="30" />
-		<field name="eintritt" type="calendar" label="Beitritt: " description ="Datum des Vereinsbeitritts"  format="%Y-%m-%d" />
-		<field name="austritt" type="calendar" label="Austritt/Auszug: " description ="Datum des Vereinsaustritts = Auszugsdatum bei Aktivmitgliedern" format="%Y-%m-%d" />
-		<field name="einzug" type="calendar" label="Einzug: " description ="Datum des Einzugs"  format="%Y-%m-%d" />
-		<field name="typ" type="list" default="1" label="Typ: " description="Bitte auswählen">
-      <option value="1">Bewohner</option>
-      <option value="2">Gewerbe</option>
-      <option value="3">Passivmitglied</option>
-      <option value="4">Passivmiglied deaktiviert</option>
-      <option value="5">Siedlungsassistenz</option>
-      <option value="6">Hausverein</option>
-      <option value="7">Stundenfonds</option>
-    </field>
-    <field name="kommentar" type="textarea" label="Kommentar" description="Kommentar" class="inputbox" rows="4" cols="40" />
-    <field name="dispension_grad" type="text" label="Dispensionsgrad" description="Grad der Dispensierung (Punkt als Dezimalzeichen)" class="inputbox" />
-    <field name="zb_freistellung" type="text" label="Freistellung (Monate)" description="Anzahl der Freistellungsmonate in der Zeitbank (Einzug oder Geburt)" class="inputbox" />
-	</fieldset>
+    <fieldset name="vorstellung">
+        <field name="zur_person" type="textarea" label="Text zur Person" description="Porträttext" class="inputbox"
+               rows="25" cols="120"/>
+    </fieldset>
+
+    <fieldset name="synchronisation">
+        <field name="is_update_user_name" type="checkbox" class="inputbox" label="Name in Benutzertabelle übernehmen"
+               description="Vorname und Nachname in Feld Name der Tabelle Users übernehmen" value="1"/>
+        <field name="is_update_permission" type="checkbox" class="inputbox"
+               label="Rechte Passivmitglied automatisch setzen"
+               description="Rechte für Passivmitglied automatisch setzen; alle sonstigen Rechte werden gelöscht"
+               value="1"/>
+    </fieldset>
+
+    <fieldset name="telefonie">
+        <field name="telefon" type="text" class="inputbox" label="Telefon 1"
+               description="Erste Telefonnummer (meistens Festnetz)" size="30"/>
+        <field name="telefon_frei" type="checkbox" class="inputbox" label="Telefonnummer 1 sichtbar"
+               description="Sichtbarkeit der Telefonnummer EIN/AUS" value="1" default="1"/>
+        <field name="handy" type="text" class="inputbox" label="Telefon 2"
+               description="Zweite Telefonnummer (meistens Mobiltelefon" size="30"/>
+        <field name="handy_frei" type="checkbox" class="inputbox" label="Telefonnummer 2 sichtbar"
+               description="Sichtbarkeit der Telefonnummer EIN/AUS" value="1"/>
+    </fieldset>
+
+    <fieldset name="verein">
+        <field name="wohnung" type="text" class="inputbox" label="Wohnung(en)"
+               description="Wohnungen durch Komma trennen" size="30"/>
+        <field name="eintritt" type="calendar" label="Beitritt" description="Datum des Vereinbeitritts"
+               format="%Y-%m-%d"/>
+        <field name="austritt" type="calendar" label="Austritt/Auszug"
+               description="Datum des Vereinsaustritts = Auszugsdatum bei Aktivmitgliedern" format="%Y-%m-%d"/>
+        <field name="einzug" type="calendar" label="Einzug" description="Datum des Einzugs" format="%Y-%m-%d"/>
+        <field name="typ" type="list" default="1" label="Typ" description="Bitte auswählen">
+            <option value="1">Bewohner</option>
+            <option value="2">Gewerbe</option>
+            <option value="3">Passivmitglied</option>
+            <option value="4">Passivmiglied deaktiviert</option>
+            <option value="5">Siedlungsassistenz</option>
+            <option value="6">Hausverein</option>
+            <option value="7">Stundenfonds</option>
+        </field>
+        <field name="kommentar" type="textarea" label="Kommentar" description="Freier Kommentar" class="inputbox"
+               rows="4"
+               cols="40"/>
+    </fieldset>
+
+    <fieldset name="zeitbank">
+        <field name="dispension_grad" type="text" label="Dispensionsgrad"
+               description="Grad der Dispensierung (Punkt als Dezimalzeichen)" class="inputbox"/>
+        <field name="zb_freistellung" type="text" label="Freistellung (Monate)"
+               description="Anzahl der Freistellungsmonate in der Zeitbank (z.B. wegen Einzug oder Geburt)"
+               class="inputbox"/>
+    </fieldset>
 
 </form>

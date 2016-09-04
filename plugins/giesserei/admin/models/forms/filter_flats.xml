@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field
+                name="search"
+                type="text"
+                label="Suche"
+                description="Suchen nach Typ oder ID"
+                hint="JSEARCH_FILTER"
+                class="js-stools-search-string"
+        />
+    </fields>
+    <fields name="list">
+        <field
+                name="fullordering"
+                type="list"
+                label="JGLOBAL_SORT_BY"
+                statuses="*,0,1,2,-2"
+                description="JGLOBAL_SORT_BY"
+                onchange="this.form.submit();"
+                default="mo.id ASC">
+            <option value="">JGLOBAL_SORT_BY</option>
+            <option value="wohnung_typ ASC">Typ aufsteigend</option>
+            <option value="wohnung_typ DESC">Typ absteigend</option>
+            <option value="mo.flaeche ASC">Fläche aufsteigend</option>
+            <option value="mo.flaeche DESC">Fläche absteigend</option>
+            <option value="mo.id ASC">JGRID_HEADING_ID_ASC</option>
+            <option value="mo.id DESC">JGRID_HEADING_ID_DESC</option>
+        </field>
+        <field
+                name="limit"
+                type="limitbox"
+                class="input-mini"
+                default="25"
+                label="COM_MENUS_LIST_LIMIT"
+                description="COM_MENUS_LIST_LIMIT_DESC"
+                onchange="this.form.submit();"
+        />
+    </fields>
+</form>

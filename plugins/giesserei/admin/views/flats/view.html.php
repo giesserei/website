@@ -1,32 +1,72 @@
 <?php
-/*
- * Created on 27.12.2010
- *
- */
- defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die('Restricted access');
 
- jimport('joomla.application.component.view');
+JLoader::register('GiessereiHelper', JPATH_COMPONENT . '/helpers/giesserei.php');
 
- class GiessereiViewFlats extends JView {
- 	protected $items;
- 	protected $pagination;
- 	protected $state;
- 	
- 	public function display($tpl = null) {
- 		JToolBarHelper::title('Wohnungslisten-Verwaltung','user.png');
- 		// Wohnungen müssen nicht über das Admin-Panel angelegt werden -> funktioniert wegen einem SQL-Fehler auch nicht
- 		//JToolBarHelper::addNew('flat.add','JTOOLBAR_NEW');
- 		JToolBarHelper::editList('flat.edit','JTOOLBAR_EDIT');
- 		// Löschen von Wohnungen soll auch nicht möglich sein
- 		//JToolBarHelper::deleteList('','flats.delete','JTOOLBAR_DELETE');
- 		
- 		$this->items = $this->get('Items');
- 		
- 		$this->state = $this->get('State');
- 		$this->pagination = $this->get('Pagination');
- 		
- 		parent::display($tpl);
- 	}
- }
-  
-?>
+class GiessereiViewFlats extends JViewLegacy
+{
+    protected $items;
+
+    protected $pagination;
+
+    protected $state;
+
+    protected $sidebar;
+
+    public $filterForm;
+
+    public $activeFilters;
+
+    public $ordering;
+
+    public function display($tpl = null)
+    {
+        $this->items = $this->get('Items');
+        $this->pagination = $this->get('Pagination');
+        $this->state = $this->get('State');
+        $this->filterForm = $this->get('FilterForm');
+        $this->activeFilters = $this->get('ActiveFilters');
+
+        GiessereiHelper::addSubmenu('flats');
+
+        $this->ordering = array();
+
+        $this->addToolbar();
+        $this->sidebar = JHtmlSidebar::render();
+
+        parent::display($tpl);
+    }
+
+    /**
+     * Add the page title and toolbar.
+     *
+     * @return  void
+     */
+    protected function addToolbar()
+    {
+        JToolbarHelper::title('Wohnungen');
+
+        $user = JFactory::getUser();
+
+        // Löschen und Neuanlegen ist nur per SQL möglich => sollte nur bei Umbauten notwendig werden
+        JToolBarHelper::editList('flat.edit', 'JTOOLBAR_EDIT');
+
+        if ($user->authorise('core.manage', 'com_giesserei')) {
+            JToolBarHelper::preferences('com_giesserei');
+        }
+    }
+
+    /**
+     * Returns an array of fields the table can be sorted by
+     *
+     * @return  array  Array containing the field name to sort by as the key and display text as value
+     */
+    protected function getSortFields()
+    {
+        return array(
+            'mo.id' => 'ID',
+            'wohnung_typ' => 'Typ',
+            'mo.flaeche' => 'Fläche'
+        );
+    }
+}

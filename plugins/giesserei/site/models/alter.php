@@ -1,9 +1,7 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
 
-jimport('joomla.application.component.model');
-
-class GiessereiModelAlter extends JModel
+class GiessereiModelAlter extends JModelLegacy
 {
     /**
      * Liefert das gesamte HTML für Darstellung der Altersstruktur als HTML5.
@@ -353,4 +351,5 @@ class GiessereiModelAlter extends JModel
         $db->setQuery($query);
         return $db->loadResult();
     }
+
 }

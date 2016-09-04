@@ -1,14 +1,15 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
 
-jimport('joomla.application.component.view');
+class GiessereiViewWhgDetail extends JViewLegacy
+{
 
-class GiessereiViewWhgDetail extends JView {
-  function display($tpl = null) {
-    $model =& $this->getModel();
-    $wohnung = $model->getWohnung(JRequest::getVar('whgnr'));
-    $this->assignRef('wohnung',$wohnung);
-    parent::display($tpl);
-  }
+    protected $wohnung;
+
+    public function display($tpl = null)
+    {
+        $model = $this->getModel();
+        $this->wohnung = $model->getWohnung(JRequest::getVar('whgnr'));
+        parent::display($tpl);
+    }
 }
-?>

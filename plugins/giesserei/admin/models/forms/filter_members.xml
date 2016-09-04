@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field
+                name="search"
+                type="text"
+                label="Suche"
+                description="Suchen nach Vorname, Name oder User-ID"
+                hint="JSEARCH_FILTER"
+                class="js-stools-search-string"
+        />
+        <field
+                name="typ"
+                type="list"
+                label="Typ"
+                description="Nach Mitgliedertyp filtern"
+                onchange="this.form.submit();"
+                default="1">
+            <option value="1">- Typ wählen -</option>
+            <option value="2">Bewohner</option>
+            <option value="3">Gewerbe</option>
+            <option value="4">Passivmitglied</option>
+            <option value="5">Passivmitglied deaktiviert</option>
+        </field>
+        <field
+                name="status"
+                type="list"
+                label="Status"
+                description="Nach Status der Mitglieder filtern"
+                onchange="this.form.submit();"
+                default="1">
+            <option value="1">- Status wählen -</option>
+            <option value="2">aktiv</option>
+            <option value="3">ausgetreten</option>
+        </field>
+        <field
+                name="quality"
+                type="list"
+                label="Datenqualität"
+                description="Nach Datenqualität filtern"
+                onchange="this.form.submit();"
+                default="1">
+            <option value="1">- Datenqualität wählen -</option>
+            <option value="2">Bewohner/Gewerbe ohne Einzugsdatum</option>
+            <option value="3">Keine E-Mail Adresse</option>
+            <option value="4">Bewohner/Gewerbe mit fehlerhafter Adresse</option>
+            <option value="5">Bewohner/Gewerbe ohne Wohnung</option>
+            <option value="6">Passivmitglied ausgetreten</option>
+        </field>
+    </fields>
+    <fields name="list">
+        <field
+                name="fullordering"
+                type="list"
+                label="JGLOBAL_SORT_BY"
+                statuses="*,0,1,2,-2"
+                description="JGLOBAL_SORT_BY"
+                onchange="this.form.submit();"
+                default="mgl.nachname ASC">
+            <option value="">JGLOBAL_SORT_BY</option>
+            <option value="mgl.vorname ASC">Vorname aufsteigend</option>
+            <option value="mgl.vorname DESC">Vorname absteigend</option>
+            <option value="mgl.nachname ASC">Nachname aufsteigend</option>
+            <option value="mgl.nachname DESC">Nachname absteigend</option>
+            <option value="typ_name ASC">Typ aufsteigend</option>
+            <option value="typ_name DESC">Typ absteigend</option>
+            <option value="mgl.id ASC">JGRID_HEADING_ID_ASC</option>
+            <option value="mgl.id DESC">JGRID_HEADING_ID_DESC</option>
+        </field>
+        <field
+                name="limit"
+                type="limitbox"
+                class="input-mini"
+                default="25"
+                label="COM_MENUS_LIST_LIMIT"
+                description="COM_MENUS_LIST_LIMIT_DESC"
+                onchange="this.form.submit();"
+        />
+    </fields>
+</form>

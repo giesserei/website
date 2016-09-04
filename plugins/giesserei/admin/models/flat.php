@@ -1,82 +1,95 @@
 <?php
-/*
- * Created on 27.12.2010; Sub?
- * 
- */
+
 defined('_JEXEC') or die('Restricted access');
 
-jimport('joomla.application.component.modeladmin');
+JLoader::register('GiessereiHelper', JPATH_COMPONENT . '/helpers/giesserei.php');
 
-class GiessereiModelFlat extends JModelAdmin {
+class GiessereiModelFlat extends JModelAdmin
+{
 
-	public function getTable($type="Flats",$prefix="GiessereiTable",$config=array()) {
-		return JTable::getInstance($type,$prefix,$config);
-	}
-	
-	public function getForm($data = array(), $loadData = true) {
-		$options = array('control' => 'jform', 'load_data' => $loadData);
-		$form = $this->loadForm('flats','flat',$options);
-		
-		if(empty($form)) {
-			return(false);
-		}
-		return $form;
-	}
+    public function getTable($type = "Flats", $prefix = "GiessereiTable", $config = array())
+    {
+        return JTable::getInstance($type, $prefix, $config);
+    }
 
-	protected function loadFormData() {
-		$app = JFactory::getApplication();
-		$data = $app->getUserState('com_giesserei.edit.flat.data',array());
-		
-		if(empty($data)) {
-			$data = $this->getItem();
-		}
-		
-		return $data;
-	}
+    public function getForm($data = array(), $loadData = true)
+    {
+        $options = array('control' => 'jform', 'load_data' => $loadData);
+        $form = $this->loadForm('flats', 'flat', $options);
 
-	// Liest die Wohnungstypen aus für Edit-Form
-	public function getFlatTypes() {
-	    $db =& JFactory::getDBO();
-		$query = "SELECT * FROM #__mgh_objekttyp ORDER BY bezeichnung";
-    	$db->setQuery($query);
-	    $rows = $db->loadObjectList();
-		return($rows);
-	}
+        if (empty($form)) {
+            return (false);
+        }
+        return $form;
+    }
 
-	// Liest die Bewohnerschaft aus für Edit-Form
-	public function getBewohner() {
-	    $db =& JFactory::getDBO();
-		$data=$this->loadFormData();
+    protected function loadFormData()
+    {
+        $app = JFactory::getApplication();
+        $data = $app->getUserState('com_giesserei.edit.flat.data', array());
 
-		$query = "SELECT * FROM #__mgh_mitglied as mgl,#__mgh_x_mitglied_mietobjekt as xmo WHERE mgl.userid=xmo.userid AND objektid=".$data->id." ORDER BY nachname";
-    	$db->setQuery($query);
-	    $rows = $db->loadObjectList();
-		return($rows);
-	}
+        if (empty($data)) {
+            $data = $this->getItem();
+        }
 
-	// Liest die Kinder einer Wohnung aus für Edit-Form
-	public function getKids() {
-	    $db =& JFactory::getDBO();
-		$data=$this->loadFormData();
+        return $data;
+    }
 
-		$query = "SELECT * FROM #__mgh_kind WHERE objektid=".$data->id;
-    	$db->setQuery($query);
-	    $rows = $db->loadObjectList();
-		return($rows);
-	}
+    /**
+     * Werte für ungesetzte Checkboxen vor dem Speichern setzen.
+     *
+     * @inheritdoc
+     */
+    protected function prepareTable($table)
+    {
+        $app = JFactory::getApplication();
+        $input = $app->input;
+        $data = $input->get('jform', '', 'array');
 
-	// Liest das Journal einer Wohnung
-	public function getJournal() {
-		$data=$this->loadFormData();
-		$db =& JFactory::getDBO();
+        if (!isset($data['maisonette'])) {
+            $table->maisonette = 0;
+        }
+    }
 
-		$query = "SELECT *,oj.id as id FROM #__mgh_objektjournal as oj,#__mgh_ojournalklasse as jk WHERE oj.klasseid=jk.id AND objektid=".$data->id." ORDER BY datum";
-    	$db->setQuery($query);
-	    $rows = $db->loadObjectList();
-		return($rows);
-				
-	}
+    /**
+     * Wohnungen können nicht gelöscht werden.
+     *
+     * @param object $record
+     * @return boolean
+     */
+    protected function canDelete($record)
+    {
+        return false;
+    }
+
+    /**
+     * Liest die Bewohnerschaft einer Wohnung aus zur Anzeige im Edit-Form
+     */
+    public function getBewohner()
+    {
+        $db = JFactory::getDBO();
+        $data = $this->loadFormData();
+
+        $query = "SELECT * FROM #__mgh_mitglied as mgl LEFT JOIN #__mgh_x_mitglied_mietobjekt as xmo"
+                 ." ON mgl.userid = xmo.userid"
+                 ." WHERE objektid=" . $data->id . " ORDER BY nachname";
+        $db->setQuery($query);
+        $rows = $db->loadObjectList();
+        return ($rows);
+    }
+
+    /**
+     * Liest die Kinder einer Wohnung aus zur Anzeige im Edit-Form
+     */
+    public function getKids()
+    {
+        $db = JFactory::getDBO();
+        $data = $this->loadFormData();
+
+        $query = "SELECT * FROM #__mgh_kind WHERE objektid=" . $data->id;
+        $db->setQuery($query);
+        $rows = $db->loadObjectList();
+        return ($rows);
+    }
 
 }
-
-?>

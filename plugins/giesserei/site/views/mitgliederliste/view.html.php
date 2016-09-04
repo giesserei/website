@@ -1,14 +1,41 @@
-<?php 
+<?php
 defined('_JEXEC') or die('Restricted access');
 
-jimport('joomla.application.component.view');
+class GiessereiViewMitgliederliste extends JViewLegacy
+{
 
-class GiessereiViewMitgliederliste extends JView {
-  function display($tpl = null) {
-    $model =& $this->getModel();
-    $mitglieder = $model->getMitglieder();
-    $this->assignRef('mitglieder',$mitglieder);
-    parent::display($tpl);
-  }
+    public function display($tpl = null)
+    {
+        parent::display($tpl);
+    }
+
+    protected function getBewohner()
+    {
+        return $this->getModel()->getMitglieder(1);
+    }
+
+    protected function getGewerbe()
+    {
+        return $this->getModel()->getMitglieder(2);
+    }
+
+    protected function getPassivmitglieder()
+    {
+        return $this->getModel()->getMitglieder(3);
+    }
+
+    protected function getAnzahlBewohner()
+    {
+        return $this->getModel()->getAnzahlMitglieder(1);
+    }
+
+    protected function getAnzahlGewerbe()
+    {
+        return $this->getModel()->getAnzahlMitglieder(2);
+    }
+
+    protected function getAnzahlPassivmitglieder()
+    {
+        return $this->getModel()->getAnzahlMitglieder(3);
+    }
 }
-?> 
