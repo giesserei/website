@@ -108,17 +108,23 @@ endif;
                 ?>
                 <li>Pflichtdarlehen: <strong>Fr. <?php echo number_format($whg->pflichtdarlehen, 0, ',', '\'') ?>
                         .-</strong></li>
-                <li>Nebenkosten:
-                    <ul>
-                        <li>Allgemeine Nebenkosten (akonto):
-                            <strong>Fr. <?php echo number_format($whg->nk, 0, ',', '\'') ?>.-/Monat</strong><br/>
-                            für Fernwärme, Wasser, Lüftung (Ventilatorstrom, Unterhalt), Serviceabos (Lifte,
-                            Waschmaschinen), Allgemeinstrom,
-                            Gemeinschaftsräume, etc.<br>
-                            (<b>nicht</b> enthalten sind Strom und Abfall, welche direkt vom Stadtwerk in Rechnung
-                            gestellt werden)
-                        <li>Solidaritätsfonds Gesewo: <strong>Fr. 10.-/Monat</strong>
-                    </ul>
+                <?php if ($whg->subventioniert > 0): ?>
+                    <li>Nebenkosten + genossenschaftliche Beiträge (Akonto) von
+                        <strong>Fr. <?php echo number_format($whg->nk, 0, ',', '\'') ?>.-/Monat</strong> für Heizkosten,
+                        Wasser, Gemeinschaftsräume, Mietzinsausfall, Leerstände und Solidaritätsfond
+                <?php else: ?>
+                    <li>Nebenkosten:
+                        <ul>
+                            <li>Allgemeine Nebenkosten (akonto):
+                                <strong>Fr. <?php echo number_format($whg->nk, 0, ',', '\'') ?>.-/Monat</strong><br/>
+                                für Fernwärme, Wasser, Lüftung (Ventilatorstrom, Unterhalt), Serviceabos (Lifte,
+                                Waschmaschinen), Allgemeinstrom,
+                                Gemeinschaftsräume, etc.<br>
+                                (<b>nicht</b> enthalten sind Strom und Abfall, welche direkt vom Stadtwerk in Rechnung
+                                gestellt werden)
+                            <li>Solidaritätsfonds Gesewo: <strong>Fr. 10.-/Monat</strong>
+                        </ul>
+                <?php endif; ?>
                 <li>Stockwerk: <strong><?php
                         if ($st == 0) echo "EG";
                         elseif ($st == 5) echo "DG";
