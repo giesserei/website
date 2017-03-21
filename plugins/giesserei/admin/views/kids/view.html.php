@@ -58,7 +58,7 @@ class GiessereiViewKids extends JViewLegacy
         JToolBarHelper::editList('kid.edit', 'JTOOLBAR_EDIT');
 
         if ($canEditFull) {
-            JToolBarHelper::deleteList('', 'kid.delete', 'JTOOLBAR_DELETE');
+            JToolBarHelper::deleteList('', 'kids.delete', 'JTOOLBAR_DELETE');
         }
 
         if ($user->authorise('core.manage', 'com_giesserei')) {

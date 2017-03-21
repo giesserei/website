@@ -75,4 +75,20 @@ class GiessereiHelper
         }
         return $result;
     }
+
+    public static function debug ( $varName, $varValue, $row = "", $file = "" )
+    {
+        $debug = '<blockquote style="border:1px dotted red; 
+                  border-left:10px solid red; padding-left:1em;">';
+        $debug .= "Debug-Output: ";
+        $debug .= "<pre>";
+        $debug .= '$'. $varName  .' = ';
+        $debug .= $varValue;
+        $debug .= "</pre>";
+        if ( $row OR $file ) {
+            $debug .= "<br> (Row: $row - $file)";
+        }
+        $debug .= "</blockquote>";
+        JFactory::getApplication()->enqueueMessage($debug, 'error');
+    }
 }

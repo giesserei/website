@@ -99,6 +99,21 @@ class GiessereiFrontendHelper
         }
     }
 
+    public static function debug ( $varName, $varValue, $row = "", $file = "" )
+    {
+        echo '<blockquote style="border:1px dotted red; 
+                  border-left:10px solid red; padding-left:1em;">';
+        echo "Debug-Output: ";
+        echo "<pre>";
+        echo '$'. $varName  .' = ';
+        print_r ( $varValue );
+        echo "</pre>";
+        if ( $row OR $file ) {
+            echo "<br> (Row: $row - $file)";
+        }
+        echo "</blockquote>";
+    }
+
     // -------------------------------------------------------------------------
     // private section
     // -------------------------------------------------------------------------

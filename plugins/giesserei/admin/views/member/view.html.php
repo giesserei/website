@@ -53,13 +53,13 @@ class GiessereiViewMember extends JViewLegacy
     protected function getMitbewohner()
     {
         $isNew = ($this->item->id == 0);
-        return $isNew ? [] : $this->getModel()->getMitbewohner();
+        return $isNew ? array() : $this->getModel()->getMitbewohner();
     }
 
     protected function getKinder()
     {
         $isNew = ($this->item->id == 0);
-        return $isNew ? [] : $this->getModel()->getKinder();
+        return $isNew ? array() : $this->getModel()->getKinder();
     }
 
     // -------------------------------------------------------------------------
