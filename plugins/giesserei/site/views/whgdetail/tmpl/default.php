@@ -73,11 +73,11 @@ endif;
             <br /><br /><br />
             <strong>ACHTUNG</strong>:
 	         Dies ist nur ein schematischer Grundrissplan ohne Anspruch auf Detailtreue!
-            Vereinsmitglieder können genaue und vermasste 1:100-Pläne als PDF in der Dateiablage herunterladen.';
+            Vereinsmitglieder können genaue und vermasste 1:100-Pläne als PDF in der Dateiablage herunterladen.
         </td>
         <td valign="top">
             <?php
-            if ($whg->userid > 0 && $whg->freiab == '0000-00-00') echo "<span class=\"resmark\">Wohnung ist bereits VERMIETET!</span><br /><br />";
+            if ($whg->userid == 0 || $whg->freiab != '0000-00-00') echo "<span class='notice_whg_frei'>Wohnung ist frei!</span><br /><br />";
             ?>
             <ul>
                 <li><strong><?php echo $whg->bezeichnung ?></strong></li>

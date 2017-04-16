@@ -49,19 +49,25 @@ tr.mitglied
 	border-style: none;
 }
 	
-/* Reservierte Wohnungen in der Liste*/
-span.res
+/* Reservierte Wohnungen in der Liste */
+span.whg_res
 {
-    color: #AAAAAA;
+    color: #aaaaaa;
     font-weight: normal;
-    text-decoration: line-through;
 }
 
-/* Hinweis auf vermietete Wohnung in der Detailansicht */
-span.resmark {
-    border-color: red;
+/* Freie Wohnungen in der Liste */
+span.whg_frei
+{
+    color: green;
+    font-weight: bold;
+}
+
+/* Hinweis auf freie Wohnung in der Detailansicht */
+span.notice_whg_frei {
+    border-color: green;
     border-style: solid;
-    color: red;
+    color: green;
     font-size: large;
     font-weight: bold;
     padding: 10px;

@@ -15,10 +15,9 @@ function whg_nummer($whg)
     global $detail_pfad;
     echo "<a href=\"" . DETAIL_PFAD . $whg->nummer . "\"";
     $res = $whg->anzahl_mitglieder > 0 && $whg->freiab == '0000-00-00';
-    if ($res) echo " class=\"res\"";
     echo ">" . $whg->nummer . "</a> ";
     if ($whg->subventioniert > 0) echo "<img src=\"images/blue_triangle.png\" alt=\"subventioniert\" title=\"subventioniert\" /> ";
-    if ($res) echo "<span class=\"res\">";
+    if ($res) echo "<span class='whg_res'>"; else echo "<span class='whg_frei'>";
     echo " (" . $whg->bezeichnung . ", " . $whg->zimmerbezeichnung . ")</span><br />";
 }
 
@@ -28,10 +27,10 @@ function whg_nummer($whg)
 <h3>Ostflügel (an Ida-Sträuli-Strasse)</h3>
 <table width="100%" class="whgliste">
     <tr>
-        <th width="25%"> Treppenhaus 1</th>
-        <th width="25%"> Treppenhaus 2</th>
-        <th width="25%"> Treppenhaus 3</th>
-        <th width="25%"> Treppenhaus 4</th>
+        <th width="25%" align="left">Treppenhaus 1 - Nr. 71</th>
+        <th width="25%" align="left">Treppenhaus 2 - Nr. 69</th>
+        <th width="25%" align="left">Treppenhaus 3 - Nr. 67</th>
+        <th width="25%" align="left">Treppenhaus 4 - Nr. 65</th>
     </tr>
     <tr>
         <?php
@@ -49,10 +48,10 @@ function whg_nummer($whg)
 <h3>Westflügel (Innenhof)</h3>
 <table width="100%" class="whgliste">
     <tr>
-        <th width="25%"> Treppenhaus 5</th>
-        <th width="25%"> Treppenhaus 6</th>
-        <th width="25%"> Treppenhaus 7</th>
-        <th width="25%"> Treppenhaus 8</th>
+        <th width="25%" align="left">Treppenhaus 5 - Nr. 79</th>
+        <th width="25%" align="left">Treppenhaus 6 - Nr. 77</th>
+        <th width="25%" align="left">Treppenhaus 7 - Nr. 75</th>
+        <th width="25%" align="left">Treppenhaus 8 - Nr. 73</th>
     </tr>
     <tr>
         <?php
@@ -67,4 +66,5 @@ function whg_nummer($whg)
     </tr>
 </table>
 <p><img src="images/blue_triangle.png" alt="subventioniert" title="subventioniert"/> = subventionierte Wohnungen</p>
+<p><span class='whg_frei'>grün</span> = Freie Wohnungen</p>
 
