@@ -55,8 +55,7 @@ class GiessereiTableProfil extends JTable
 
         if ($otherTables) {
             // E-Mail speichern
-            $query = sprintf("UPDATE #__users SET email = '%s' WHERE id=" . $this->userid,
-                mysql_real_escape_string($this->email));
+            $query = "UPDATE #__users SET email = " . $db->quote($this->email) . " WHERE id = " . $this->userid;
             $db->setQuery($query);
             if (!$db->query()) {
                 JLog::add($db->getErrorMsg(), JLog::ERROR);
@@ -65,8 +64,7 @@ class GiessereiTableProfil extends JTable
             }
 
             // Geburtstag speichern
-            $query = sprintf("UPDATE #__kunena_users SET birthdate = '%s' WHERE userid=" . $this->userid,
-                $this->birthdate);
+            $query = "UPDATE #__kunena_users SET birthdate = " . $db->quote($this->birthdate) . " WHERE userid = " . $this->userid;
             $db->setQuery($query);
             if (!$db->query()) {
                 JLog::add($db->getErrorMsg(), JLog::ERROR);

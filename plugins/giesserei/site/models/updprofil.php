@@ -187,8 +187,7 @@ class GiessereiModelUpdprofil extends JModelAdmin
         $db = &JFactory::getDBO();
 
         $user = JFactory::getUser();
-        $query = sprintf("SELECT * FROM #__users WHERE id!=" . $user->id . " AND lower(email) = '%s'",
-            mysql_real_escape_string($email)); // verhindert SQL-Injection
+        $query = "SELECT * FROM #__users WHERE id != " . $user->id . " AND lower(email) = " . $db->quote($email);
 
         $db->setQuery($query);
         $userRow = $db->loadObject();

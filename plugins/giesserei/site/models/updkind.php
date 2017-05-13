@@ -25,12 +25,9 @@ class GiessereiModelUpdkind extends JModelAdmin
             $kindId = $app->getUserState(GiessereiConst::SESSION_KEY_PROFIL_SUB_ID);
         }
 
-        $query = sprintf(
-            'SELECT count(*) anzahl
-         FROM #__mgh_x_mitglied_mietobjekt mo JOIN #__mgh_kind k ON mo.objektid = k.objektid
-         WHERE mo.userid = %s AND k.id = %s',
-            $user->id,
-            mysql_real_escape_string($kindId));
+        $query = 'SELECT count(*) anzahl
+          FROM #__mgh_x_mitglied_mietobjekt mo JOIN #__mgh_kind k ON mo.objektid = k.objektid
+          WHERE mo.userid = ' . $user->id . ' AND k.id = ' . $db->quote($kindId);
 
         $db->setQuery($query);
         $row = $db->loadObject();
