@@ -15,7 +15,7 @@ class GiessereiModelMitgliederliste extends JModelLegacy
     /**
      * Liefert die Liste aller Mitglieder zurück (Bewohner, Gewerbe, Passivmitglieder).
      *
-     * @param int $typ 1 = Bewohner, 2 = Gewerbe, 3 = Passivmitglied
+     * @param int $typ siehe Enum mitglied_typ.php
      * @return mixed
      */
     public function getMitglieder($typ)
@@ -123,7 +123,7 @@ class GiessereiModelMitgliederliste extends JModelLegacy
         $query = "
               SELECT nachname, vorname, adresse, plz, ort, email
               FROM #__mgh_aktiv_mitglied
-              WHERE typ IN (1,2)
+              WHERE typ IN (1,2,11)
               ORDER BY nachname
             ";
 

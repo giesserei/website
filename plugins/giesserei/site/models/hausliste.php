@@ -20,13 +20,15 @@ class GiessereiModelHausliste extends JModelLegacy
      *
      * Der Hausverein, welcher auch Objekte gemietet hat (Gästezimmer), wird nicht aufgelistet.
      * Auch das Gewerbe wird nicht aufgelistet.
+     *
+     * Die Bewohner vom Chupferhammer werden aufgelistet.
      */
     public function getBelegung()
     {
         $db = JFactory::getDBO();
         $query = "SELECT * FROM #__mgh_mitglied as mgl
 	    		    JOIN #__mgh_x_mitglied_mietobjekt AS xmo ON mgl.userid = xmo.userid 
-              WHERE (mgl.austritt >= NOW() OR mgl.austritt = '0000-00-00') AND mgl.typ IN (1)
+              WHERE (mgl.austritt >= NOW() OR mgl.austritt = '0000-00-00') AND mgl.typ IN (1,8,11)
 				      ORDER BY objektid";
         $db->setQuery($query);
         $rows = $db->loadObjectList();

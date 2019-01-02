@@ -8,10 +8,10 @@
         <field name="nachname" type="text" class="inputbox" label="Nachname" size="30"
                required="true"/>
         <field name="adresse" type="text" class="inputbox" label="Adresse" size="40"
-               required="true"/>
+               required="true" default="Ida-Sträuli-Strasse "/>
         <field name="plz" type="text" class="inputbox" label="PLZ" description="Postleitzahl" size="5"
-               required="true"/>
-        <field name="ort" type="text" class="inputbox" label="Ort" size="40" required="true"/>
+               required="true" default="8404"/>
+        <field name="ort" type="text" class="inputbox" label="Ort" size="40" required="true" default="Winterthur"/>
         <field name="jahrgang" type="text" class="inputbox" label="Jahrgang"
                description="Jahrgang JJJJ (nicht Geburtsdatum)" size="5"/>
         <field name="userid" type="user" label="Joomla User" required="true"/>
@@ -52,12 +52,14 @@
         <field name="einzug" type="calendar" label="Einzug" description="Datum des Einzugs" format="%Y-%m-%d"/>
         <field name="typ" type="list" default="1" label="Typ" description="Bitte auswählen">
             <option value="1">Bewohner</option>
+            <option value="11">Jugendmitglied</option>
             <option value="2">Gewerbe</option>
             <option value="3">Passivmitglied</option>
             <option value="4">Passivmiglied deaktiviert</option>
             <option value="5">Siedlungsassistenz</option>
             <option value="6">Hausverein</option>
             <option value="7">Stundenfonds</option>
+            <option value="8">Chupferhammer</option>
         </field>
         <field name="kommentar" type="textarea" label="Kommentar" description="Freier Kommentar" class="inputbox"
                rows="4"

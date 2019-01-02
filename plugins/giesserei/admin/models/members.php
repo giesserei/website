@@ -96,6 +96,8 @@ class GiessereiModelMembers extends JModelList
         WHEN (mgl.typ = 5) THEN \'Siedlungsassistenz\'  
         WHEN (mgl.typ = 6) THEN \'Hausverein\'  
         WHEN (mgl.typ = 7) THEN \'Stundenfonds\'  
+        WHEN (mgl.typ = 8) THEN \'Chupferhammer\'
+        WHEN (mgl.typ = 11) THEN \'Jugendmitglied\'  
         ELSE \'unbekannt\'
         END AS typ_name');
 

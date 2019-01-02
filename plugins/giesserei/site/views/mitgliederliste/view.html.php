@@ -14,6 +14,11 @@ class GiessereiViewMitgliederliste extends JViewLegacy
         return $this->getModel()->getMitglieder(1);
     }
 
+    protected function getJugendmitglieder()
+    {
+        return $this->getModel()->getMitglieder(11);
+    }
+
     protected function getGewerbe()
     {
         return $this->getModel()->getMitglieder(2);
@@ -27,6 +32,11 @@ class GiessereiViewMitgliederliste extends JViewLegacy
     protected function getAnzahlBewohner()
     {
         return $this->getModel()->getAnzahlMitglieder(1);
+    }
+
+    protected function getAnzahlJugendmitglieder()
+    {
+        return $this->getModel()->getAnzahlMitglieder(11);
     }
 
     protected function getAnzahlGewerbe()

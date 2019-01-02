@@ -54,9 +54,13 @@ echo '</div>';
 
     <?php
 
-    echo "<h2 style='margin-bottom: 20px;'>Bewohner (" . $this->getAnzahlBewohner() . ")</h2>";
+    echo "<h2 style='margin-bottom: 20px;'>Aktivmitglieder (" . $this->getAnzahlBewohner() . ")</h2>";
 
     writeListe($this->getBewohner(), $model);
+
+    echo "<h2 style='margin-bottom: 20px;'>Jugendmitglieder (" . $this->getAnzahlJugendmitglieder() . ")</h2>";
+
+    writeListe($this->getJugendmitglieder(), $model);
 
     echo "<h2 style='margin-bottom: 20px; margin-top: 20px'>Gewerbe (" . $this->getAnzahlGewerbe() . ")</h2>";
 

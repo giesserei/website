@@ -39,8 +39,18 @@ class MitgliedTypEnum
     const HAUSVEREIN = 6;
 
     /**
-     * Giessereistundenfonds.
+     * Giessereistundenfonds
      */
     const STUNDENFONDS = 7;
+
+    /**
+     * Bewohner Chupferhammer
+     */
+    const CHUPFERHAMMER = 8;
+
+    /**
+     * Bewohner Chupferhammer
+     */
+    const JUGENDMITGLIED = 11;
 
 }
