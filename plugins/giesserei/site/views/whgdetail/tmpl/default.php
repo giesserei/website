@@ -77,7 +77,8 @@ endif;
         </td>
         <td valign="top">
             <?php
-            if ($whg->userid == 0 || $whg->freiab != '0000-00-00') echo "<span class='notice_whg_frei'>Wohnung ist frei!</span><br /><br />";
+            if ($whg->userid == 0 || $whg->freiab != '0000-00-00')
+                echo "<span class='notice_whg_frei'>Wohnung ist frei!</span><br /><br />";
             ?>
             <ul>
                 <li><strong><?php echo $whg->bezeichnung ?></strong></li>
@@ -100,10 +101,18 @@ endif;
                     </li>
                     <?php
                 else:
-                    ?>
-                    <li>Nettomiete: <strong>Fr. <?php echo number_format($whg->miete, 0, ',', '\'') ?>.-/Monat</strong>
-                    </li>
+                    if ($whg->nummer == 2015) { ?>
+                        <li>Nettomiete: <strong>Umsatzmiete</strong>
+                        </li>
                     <?php
+                    } else {
+                    ?>
+                        <li>Nettomiete: <strong>Fr. <?php echo number_format($whg->miete, 0, ',', '\'') ?>.-/Monat</strong>
+                        </li>
+                    <?php
+                    }
+                    ?>
+                <?php
                 endif;
                 ?>
                 <li>Pflichtdarlehen: <strong>Fr. <?php echo number_format($whg->pflichtdarlehen, 0, ',', '\'') ?>
