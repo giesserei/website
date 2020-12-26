@@ -72,6 +72,10 @@
         <field name="zb_freistellung" type="text" label="Freistellung (Monate)"
                description="Anzahl der Freistellungsmonate in der Zeitbank (z.B. wegen Einzug oder Geburt)"
                class="inputbox"/>
+        <field name="zb_ausbildung_bis" type="calendar" label="Ausbildung bis" description="Ende der Erstausbildung"
+               format="%Y-%m-%d"/>
+        <field name="zb_ausbildung" type="text" label="In Ausbildung" readonly="true" class="inputbox"
+               required="false" filter="unset"/>
     </fieldset>
 
 </form>

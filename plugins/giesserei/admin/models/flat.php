@@ -49,6 +49,9 @@ class GiessereiModelFlat extends JModelAdmin
         if (!isset($data['maisonette'])) {
             $table->maisonette = 0;
         }
+        if (!isset($data['kz_frei'])) {
+            $table->kz_frei = 0;
+        }
     }
 
     /**

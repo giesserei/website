@@ -39,6 +39,8 @@
                description="Termin für Auszug bei gekündigter Wohnung. Bei gesetztem Datum wird Wohnung nicht
                             mehr als vermietet gekennzeichnet. '-1-11-30' entspricht 'nicht gesetzt'"
                format="%Y-%m-%d" />
+        <field name="kz_frei" type="checkbox" label="Als 'frei' kennzeichnen"
+               description="Wohnung als 'frei' kennzeichnen" value="0" />
 		<field name="mietvertrag_beginn" type="calendar" label="Mietvertragsbeginn"
                description="Datum des Beginns des Mietverhältnisses"
                format="%Y-%m-%d" />

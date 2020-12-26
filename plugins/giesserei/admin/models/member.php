@@ -54,7 +54,19 @@ class GiessereiModelMember extends JModelAdmin
             GiessereiHelper::disableField($form, 'kommentar');
             GiessereiHelper::disableField($form, 'dispension_grad');
             GiessereiHelper::disableField($form, 'zb_freistellung');
+            GiessereiHelper::disableField($form, 'zb_ausbildung_bis');
         }
+
+        $ausbildung = 'nein';
+        if ($form->getValue('zb_ausbildung_bis') != '0000-00-00') {
+            $dateAusbildungEnde = new DateTime($form->getValue('zb_ausbildung_bis'));
+            $dateYearStart = new DateTime(intval(date('Y')) . '-01-01');
+
+            if ($dateAusbildungEnde > $dateYearStart) {
+                $ausbildung = 'ja';
+            }
+        }
+        $form->setValue('zb_ausbildung', null, $ausbildung);
 
         return $form;
     }

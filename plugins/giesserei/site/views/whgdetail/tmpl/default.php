@@ -77,7 +77,7 @@ endif;
         </td>
         <td valign="top">
             <?php
-            if ($whg->userid == 0 || $whg->freiab != '0000-00-00')
+            if ($whg->kz_frei == "1")
                 echo "<span class='notice_whg_frei'>Wohnung ist frei!</span><br /><br />";
             ?>
             <ul>

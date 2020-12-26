@@ -18,6 +18,7 @@ class GiessereiTableFlats extends JTable
     public $grundriss;
     public $anmerkung;
     public $freiab;
+    public $kz_frei;
     public $nasszellen;
     public $reduit;
     public $mietvertrag_beginn;

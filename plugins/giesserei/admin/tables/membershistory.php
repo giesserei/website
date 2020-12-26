@@ -32,6 +32,7 @@ class GiessereiTableMembersHistory extends JTable
     public $dispension_grad;
     public $kommentar;
     public $zb_freistellung;
+    public $zb_ausbildung_bis;
 
     private $id_to_save;
 
