@@ -43,10 +43,15 @@ echo '</ul>';
 echo '</div>';
 ?>
 
-<p style="border-style:solid; border-color:red; border-width:1px; padding:5px;">Diese Mitgliederliste darf nur für
+    <p style="border-style:solid; border-color:red; border-width:1px; padding:5px;">Diese Mitgliederliste darf nur für
     <strong>persönliche</strong> Zwecke verwendet werden. Die Nutzung für <strong>Sammelversände, Umfragen, Newsletter
         und ähnliches ist explizit dem Vorstand des Vereins Mehrgenerationenhaus vorbehalten</strong>. Jeglicher
     Missbrauch wird zivilrechtlich geahndet.</p>
+
+    <p style="border-style:solid; border-color:red; border-width:1px; padding:5px;">
+        Um bestimmte Personen zu suchen, verwendet man am besten die Suchfunktion des Browsers
+        (in der Regel &lt;ctrl&gt;+F oder &lt;cmd&gt;+F).
+    </p>
 
 <p><em>Um die Details eines Mitglieds anzuzeigen, auf den Namen klicken!</em></p>
 
