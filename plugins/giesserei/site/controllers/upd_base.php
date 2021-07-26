@@ -13,7 +13,7 @@ abstract class GiessereiControllerUpdBase extends JControllerForm
     /**
      * Führt nach ein paar Vorarbeiten einen Redirect auf die View durch, welche das Profil-Formular anzeigt.
      */
-    public function edit()
+    public function edit($key = null, $urlVar = null)
     {
         GiessereiFrontendHelper::methodBegin('GiessereiControllerUpdBase', 'edit');
 
@@ -29,7 +29,7 @@ abstract class GiessereiControllerUpdBase extends JControllerForm
     /**
      * Speichert die Formulardaten des Profils in der Datenbank.
      */
-    public function save()
+    public function save($key = null, $urlVar = null)
     {
         GiessereiFrontendHelper::methodBegin('GiessereiControllerUpdBase', 'save');
 
