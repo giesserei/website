@@ -82,9 +82,9 @@ echo GiessereiFrontendHelper::getScriptToHideHeaderImage();
 
             <fieldset>
                 <input type="button" value="Bearbeiten"
-                       onclick="window.location.href='index.php?option=com_giesserei&task=updprofil.edit'"/>
+                       onclick="window.location.href='/index.php?option=com_giesserei&task=updprofil.edit'"/>
                 <input type="button" value="Passwort ändern"
-                       onclick="window.location.href='index.php?option=com_giesserei&task=updpassword.edit'"/>
+                       onclick="window.location.href='/index.php?option=com_giesserei&task=updpassword.edit'"/>
             </fieldset>
         </div>
         <?php if (!empty($this->profilData->kindListe)) { ?>
@@ -115,7 +115,7 @@ echo GiessereiFrontendHelper::getScriptToHideHeaderImage();
                     </table>
                     <div style="margin-top:5px;margin-bottom:20px;">
                         <?php
-                        echo "<input type=\"button\" value=\"Bearbeiten\" onclick=\"window.location.href='index.php?option=com_giesserei&task=updkind.edit&kind_id=" . $kind->id . "'\" />";
+                        echo "<input type=\"button\" value=\"Bearbeiten\" onclick=\"window.location.href='/index.php?option=com_giesserei&task=updkind.edit&kind_id=" . $kind->id . "'\" />";
                         ?>
                     </div>
                 <?php } ?>
@@ -140,8 +140,8 @@ echo GiessereiFrontendHelper::getScriptToHideHeaderImage();
             ?>
             <div style="margin-top:15px;">
                 <input type="button" value="Bearbeiten"
-                       onclick="window.location.href='index.php?option=com_giesserei&task=updbeschreibung.edit'"/>
-                <?php echo "<input type=\"button\" value=\"Foto hochladen\" onclick=\"window.location.href='index.php?option=com_giesserei&task=updbeschreibung.jumpToPhoto'\" />" ?>
+                       onclick="window.location.href='/index.php?option=com_giesserei&task=updbeschreibung.edit'"/>
+                <?php echo "<input type=\"button\" value=\"Foto hochladen\" onclick=\"window.location.href='/index.php?option=com_giesserei&task=updbeschreibung.jumpToPhoto'\" />" ?>
 
             </div>
         </div>
