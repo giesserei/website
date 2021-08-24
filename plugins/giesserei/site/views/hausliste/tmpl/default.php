@@ -45,7 +45,7 @@ JHTML::_('behavior.modal');
 
 <div style="margin-top:10px">
     <ul>
-        <li><a href="index.php?option=com_giesserei&task=alter.alterKlassen&format=raw" target="_blank">BewohnerInnenstruktur / Altersdurchmischung</a></li>
+        <li><a href="/index.php?option=com_giesserei&task=alter.alterKlassen&format=raw" target="_blank">BewohnerInnenstruktur / Altersdurchmischung</a></li>
     </ul>
 </div>
 
@@ -138,8 +138,8 @@ JHTML::_('behavior.modal');
 
         // Einen Bewohner mit Vornamen und Namen ausgeben
         $haus[$hausNr] .= "<a class=\"modal\"
-	  href=\"index.php?option=com_giesserei&controller=giesserei&view=mitglied&tmpl=component&id=" . $obj->userid . "\"
-	  rel=\"{handler: 'iframe', size: {x: 640, y: 480}}\">" . $obj->vorname . " " . $obj->nachname . "</a><br />\n";
+          href=\"index.php?option=com_giesserei&controller=giesserei&view=mitglied&tmpl=component&id=" . $obj->userid . "\"
+          rel=\"{handler: 'iframe', size: {x: 640, y: 480}}\">" . $obj->vorname . " " . $obj->nachname . "</a><br />\n";
 
         $vorgaengerId = $obj->objektid;
     }

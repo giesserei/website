@@ -2,9 +2,9 @@
 /*
  * com_mitglied:View Mitgliederliste
  * Zeigt eine alphabetische Liste aller Mitglieder an
- * 
+ *
  * Jürg Altwegg, Hausverein Giesserei
- * 
+ *
  */
 
 defined('_JEXEC') or die('Restricted access');
@@ -34,10 +34,10 @@ $model = $this->getModel();    // Referenz auf Modell für andere Methoden des O
 echo '<div style="margin-top:10px">';
 echo '<ul>';
 if (GiessereiAuth::hasAccess(GiessereiAuth::ACTION_DOWNLOAD_ADDRESS_LIST)) {
-    echo '<li><a href="index.php?option=com_giesserei&task=mitgliederliste.adressliste&format=raw">Download: Adressliste</a></li>';
+    echo '<li><a href="/index.php?option=com_giesserei&task=mitgliederliste.adressliste&format=raw">Download: Adressliste</a></li>';
 }
 if (GiessereiAuth::hasAccess(GiessereiAuth::ACTION_DOWNLOAD_PASSIVE_LIST)) {
-    echo '<li><a href="index.php?option=com_giesserei&task=mitgliederliste.listePassivmitglieder&format=raw">Download: Liste Passivmitglieder</a></li>';
+    echo '<li><a href="/index.php?option=com_giesserei&task=mitgliederliste.listePassivmitglieder&format=raw">Download: Liste Passivmitglieder</a></li>';
 }
 echo '</ul>';
 echo '</div>';
@@ -91,7 +91,7 @@ function writeListe($mitglieder, $model)
 
         echo '<tr>';
         echo '<td class="mitglied">';
-        echo '<a class="modal" href="index.php?option=com_giesserei&controller=giesserei&view=mitglied&tmpl=component&id=' . $person->userid . '"
+        echo '<a class="modal" href="/index.php?option=com_giesserei&controller=giesserei&view=mitglied&tmpl=component&id=' . $person->userid . '"
 rel="{handler: \'iframe\', size: {x: 640, y: 480}}"><strong>' . $person->nachname . '</strong> ' . $person->vorname . '</a>';
         echo '</td>';
         echo '<td class="mitglied">';
