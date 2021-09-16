@@ -97,7 +97,7 @@ rel="{handler: \'iframe\', size: {x: 640, y: 480}}"><strong>' . $person->nachnam
         echo '<td class="mitglied">';
 
         if (substr($person->email, 0, 11) != "kein.email." && substr($person->email, 0, 12) != "keine.email.") {
-            echo '<a href="mailto:' . $person->email . '?body=Liebe/Lieber ' . $person->vorname . '">E-Mail an ' . $person->vorname . '</a>';
+            echo '<a href="mailto:' . $person->email . '">E-Mail an ' . $person->vorname . '</a>';
         }
 
         echo '</td><td class="mitglied">';
