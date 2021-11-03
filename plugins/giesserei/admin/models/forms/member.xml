@@ -64,6 +64,7 @@
         <field name="kommentar" type="textarea" label="Kommentar" description="Freier Kommentar" class="inputbox"
                rows="4"
                cols="40"/>
+        <field name="vereinNotes" type="note" label="Hinweise" description="Das Feld &quot;Einzug&quot; wird für die Berechnung des Stundensolls in der Zeitbank verwendet. Nicht ändern bei internem Wohnungswechsel!"/>
     </fieldset>
 
     <fieldset name="zeitbank">
