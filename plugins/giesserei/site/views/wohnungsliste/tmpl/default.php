@@ -22,7 +22,7 @@ function whg_nummer($whg)
 }
 
 ?>
-<h2>Wohnungsspiegel nach Position</h2>
+<h2>Wohnungsspiegel</h2>
 
 <h3>Ostflügel (an Ida-Sträuli-Strasse)</h3>
 <table width="100%" class="whgliste">

@@ -100,8 +100,7 @@ class GiessereiModelAlter extends JModelLegacy
                                     strokeColor: "rgba(255,0,0,1)",
                                     highlightFill: "rgba(255,0,0,0.5)",
                                     highlightStroke: "rgba(255,0,0,1)",
-                                    data: [5.1, 4.9, 4.9, 5.3, 6.0, 6.7, 7.1, 6.9, 7.3, 8.0, 7.8, 6.6, 5.6, 5.2, 4.3, 3.3, 2.5, 1.6, 0.7]
-
+                                    data: genSwissStatsData()
                                 }
                             ]
                         };
@@ -170,6 +169,29 @@ class GiessereiModelAlter extends JModelLegacy
                             ]
                         };
 
+
+                        function genSwissStatsData() {
+                           // Resultat Stand 2014 (bis 2022-03-28 verwendet):
+                           //  const oldData2014 = [5.1, 4.9, 4.9, 5.3, 6.0, 6.7, 7.1, 6.9, 7.3, 8.0, 7.8, 6.6, 5.6, 5.2, 4.3, 3.3, 2.5, 1.6, 0.7];
+                           // Quelle: https://www.bfs.admin.ch/bfs/de/home/statistiken/bevoelkerung.html
+                           //         https://www.bfs.admin.ch/bfs/de/home/statistiken/bevoelkerung.assetdetail.18424668.html
+                           //          Link "STAT-TAB", Jahr waehlen, Alter alle, Bestand am 31. Dez., JSON-Export, Werte aus JSON extrahieren
+                           // Struktur: Gesamt-Anzahl, Alter 0, Alter 1, ... Alter 98, Alter >= 99, Alter unbekannt (immer 0)
+                           // Stand 31.12.2014
+                           //    const statData= [8237666,83730,83494,83897,82976,84198,82637,82082,80602,79807,79631,79626,78370,79465,79805,84661,84237,85664,87128,90369,91373,93302,95596,100536,103338,105541,106422,110123,109260,112188,113451,115063,114796,117620,117166,117803,114646,113408,113520,112829,112317,114969,115627,119165,123116,124883,128140,131074,132348,135157,135381,137385,133323,128126,123612,120169,116355,111835,108928,105395,100950,97474,93958,92790,88729,90535,88082,88411,86626,85862,81575,79860,76403,72359,67018,61086,58771,56078,52924,51759,50050,47388,44048,41857,38737,36471,32630,29283,25534,22974,19733,16766,13772,10983,8982,6533,4184,2901,2016,1430,2479,0]
+                           // Stand 31.12.2020
+                           const statData = [8670300,84374,86267,88408,88343,89726,89089,88843,87050,87817,86886,88123,86771,86290,84505,83779,83528,83495,82275,84863,85869,91781,91899,94606,98165,101730,103391,106951,111364,117703,120544,123399,123312,125806,123335,124607,124565,124621,123553,125613,124419,124293,120596,119017,118364,117348,116590,118719,118960,122118,125472,126614,129574,131663,132408,134350,134009,135357,130537,124810,119787,115194,110830,105694,102294,98367,93072,89445,86013,84991,81393,82979,80954,81087,79224,77971,73785,71402,67781,63347,57937,51610,48820,45494,41832,39330,36479,33042,29164,26047,22442,19518,15747,12752,9962,7797,5857,4322,3010,1994,3070,0];
+                           //
+                           const totalCount = statData[0];
+                           const clusterPercents = new Array(19);
+                           for (let i = 0; i < 19; i++) {
+                              const clusterLen = (i < 18) ? 5 : 10;
+                              let sum = 0;
+                              for (let j = 0; j < clusterLen; j++) {
+                                 sum += statData[1 + i * 5 + j]; }
+                              clusterPercents[i] = Math.round(sum / totalCount * 1000) / 10; }
+                           return clusterPercents; }
+
                         function load() {
                             var ctx1 = document.getElementById("alterHistogramm").getContext("2d");
                             var alterChart1 = new Chart(ctx1).Bar(data1, options1);
@@ -193,7 +215,7 @@ class GiessereiModelAlter extends JModelLegacy
                                Anzahl Erwachsene: <strong>' . $this->totalErwachsene . '</strong>)
                             </small>
                         </li>
-                        <li>Rot - Prozentwerte der Schweiz <small>(Quelle: Bundesverwaltung admin.ch, 2014)</small></li>
+                        <li>Rot - Prozentwerte der Schweiz <small>(Quelle: <a href="https://www.bfs.admin.ch/bfs/de/home/statistiken/bevoelkerung.assetdetail.18424668.html">Bundesamt f&uuml;r Statistik</a>, Stand 31.12.2020)</small></li>
                     </ul>
 
                     <canvas id="alterHistogramm" width="700" height="250"></canvas>
