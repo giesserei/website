@@ -18,7 +18,7 @@ class JFormFieldWohnungstyp extends JFormFieldList
         foreach ($typen as $option)
         {
             $value = (string) $option->id;
-            $text = $option->bezeichnung . '(' . $option->zimmerbezeichnung . ')';
+            $text = $option->bezeichnung . ' (' . $option->zimmerbezeichnung . ')';
 
             $tmp = array(
                 'value'    => $value,
@@ -44,7 +44,7 @@ class JFormFieldWohnungstyp extends JFormFieldList
         $query = "SELECT * FROM #__mgh_objekttyp ORDER BY bezeichnung";
         $db->setQuery($query);
         $rows = $db->loadObjectList();
-        return ($rows);
+        return $rows;
     }
 
 }
