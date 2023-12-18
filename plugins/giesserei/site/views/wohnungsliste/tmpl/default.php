@@ -66,5 +66,4 @@ function whg_nummer($whg)
     </tr>
 </table>
 <p><img src="images/blue_triangle.png" alt="subventioniert" title="subventioniert"/> = subventionierte Wohnungen</p>
-<p><span class='whg_frei'>grün</span> = Freie Wohnungen</p>
-
+<!-- <p><span class='whg_frei'>grün</span> = Freie Wohnungen</p> -->
