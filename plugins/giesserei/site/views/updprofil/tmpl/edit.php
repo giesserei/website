@@ -13,10 +13,12 @@ echo GiessereiFrontendHelper::getScriptToHideHeaderImage();
 <h1 style="font-weight:bold;color: #7BA428; margin-bottom:10px;padding-bottom:0px;">
     Profil bearbeiten von <?php echo $this->item->vorname . " " . $this->item->nachname ?>
 </h1>
+<!--
 <div style="margin-bottom:20px">
     Für Namens- und Adressänderungen schreibe bitte ein Mail an
     <a href="mailto:kasse@giesserei-gesewo.ch">kasse@giesserei-gesewo.ch</a>
 </div>
+-->
 
 <div class="component">
 
