@@ -80,7 +80,7 @@ class GiessereiModelMembers extends JModelList
         $query->select('mgl.*');
 
         // Mitgliederstatus 0 -> ausgetreten
-        $query->select('IF ((mgl.austritt >= NOW() OR mgl.austritt = "0000-00-00"), 1, 0) AS status');
+        $query->select('IF ((mgl.austritt >= NOW() OR mgl.austritt is null), 1, 0) AS status');
 
         // Wohnung
         $query->select('(SELECT GROUP_CONCAT(DISTINCT o.objektid ORDER BY o.objektid DESC SEPARATOR \',\')
@@ -89,15 +89,15 @@ class GiessereiModelMembers extends JModelList
 
         // Typ der Mitgliedschaft als String
         $query->select('CASE
-        WHEN (mgl.typ = 1) THEN \'Bewohner\' 
-        WHEN (mgl.typ = 2) THEN \'Gewerbe\'  
-        WHEN (mgl.typ = 3) THEN \'Passivmitglied\'  
-        WHEN (mgl.typ = 4) THEN \'Passivmitglied deaktiviert\'  
-        WHEN (mgl.typ = 5) THEN \'Siedlungsassistenz\'  
-        WHEN (mgl.typ = 6) THEN \'Hausverein\'  
-        WHEN (mgl.typ = 7) THEN \'Stundenfonds\'  
+        WHEN (mgl.typ = 1) THEN \'Bewohner\'
+        WHEN (mgl.typ = 2) THEN \'Gewerbe\'
+        WHEN (mgl.typ = 3) THEN \'Passivmitglied\'
+        WHEN (mgl.typ = 4) THEN \'Passivmitglied deaktiviert\'
+        WHEN (mgl.typ = 5) THEN \'Siedlungsassistenz\'
+        WHEN (mgl.typ = 6) THEN \'Hausverein\'
+        WHEN (mgl.typ = 7) THEN \'Stundenfonds\'
         WHEN (mgl.typ = 8) THEN \'Chupferhammer\'
-        WHEN (mgl.typ = 11) THEN \'Jugendmitglied\'  
+        WHEN (mgl.typ = 11) THEN \'Jugendmitglied\'
         ELSE \'unbekannt\'
         END AS typ_name');
 
@@ -175,10 +175,10 @@ class GiessereiModelMembers extends JModelList
         if (!empty($status)) {
             switch (strval($status)) {
                 case 2 : // nur aktive Mitglieder
-                    $query->where('(mgl.austritt >= NOW() OR mgl.austritt = "0000-00-00")');
+                    $query->where('(mgl.austritt >= NOW() OR mgl.austritt is null)');
                     break;
                 case 3 : // ausgetreten
-                    $query->where('(mgl.austritt < NOW() AND mgl.austritt != "0000-00-00")');
+                    $query->where('(mgl.austritt < NOW() AND mgl.austritt is not null)');
                     break;
                 default : // kein Filter
             }
@@ -196,19 +196,19 @@ class GiessereiModelMembers extends JModelList
         if (!empty($quality)) {
             switch (strval($quality)) {
                 case 2 : // Bewohner/Gewerbe ohne Einzugsdatum
-                    $query->where('(mgl.typ IN (1,2) AND mgl.einzug = "0000-00-00")');
+                    $query->where('(mgl.typ IN (1,2) AND mgl.einzug is null)');
                     break;
                 case 3 : // keine E-Mail Adresse
                     $query->where('(usr.email LIKE \'%keine.email%\' OR usr.email LIKE \'%kein.email%\')');
                     break;
                 case 4 : // nicht ausgezogener Bewohner/Gewerbe mit falscher Adresse
-                    $query->where("(mgl.typ IN (1,2) AND (mgl.austritt >= NOW() OR mgl.austritt = '0000-00-00') AND (mgl.adresse NOT LIKE '%Ida-Sträuli%' OR mgl.plz != '8404' OR mgl.ort != 'Winterthur'))");
+                    $query->where("(mgl.typ IN (1,2) AND (mgl.austritt >= NOW() OR mgl.austritt is null) AND (mgl.adresse NOT LIKE '%Ida-Sträuli%' OR mgl.plz != '8404' OR mgl.ort != 'Winterthur'))");
                     break;
                 case 5 : // Bewohner/Gewerbe ohne Wohnung
                     $query->where("(mgl.typ IN (1,2) AND NOT EXISTS (SELECT o1.objektid FROM #__mgh_x_mitglied_mietobjekt o1 WHERE o1.userid = mgl.userid))");
                     break;
                 case 6 : // Passivmitglied ausgetreten -> kann gelöscht werden
-                    $query->where("(mgl.typ IN (3,4) AND mgl.austritt < NOW() AND mgl.austritt != '0000-00-00')");
+                    $query->where("(mgl.typ IN (3,4) AND mgl.austritt < NOW() AND mgl.austritt is not null)");
                     break;
                 default : // kein Filter
             }

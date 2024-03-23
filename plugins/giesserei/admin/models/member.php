@@ -58,7 +58,7 @@ class GiessereiModelMember extends JModelAdmin
         }
 
         $ausbildung = 'nein';
-        if ($form->getValue('zb_ausbildung_bis') != '0000-00-00') {
+        if ($form->getValue('zb_ausbildung_bis')) {
             $dateAusbildungEnde = new DateTime($form->getValue('zb_ausbildung_bis'));
             $dateYearStart = new DateTime(intval(date('Y')) . '-01-01');
 

@@ -344,7 +344,7 @@ class GiessereiModelAlter extends JModelLegacy
     {
         $query = "
             SELECT count(*) FROM #__mgh_mitglied
-            WHERE typ in (" . $typen . ") AND (austritt = '0000-00-00' OR austritt > NOW())";
+            WHERE typ in (" . $typen . ") AND (austritt is null OR austritt > NOW())";
 
         if ($ohneJahrgang) {
             $query .= " AND (jahrgang is null or jahrgang <= 0)";

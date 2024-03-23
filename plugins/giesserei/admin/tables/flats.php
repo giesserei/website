@@ -31,4 +31,31 @@ class GiessereiTableFlats extends JTable
     {
         parent::__construct('#__mgh_mietobjekt', 'id', $db);
     }
+
+    public function store($updateNulls = true)
+    {
+        return parent::store($updateNulls);
+    }
+
+    public function bind($src, $ignore = array())
+    {
+        if (!parent::bind($src, $ignore)) {
+           return false;
+        }
+        $this->fixUpDateValues();
+        return true;
+    }
+
+    private function fixUpDateValues() {
+        $this->fixUpDateValue('freiab');
+        $this->fixUpDateValue('mietvertrag_beginn');
+    }
+
+    private function fixUpDateValue($fieldName) {
+        if (empty($this->$fieldName) || str_starts_with($this->$fieldName, '0000-')) {
+            $this->$fieldName = null;
+        }
+    }
+
+
 }

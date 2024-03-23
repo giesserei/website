@@ -59,7 +59,7 @@ class GiessereiTableMembers extends JTable
      * Vor dem Speichern eines Datensatzes werden die Daten aus den zusätzlichen
      * Properties in andere Tabellen gespeichert.
      */
-    public function store($updateNulls = false)
+    public function store($updateNulls = true)
     {
         $user = JFactory::getUser();
         $this->update_userid = $user->id;
@@ -79,6 +79,29 @@ class GiessereiTableMembers extends JTable
         }
 
         return parent::store($updateNulls);
+    }
+
+
+    public function bind($src, $ignore = array())
+    {
+        if (!parent::bind($src, $ignore)) {
+           return false;
+        }
+        $this->fixUpDateValues();
+        return true;
+    }
+
+    private function fixUpDateValues() {
+        $this->fixUpDateValue('eintritt');
+        $this->fixUpDateValue('austritt');
+        $this->fixUpDateValue('einzug');
+        $this->fixUpDateValue('zb_ausbildung_bis');
+    }
+
+    private function fixUpDateValue($fieldName) {
+        if (empty($this->$fieldName) || str_starts_with($this->$fieldName, '0000-')) {
+            $this->$fieldName = null;
+        }
     }
 
     public function setUpdateUserName($isUpdateUserName)

@@ -22,9 +22,9 @@ class GiessereiModelMitgliederliste extends JModelLegacy
     {
         $db = JFactory::getDBO();
         $query = "SELECT *,usr.email as email, mgl.userid as userid FROM #__mgh_mitglied as mgl
-	    	LEFT JOIN #__users AS usr ON mgl.userid = usr.id
-	    	LEFT JOIN #__kunena_users AS kun ON mgl.userid = kun.userid
-	    	WHERE (austritt>=NOW() OR austritt='0000-00-00') AND mgl.typ = " . $typ . " ORDER BY nachname";
+                LEFT JOIN #__users AS usr ON mgl.userid = usr.id
+                LEFT JOIN #__kunena_users AS kun ON mgl.userid = kun.userid
+                WHERE (austritt >= NOW() OR austritt is null) AND mgl.typ = " . $typ . " ORDER BY nachname";
         $db->setQuery($query);
         $rows = $db->loadObjectList();
         return ($rows);
@@ -34,7 +34,7 @@ class GiessereiModelMitgliederliste extends JModelLegacy
     {
         $db = JFactory::getDBO();
         $query = "SELECT count(*) FROM #__mgh_mitglied
-	    	      WHERE (austritt >= NOW() OR austritt='0000-00-00') AND typ = " . $typ;
+                      WHERE (austritt >= NOW() OR austritt is null) AND typ = " . $typ;
         $db->setQuery($query);
         return $db->loadResult();
     }
@@ -157,7 +157,7 @@ class GiessereiModelMitgliederliste extends JModelLegacy
               SELECT m.nachname, m.vorname, m.adresse, m.plz, m.ort, u.email, m.eintritt, m.austritt
               FROM #__mgh_mitglied m
               JOIN #__users u ON m.userid = u.id
-              WHERE m.typ IN (3) AND (m.austritt = '0000-00-00' OR m.austritt > NOW())
+              WHERE m.typ IN (3) AND (m.austritt is null OR m.austritt > NOW())
               ORDER BY nachname
             ";
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <form>
-	<fieldset name="eigenschaften">
-		<field name="id" type="hidden" default="0" />
-		<field name="typid" type="wohnungstyp" label="Typ"
+        <fieldset name="eigenschaften">
+                <field name="id" type="hidden" default="0" />
+                <field name="typid" type="wohnungstyp" label="Typ"
                description="Typ" size="6" filter="integer" />
         <field name="flaeche" type="text" label="Fläche"
                description="Nettowohnfläche in Quadratmetern" size="4"/>
@@ -23,27 +23,27 @@
                description="ID-Nummer des Glasfaseranschlusses" size="15"/>
     </fieldset>
     <fieldset name="kosten">
-		<field name="miete" type="text" label="Monatsmiete"
+                <field name="miete" type="text" label="Monatsmiete"
                description="Monatsmiete in Schweizerfranken" size="6"/>
-		<field name="subventioniert" type="text" label="Subventionierte Miete"
+                <field name="subventioniert" type="text" label="Subventionierte Miete"
                description="0 = unsubventioniert" size="6"/>
-		<field name="nk" type="text" label="Nebenkosten"
+                <field name="nk" type="text" label="Nebenkosten"
                description="Nebenkosten in Schweizerfranken (Akonto Gesewo)" size="6"/>
-		<field name="nk_stadtwerk" type="text" label="NK Stadtwerk"
+                <field name="nk_stadtwerk" type="text" label="NK Stadtwerk"
                description="Prognostizierte Nebenkosten verrechnet durch Stadtwerk" size="6"/>
-		<field name="pflichtdarlehen" type="text" label="Pflichtdarlehen"
+                <field name="pflichtdarlehen" type="text" label="Pflichtdarlehen"
                description="Pflichtdarlehen in Schweizerfranken" size="6"/>
     </fieldset>
     <fieldset name="vermietung">
-		<field name="freiab" type="calendar" label="Frei ab"
+                <field name="freiab" type="calendar" label="Frei ab"
                description="Termin für Auszug bei gekündigter Wohnung. Bei gesetztem Datum wird Wohnung nicht
-                            mehr als vermietet gekennzeichnet. '-1-11-30' entspricht 'nicht gesetzt'"
+                            mehr als vermietet gekennzeichnet."
                format="%Y-%m-%d" />
         <field name="kz_frei" type="checkbox" label="Als 'frei' kennzeichnen"
                description="Wohnung als 'frei' kennzeichnen" value="0" />
-		<field name="mietvertrag_beginn" type="calendar" label="Mietvertragsbeginn"
+                <field name="mietvertrag_beginn" type="calendar" label="Mietvertragsbeginn"
                description="Datum des Beginns des Mietverhältnisses"
                format="%Y-%m-%d" />
-	</fieldset>
+        </fieldset>
 
 </form>
