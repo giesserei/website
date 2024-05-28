@@ -143,7 +143,7 @@ class GiessereiModelMember extends JModelAdmin
             $table->setUpdateUserName(0);
         }
         if (!isset($data['is_update_permission'])) {
-            $table->setUpdateUserName(0);
+            $table->setUpdatePermission(0);
         }
         if (!isset($data['telefon_frei'])) {
             $table->telefon_frei = 0;
