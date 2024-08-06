@@ -132,6 +132,9 @@ class GiessereiModelMitgliederliste extends JModelLegacy
 
         foreach ($rows as $row) {
             foreach ($row as $col_name => $value) {
+                if ($col_name == 'email' && str_starts_with($value, 'kein.email')) {
+                   $value = '';
+                }
                 $csv_output .= $value . ';';
             }
             $csv_output .= "\n";
@@ -166,6 +169,9 @@ class GiessereiModelMitgliederliste extends JModelLegacy
 
         foreach ($rows as $row) {
             foreach ($row as $col_name => $value) {
+                if ($col_name == 'email' && str_starts_with($value, 'kein.email')) {
+                   $value = '';
+                }
                 $csv_output .= $value . ';';
             }
             $csv_output .= "\n";
