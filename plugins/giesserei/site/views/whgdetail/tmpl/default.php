@@ -112,34 +112,22 @@ $istWohnung = $whg->flaeche > 0 && $whg->gewerbe_flaeche == 0;
                       <strong>CHF <?php echo number_format($whg->subventioniert, 0, ',', '\'') ?> / Monat</strong><br/>
                       Miete durch Kanton und Stadt Winterthur unterstützt; Rahmenbedingungen beachten! Siehe dazu
                       Website
-                      <a href="http://www.wbf.zh.ch" target="_blank">WBF Kanton</a> (Miete inkl. Anteil an
-                      Gemeinschaftsräumen)
+                      <a href="http://www.wbf.zh.ch" target="_blank">WBF Kanton</a>
+                      <!-- (Miete inkl. Anteil an Gemeinschaftsräumen) -->
                 <?php } else { ?>
                    <?php /* alt: if ($whg->nummer == 2015) { ... <li>Nettomiete: <strong>Umsatzmiete</strong></li> */ ?>
                    <li>Nettomiete: <strong>CHF <?php echo number_format($whg->miete, 0, ',', '\'') ?> / Monat</strong>
                 <?php } ?>
-                <?php if ($whg->pflichtdarlehen) { ?>
-                   <li>Pflichtdarlehen: <strong>CHF <?php echo number_format($whg->pflichtdarlehen, 0, ',', '\'') ?></strong>
+
+                <li>Nebenkosten + genossenschaftliche Beiträge (akonto):
+                   <strong>CHF <?php echo number_format($whg->nk, 0, ',', '\'') ?> / Monat</strong>
+
+                <?php if ($istWohnung) { ?>
+                   <li>Solidaritäts- und Innovationsfonds Gesewo: <strong>CHF 10 / Monat</strong>
                 <?php } ?>
 
-                <?php if ($whg->subventioniert > 0) { ?>
-                    <li>Nebenkosten + genossenschaftliche Beiträge (akonto) von
-                        <strong>CHF <?php echo number_format($whg->nk, 0, ',', '\'') ?> / Monat</strong> für Heizkosten,
-                        Wasser, Gemeinschaftsräume, Mietzinsausfall, Leerstände und Solidaritätsfond
-                <?php } else if (!$istWohnung) { ?>
-                    <li>Nebenkosten (akonto): <strong>CHF <?php echo number_format($whg->nk, 0, ',', '\'') ?> / Monat</strong>
-                <?php } else { ?>
-                    <li>Nebenkosten:
-                        <ul>
-                            <li>Allgemeine Nebenkosten (akonto):
-                                <strong>CHF <?php echo number_format($whg->nk, 0, ',', '\'') ?> / Monat</strong><br/>
-                                für Fernwärme, Wasser, Lüftung (Ventilatorstrom, Unterhalt), Serviceabos (Lifte,
-                                Waschmaschinen), Allgemeinstrom,
-                                Gemeinschaftsräume, etc.<br>
-                                (<b>nicht</b> enthalten sind Strom und Abfall, welche direkt vom Stadtwerk in Rechnung
-                                gestellt werden)
-                            <li>Solidaritäts- und Innovationsfonds Gesewo: <strong>CHF 10 / Monat</strong>
-                        </ul>
+                <?php if ($whg->pflichtdarlehen) { ?>
+                   <li>Pflichtdarlehen: <strong>CHF <?php echo number_format($whg->pflichtdarlehen, 0, ',', '\'') ?></strong>
                 <?php } ?>
 
                 <li>Stockwerk: <strong><?php
