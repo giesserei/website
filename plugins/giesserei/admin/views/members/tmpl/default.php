@@ -53,8 +53,11 @@ $listDirn = $this->escape($this->state->get('list.direction'));
                         <th width="20%">
                             E-Mail
                         </th>
-                        <th width="20%">
+                        <th width="12%">
                             Wohnung
+                        </th>
+                        <th width="8%">
+                            <?php echo JHtml::_('searchtools.sort', 'Jahrgang', 'mgl.jahrgang', $listDirn, $listOrder); ?>
                         </th>
                         <th width="10%">
                             <?php echo JHtml::_('searchtools.sort', 'Typ', 'typ_name', $listDirn, $listOrder); ?>
@@ -102,6 +105,9 @@ $listDirn = $this->escape($this->state->get('list.direction'));
                             </td>
                             <td class="nowrap">
                                 <?php echo $item->wohnung; ?>
+                            </td>
+                            <td class="nowrap">
+                                <?php echo $item->jahrgang; ?>
                             </td>
                             <td class="nowrap">
                                 <?php echo $item->typ_name; ?>

@@ -77,6 +77,7 @@ class GiessereiViewMembers extends JViewLegacy
             'mgl.userid' => 'ID',
             'mgl.vorname' => 'Vorname',
             'mgl.nachname' => 'Nachname',
+            'mgl.jahrgang' => 'Jahrgang',
             'typ_name' => 'Typ'
         );
     }

@@ -11,6 +11,7 @@ class GiessereiModelMembers extends JModelList
             $config['filter_fields'] = array(
                 'mgl.vorname',
                 'mgl.nachname',
+                'mgl.jahrgang',
                 'typ_name',
                 'mgl.userid'
             );

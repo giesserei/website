@@ -62,6 +62,8 @@
             <option value="mgl.vorname DESC">Vorname absteigend</option>
             <option value="mgl.nachname ASC">Nachname aufsteigend</option>
             <option value="mgl.nachname DESC">Nachname absteigend</option>
+            <option value="mgl.jahrgang ASC">Jahrgang aufsteigend</option>
+            <option value="mgl.jahrgang DESC">Jahrgang absteigend</option>
             <option value="typ_name ASC">Typ aufsteigend</option>
             <option value="typ_name DESC">Typ absteigend</option>
             <option value="mgl.id ASC">JGRID_HEADING_ID_ASC</option>
