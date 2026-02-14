@@ -275,7 +275,9 @@ class GiessereiModelAlter extends JModelLegacy
                         </tr>
                     </table>
 
-                    <br>
+                    <div style="margin-top: 35px; font-size: 13px">
+                     (Die Zahlen auf dieser Seite sind immer aktuell gemäss der Giesserei-Vereinsverwaltung und werden automatisch erzeugt.)
+                    </div>
                 </body>
             </html>
         ';
