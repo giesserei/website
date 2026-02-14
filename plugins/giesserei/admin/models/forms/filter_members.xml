@@ -18,6 +18,7 @@
                 default="1">
             <option value="1">- Typ wählen -</option>
             <option value="2">Bewohner</option>
+            <option value="6">Jugendmitglied</option>
             <option value="3">Gewerbe</option>
             <option value="4">Passivmitglied</option>
             <option value="5">Passivmitglied deaktiviert</option>

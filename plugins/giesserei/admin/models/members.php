@@ -160,6 +160,9 @@ class GiessereiModelMembers extends JModelList
                 case 5 : // Passivmitglied deaktiviert
                     $query->where('(mgl.typ = 4)');
                     break;
+                case 6 : // Jugendmitglied
+                    $query->where('(mgl.typ = 11)');
+                    break;
                 default : // kein Filter
             }
         }
